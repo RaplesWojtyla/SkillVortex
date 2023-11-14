@@ -7,7 +7,7 @@
     $host = 'localhost';
     $user = 'root';
     $pass = '';
-    $database = 'learnquotient';
+    $database = 'skill_vortex';
 
     $koneksi = mysqli_connect($host, $user, $pass, $database);
 
