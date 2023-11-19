@@ -54,7 +54,7 @@ require_once('../includes/koneksi.php');
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
-                            <input type="button" class="btn btn-success m-auto" value="Send Code">
+                            <input type="button" onclick="sendCode()" class="btn btn-success m-auto" value="Send Code">
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"
@@ -130,6 +130,9 @@ require_once('../includes/koneksi.php');
                                     </script>
                                 ";
                             }
+                        }
+                        else {
+                            header("Location: ./register.php");
                         }
 
                         ?>
