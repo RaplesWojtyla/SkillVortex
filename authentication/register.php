@@ -116,20 +116,22 @@ require_once('../includes/koneksi.php');
                                 else 
                                 {
                                     echo "
-                                        <p class='alert alert-danger text-center mt-3'>Password tidak sama</p>
+                                        <script>
+                                            alert('Kode Verifikasi Salah.')
+                                        </script>
                                     ";
                                 }
 
-                                $_SESSION['verifCode'] = '';
                             }
                             else 
                             {
                                 echo"
-                                    <script>
-                                        <p class='alert alert-danger'>Kode Verifikasi Salah</p>
-                                    </script>
+                                <script>
+                                <p class='alert alert-danger'>Kode Verifikasi Salah</p>
+                                </script>
                                 ";
                             }
+                            $_SESSION['verifCode'] = '';
                         }
                         else {
                             header("Location: ./register.php");
