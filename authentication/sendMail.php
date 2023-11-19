@@ -2,7 +2,7 @@
 
     require('../includes/function.php');
     $code = generateCode();
-    $_SESSION['vCode'] = $code;
+    $_SESSION['verifCode'] = $code;
     $email = $_POST['email'];
 
     sendCode($code, $email);
