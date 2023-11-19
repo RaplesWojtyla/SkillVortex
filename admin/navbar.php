@@ -253,78 +253,6 @@
                                 </div>
                             </li>
                             
-                            
-                            
-                            <li
-                                class="menu-item active has-sub">
-                                <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-grid-1x2-fill"></i> Layouts</span>
-                                </a>
-                                <div
-                                    class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        
-                                        
-                                        <ul class="submenu-group">
-                                            
-                                            <li
-                                                class="submenu-item  ">
-                                                <a href="layout-default.html"
-                                                    class='submenu-link'>Default Layout</a>
-
-                                                
-                                            </li>
-                                            
-                                        
-                                        
-                                            <li
-                                                class="submenu-item  ">
-                                                <a href="layout-vertical-1-column.html"
-                                                    class='submenu-link'>1 Column</a>
-
-                                                
-                                            </li>
-                                            
-                                        
-                                        
-                                            <li
-                                                class="submenu-item  ">
-                                                <a href="layout-vertical-navbar.html"
-                                                    class='submenu-link'>Vertical Navbar</a>
-
-                                                
-                                            </li>
-                                            
-                                        
-                                        
-                                            <li
-                                                class="submenu-item  ">
-                                                <a href="layout-rtl.html"
-                                                    class='submenu-link'>RTL Layout</a>
-
-                                                
-                                            </li>
-                                            
-                                        
-                                        
-                                            <li
-                                                class="submenu-item active ">
-                                                <a href="layout-horizontal.html"
-                                                    class='submenu-link'>Horizontal Menu</a>
-
-                                                
-                                            </li>
-                                            
-                                        </ul>
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            
-                            
                             <li
                                 class="menu-item  has-sub">
                                 <a href="#" class='menu-link'>
@@ -786,7 +714,7 @@
                                 </div>
                             </li>
 
-                            <li>
+                    
                             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                                     role="img" class="iconify iconify--system-uicons" width="20" height="20"
@@ -815,7 +743,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            </li>
+                            
                             
                             
                         </ul>
