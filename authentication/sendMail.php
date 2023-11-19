@@ -1,6 +1,6 @@
 <?php
 
-    require_once('./includes/koneksi.php');
+    require_once('../includes/koneksi.php');
     require('../includes/function.php');
     
     $code = generateCode();
