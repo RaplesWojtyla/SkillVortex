@@ -90,18 +90,18 @@ require_once('../includes/koneksi.php');
                             $user_id += 1;
 
                             $code = $_POST['code'];
-                            if (!empty($code) and $code == $_SESSION['vCode']) {
+                            if (!empty($code) and $code == $_SESSION['verifCode']) {
                                 // User input
-                                $fullname = $_POST['fullname'];
-                                $username = $_POST['username'];
-                                $email = $_POST['email'];
+                                $fullname  = $_POST['fullname'];
+                                $username  = $_POST['username'];
+                                $email     = $_POST['email'];
                                 $password1 = $_POST['password1'];
                                 $password2 = $_POST['password2'];
 
                                 if ($password1 == $password2) 
                                 {
                                     $query = "INSERT INTO users(id_users, username, nama_lengkap, email, password, level) VALUES('$user_id', '$username', '$fullname', '$email', '$password1', 3)";
-                                    $sql2 = mysqli_query($koneksi, $query);
+                                    $sql2  = mysqli_query($koneksi, $query);
 
                                     if ($sql2) 
                                     {
@@ -120,13 +120,14 @@ require_once('../includes/koneksi.php');
                                     ";
                                 }
 
-                                $_SESSION['vCode'] = '';
+                                $_SESSION['verifCode'] = '';
                             }
                             else 
                             {
                                 echo"
                                     <script>
                                         <p class='alert alert-danger'>Kode Verifikasi Salah</p>
+                                    </script>
                                 ";
                             }
                         }
