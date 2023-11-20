@@ -1,3 +1,79 @@
+<?php
+    
+    require '../includes/function.php';
+
+    if (isset($_POST['loginbtn']))
+    {
+        $inputEmail = mysqli_real_escape_string(conn(), $_POST['email']);
+        $inputPassword = mysqli_real_escape_string(conn(), $_POST['password']);
+
+        $sql = query("SELECT * FROM users WHERE email = '$inputEmail'");
+        if (mysqli_num_rows($sql) == 1)
+        {
+            $row = mysqli_fetch_assoc($sql);
+
+            if ($inputPassword == $row['password'])
+            {
+                $fullname = $row['nama_lengkap'];
+                $username = $row['username'];
+                $email = $row['email'];
+                $userLevel = $row['level'];
+            
+                if ($userLevel == 1)
+                {
+                    header("Location: ../admin/index.php");
+                    $_SESSION['fullname'] = $fullname; 
+                    $_SESSION['username'] = $username; 
+                    $_SESSION['email'] = $email; 
+                    $_SESSION['status'] = 'Admin'; 
+                }
+                else if ($userLevel == 2)
+                {
+                    header("Location: ../teachers/index.php");
+                    $_SESSION['fullname'] = $fullname; 
+                    $_SESSION['username'] = $username; 
+                    $_SESSION['email'] = $email; 
+                    $_SESSION['status'] = 'Teacher'; 
+                }
+                else
+                {
+                    header("Location: ../students/index.php");
+                    $_SESSION['fullname'] = $fullname; 
+                    $_SESSION['username'] = $username; 
+                    $_SESSION['email'] = $email; 
+                    $_SESSION['status'] = 'Student'; 
+                }
+            }
+            else
+            {
+                echo"
+                    <script>
+                        alert('Username atau password tidak ditemukan!')
+                        window.location = './login.php'
+                    </script>
+                ";
+            }
+        }
+        else
+        {
+            echo"
+                <script>
+                    alert('Username atau password tidak ditemukan!!')
+                    window.location = './login.php'
+                </script>
+            ";
+        }
+    }
+    else
+    {
+        if ($_SERVER['PHP_SELF'] == 'login.php') 
+        {
+            header("Location: ./login.php");
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +81,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Skill Vortex</title>
-
 
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
@@ -30,15 +105,15 @@
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
 
-                    <form action="index.html">
+                    <form action="" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Username">
+                            <input name="email" type="text" class="form-control form-control-xl" placeholder="Email" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <input name="password" id="password" type="password" class="form-control form-control-xl" placeholder="Password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -49,13 +124,13 @@
                                 Keep me logged in
                             </label>
                         </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                        <button name="loginbtn" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="auth-register.html"
+                        <p class="text-gray-600">Don't have an account? <a href="register.php"
                                 class="font-bold">Sign
                                 up</a>.</p>
-                        <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
+                        <p><a class="font-bold" href="./forgotPassword.php">Forgot password?</a>.</p>
                     </div>
                 </div>
             </div>
