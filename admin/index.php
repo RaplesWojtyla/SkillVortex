@@ -1,3 +1,14 @@
+<?php
+
+    require '../includes/function.php';
+
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Admin')
+    {
+        header("Location: ./error-403.html");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

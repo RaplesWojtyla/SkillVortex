@@ -1,5 +1,39 @@
 <?php
-require_once('../includes/koneksi.php');
+
+    require '../includes/function.php';
+    if (isset($_POST['registerbtn'])) 
+    {
+        $userCode = $_POST['code'];
+        if (!empty($userCode) and $userCode == $_SESSION['verifCode']) 
+        {
+            if (register($_POST)) {
+                echo "
+                    <script>
+                        alert('Akun anda berhasil terdaftar!')
+                        window.location = './login.php'
+                    </script>
+                ";
+            }
+        } 
+        else 
+        {
+            echo "
+                <script>
+                    alert('Kode verifikasi salah.')
+                    window.location = './register.php'
+                </script>
+            ";
+        }
+        $_SESSION['verifCode'] = '';
+    } 
+    else 
+    {
+        if ($_SERVER['PHP_SELF'] == 'register.php') 
+        {
+            header("Location: ./register.php");
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,21 +70,21 @@ require_once('../includes/koneksi.php');
                     <form method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="fullname" type="text" class="form-control form-control-xl"
-                                placeholder="Full Name" />
+                                placeholder="Full Name" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="username" type="text" class="form-control form-control-xl"
-                                placeholder="Username" />
+                                placeholder="Username" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="email" id="email" type="text" class="form-control form-control-xl"
-                                placeholder="Email" />
+                                placeholder="Email" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
@@ -58,21 +92,21 @@ require_once('../includes/koneksi.php');
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"
-                                placeholder="Verification Code" />
+                                placeholder="Verification Code" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="password1" type="password" class="form-control form-control-xl"
-                                placeholder="Password" />
+                            <input name="password1" id="password1" type="password" class="form-control form-control-xl"
+                                placeholder="Password" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="password2" type="password" class="form-control form-control-xl"
-                                placeholder="Confirm Password" />
+                            <input name="password2" id="password2" type="password" class="form-control form-control-xl"
+                                placeholder="Confirm Password" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -80,69 +114,11 @@ require_once('../includes/koneksi.php');
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="registerbtn">
                             Sign Up
                         </button>
-
-                        <?php
-
-                        if (isset($_POST['registerbtn'])) {
-                            $sql1 = mysqli_query($koneksi, "SELECT MAX(id_users) as id FROM users");
-                            $data = mysqli_fetch_array($sql1);
-                            $user_id = $data['id'];
-                            $user_id += 1;
-
-                            $code = $_POST['code'];
-                            if (!empty($code) and $code == $_SESSION['verifCode']) {
-                                // User input
-                                $fullname  = $_POST['fullname'];
-                                $username  = $_POST['username'];
-                                $email     = $_POST['email'];
-                                $password1 = $_POST['password1'];
-                                $password2 = $_POST['password2'];
-
-                                if ($password1 == $password2) 
-                                {
-                                    $query = "INSERT INTO users(id_users, username, nama_lengkap, email, password, level) VALUES('$user_id', '$username', '$fullname', '$email', '$password1', 3)";
-                                    $sql2  = mysqli_query($koneksi, $query);
-
-                                    if ($sql2) 
-                                    {
-                                        echo "
-                                            <script>
-                                                alert('Akun anda berhasil terdaftar!')
-                                                window.location = './login.php'
-                                            </script>
-                                        ";
-                                    }
-                                } 
-                                else 
-                                {
-                                    echo "
-                                        <script>
-                                            alert('Kode Verifikasi Salah.')
-                                        </script>
-                                    ";
-                                }
-
-                            }
-                            else 
-                            {
-                                echo"
-                                <script>
-                                <p class='alert alert-danger'>Kode Verifikasi Salah</p>
-                                </script>
-                                ";
-                            }
-                            $_SESSION['verifCode'] = '';
-                        }
-                        else {
-                            header("Location: ./register.php");
-                        }
-
-                        ?>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">
                             Already have an account?
-                            <a href="auth-login.html" class="font-bold">Log in</a>.
+                            <a href="login.php" class="font-bold">Log in</a>.
                         </p>
                     </div>
                 </div>
