@@ -32,403 +32,10 @@
           <li><a class="dropdown-item" href="../authentication/logout.php">Logout</a></li>
         </ul>
       </div>
-
       <!-- Burger button responsive -->
       <a href="#" class="burger-btn d-block d-xl-none">
         <i class="bi bi-justify fs-3"></i>
       </a>
-    </div>
-  </div>
-</div>
-
-<nav class="main-navbar">
-  <div class="container">
-    <ul>
-      <li class="menu-item">
-        <a href="index.php" class="menu-link">
-          <span><i class="bi bi-grid-fill"></i>Course</span>
-        </a>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-person"></i>User</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              
-              <li class="submenu-item">
-                <a href="./users_student.php" class="submenu-link">Student</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-file-earmark-medical-fill"></i> Forms</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Elements</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="form-element-input.html" class="subsubmenu-link"
-                      >Input</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-element-input-group.html"
-                      class="subsubmenu-link"
-                      >Input Group</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-select.html" class="subsubmenu-link"
-                      >Select</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-radio.html" class="subsubmenu-link"
-                      >Radio</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-checkbox.html" class="subsubmenu-link"
-                      >Checkbox</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-textarea.html" class="subsubmenu-link"
-                      >Textarea</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item">
-                <a href="form-layout.html" class="submenu-link">Form Layout</a>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Validation</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-validation-parsley.html"
-                      class="subsubmenu-link"
-                      >Parsley</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Editor</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-quill.html" class="subsubmenu-link"
-                      >Quill</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-ckeditor.html" class="subsubmenu-link"
-                      >CKEditor</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-editor-summernote.html"
-                      class="subsubmenu-link"
-                      >Summernote</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-tinymce.html" class="subsubmenu-link"
-                      >TinyMCE</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-table"></i> Table</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item">
-                <a href="table.html" class="submenu-link">Table</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="table-datatable.html" class="submenu-link"
-                  >Datatable</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="table-datatable-jquery.html" class="submenu-link"
-                  >Datatable (jQuery)</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-plus-square-fill"></i> Extras</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Widgets</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-chatbox.html" class="subsubmenu-link"
-                      >Chatbox</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-pricing.html" class="subsubmenu-link"
-                      >Pricing</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-todolist.html" class="subsubmenu-link"
-                      >To-do List</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Icons</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a
-                      href="ui-icons-bootstrap-icons.html"
-                      class="subsubmenu-link"
-                      >Bootstrap Icons
-                    </a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-icons-fontawesome.html" class="subsubmenu-link"
-                      >Fontawesome</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-icons-dripicons.html" class="subsubmenu-link"
-                      >Dripicons</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Charts</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-chart-chartjs.html" class="subsubmenu-link"
-                      >ChartJS</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-chart-apexcharts.html" class="subsubmenu-link"
-                      >Apexcharts</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-file-earmark-fill"></i> Pages</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Authentication</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="auth-login.html" class="subsubmenu-link">Login</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="auth-register.html" class="subsubmenu-link"
-                      >Register</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="auth-forgot-password.html" class="subsubmenu-link"
-                      >Forgot Password</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Errors</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="error-403.html" class="subsubmenu-link">403</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="error-404.html" class="subsubmenu-link">404</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="error-500.html" class="subsubmenu-link">500</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item">
-                <a href="ui-file-uploader.html" class="submenu-link"
-                  >File Uploader</a
-                >
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Maps</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-map-google-map.html" class="subsubmenu-link"
-                      >Google Map</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-map-jsvectormap.html" class="subsubmenu-link"
-                      >JS Vector Map</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-email.html" class="submenu-link"
-                  >Email Application</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-chat.html" class="submenu-link"
-                  >Chat Application</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-gallery.html" class="submenu-link"
-                  >Photo Gallery</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-checkout.html" class="submenu-link"
-                  >Checkout Page</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-life-preserver"></i> Support</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item">
-                <a
-                  href="https://zuramai.github.io/mazer/docs"
-                  class="submenu-link"
-                  >Documentation</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a
-                  href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md"
-                  class="submenu-link"
-                  >Contribute</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a
-                  href="https://github.com/zuramai/mazer#donation"
-                  class="submenu-link"
-                  >Donate</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
 
       <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
         <svg
@@ -488,6 +95,60 @@
           ></path>
         </svg>
       </div>
+    </div>
+  </div>
+</div>
+
+<nav class="main-navbar ">
+  <div class="container">
+    <ul>
+      <li class="menu-item">
+        <a href="index.php" class="menu-link">
+          <span><i class="bi bi-grid-fill"></i>Course</span>
+        </a>
+      </li>
+
+      <li class="menu-item has-sub">
+        <a href="#" class="menu-link">
+          <span><i class="bi bi-person"></i>User</span>
+        </a>
+        <div class="submenu">
+          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+          <div class="submenu-group-wrapper">
+            <ul class="submenu-group">
+              
+              <li class="submenu-item">
+                <a href="./users_student.php" class="submenu-link">Student</a>
+              </li>
+
+              <li class="submenu-item">
+                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="menu-item">
+        <a href="manage_course.php" class="menu-link">
+          <span><i class="bi bi-journal-code"></i>Management Course</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="index.php" class="menu-link">
+          <span><i class="bi bi-chat-right-text-fill"></i>Feedback</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="index.php" class="menu-link">
+          <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
+        </a>
+      </li>
+
+
     </ul>
   </div>
 </nav>
