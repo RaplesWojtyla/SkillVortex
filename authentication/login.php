@@ -25,7 +25,7 @@
                     $_SESSION['fullname'] = $fullname; 
                     $_SESSION['username'] = $username; 
                     $_SESSION['email'] = $email; 
-                    $_SESSION['status'] = 'Admin'; 
+                    $_SESSION['status'] = 'Admin';
                 }
                 else if ($userLevel == 2)
                 {
@@ -35,7 +35,7 @@
                     $_SESSION['email'] = $email; 
                     $_SESSION['status'] = 'Teacher'; 
                 }
-                else
+                else if ($userLevel == 3)
                 {
                     header("Location: ../students/index.php");
                     $_SESSION['fullname'] = $fullname; 

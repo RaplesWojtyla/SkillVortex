@@ -60,11 +60,11 @@
             <ul class="submenu-group">
               
               <li class="submenu-item">
-                <a href="component-spinner.html" class="submenu-link">Student</a>
+                <a href="./users_student.php" class="submenu-link">Student</a>
               </li>
 
               <li class="submenu-item">
-                <a href="component-tooltip.html" class="submenu-link">Teacher</a>
+                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
               </li>
             </ul>
           </div>

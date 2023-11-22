@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/app.css" />
     <link rel="stylesheet" href="../dist/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="../dist/assets/compiled/css/auth.css" />
+    <link rel="stylesheet" href="../dist/assets/extensions/sweetalert2/sweetalert2.min.css">
 </head>
 
 <body>
@@ -88,7 +89,8 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
-                            <input type="button" onclick="sendCode()" class="btn btn-success m-auto" value="Send Code">
+
+                            <input type="button" onclick="sendCode()" class="btn btn-success" value="Send Code">
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"
@@ -141,9 +143,19 @@
                 body: `email=${email}`
             })
 
-            alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
+            // alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
         }
     </script>
+    <script src="../distassets/static/js/components/dark.js"></script>
+    <script src="../distassets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+
+    <script src="../dist/assets/compiled/js/app.js"></script>
+
+
+
+    <script src="../dist/assets/extensions/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../dist/assets/static/js/pages/sweetalert2.js"></script>
 </body>
 
 </html>
