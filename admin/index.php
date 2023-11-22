@@ -36,7 +36,42 @@
             </header>  
             <div class="content-wrapper container">    
                 <div class="page-heading">
-                    <h3>Courses</h3>
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-12 col-md-6 order-md-1 order-last">
+                                <h3>Courses</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
+                                <!-- untuk card -->
+                                <div class="card ">
+                                    <div class="card-content">
+                                        <a href="course.php">
+                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
+                                                alt="singleminded">
+                                        </a>
+                                        <div class="card-body">
+                                            <a href="course.php">
+                                                <h5 class="card-title">DASAR PEMROGRAMAN POSS</h5>
+                                            </a>
+                                            <p class="card-text">
+                                                Chocolate sesame snaps apple pie danish cupcake sweet roll jujubes tiramisu.Gummies
+                                                bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center">
+                                        <button class="btn btn-light-primary btn-block">Read More</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
