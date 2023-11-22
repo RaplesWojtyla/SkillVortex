@@ -36,7 +36,7 @@
             </header>  
             <div class="content-wrapper container">    
                 <div class="page-heading">
-                    <h3>Course</h3>
+                    <h3>Courses</h3>
                 </div>
             </div>
         </div>
