@@ -323,7 +323,7 @@
             </div>
         </footer>
     </div>
-    </div>
+    
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>

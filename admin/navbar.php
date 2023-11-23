@@ -118,11 +118,11 @@
             <ul class="submenu-group">
               
               <li class="submenu-item">
-                <a href="./users_student.php" class="submenu-link">Student</a>
+                <a href="./data_students.php" class="submenu-link">Student</a>
               </li>
 
               <li class="submenu-item">
-                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
+                <a href="./data_teachers.php" class="submenu-link">Teacher</a>
               </li>
 
             </ul>
