@@ -75,7 +75,9 @@
                 </div>
             </div>
         </div>
-        </div>
+
+        
+    </div>
     </div>
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>

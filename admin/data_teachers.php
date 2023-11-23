@@ -40,11 +40,10 @@
     <div id="app">
         <div id="main" class="layout-horizontal">
             <header class="mb-5">
-            <?php include("navbar.php"); ?>
+                <?php include("navbar.php"); ?>
             </header>
             <div class="content-wrapper container">
                 <div class="page-heading">
-                    
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
@@ -61,18 +60,50 @@
                                             <th>Nama Lengkap</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Aksi</th>
+                                            <th colspan="2" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Graiden</td>
-                                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                            <td>Offenburg</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
+                                        <?php
+
+                                            $res = query("SELECT * FROM users WHERE level = 2");
+                                            foreach($res as $data)
+                                            {
+                                                echo"
+                                                    <tr>
+                                                        <td>$data[nama_lengkap]</td>
+                                                        <td>$data[username]</td>
+                                                        <td>$data[email]</td>
+                                                        <td class='text-center'>
+                                                            <form method='POST' action='./formedit.php'>
+                                                                <input type='text' hidden name='id' value=$data[id_users]>
+                                                                <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
+                                                                </form>
+                                                                </td>
+                                                                <td class='text-center'>
+                                                                <form method='POST' onsubmit=\"return confirm(`Apakah anda yakin ingin menghapus akun $data[username]`)\">
+                                                                <input type='text' hidden name='id' value=$data[id_users]>
+                                                                <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                ";
+                                            }
+
+                                        ?>
+
+                                        <?php
+                                            if (isset($_POST['btndelete']))
+                                            {
+                                                $userID = $_POST['id'];
+                                                query("DELETE FROM users WHERE id_users = '$userID'");
+                                                echo"
+                                                    <script>
+                                                        window.location = './data_teachers.php'
+                                                    </script>
+                                                ";
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -81,7 +112,6 @@
                     </section>
                 </div>
             </div>
-            
         </div>
     </div>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
