@@ -37,15 +37,83 @@
         <i class="bi bi-justify fs-3"></i>
       </a>
 
-      <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+      
+    </div>
+  </div>
+</div>
+
+<nav class="main-navbar ">
+  <div class="container">
+    <ul class="d-flex justify-content-center ">
+      <li class="menu-item">
+        <h5>
+          <a href="index.php" class="menu-link">
+            <span><i class="bi bi-grid-fill"></i>Course</span>
+          </a>
+        </h5>
+      </li>
+
+      <li class="menu-item has-sub">
+        <h5>
+          <a href="#" class="menu-link">
+            <span><i class="bi bi-person"></i>Management User</span>
+          </a>
+        </h5>
+        <div class="submenu">
+          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+          <div class="submenu-group-wrapper">
+            <ul class="submenu-group">
+              
+              <li class="submenu-item">
+                <a href="./users_student.php" class="submenu-link">Student</a>
+              </li>
+
+              <li class="submenu-item">
+                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
+              </li>
+
+              <li class="submenu-item">
+                <a href="./request.php" class="submenu-link">Request</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="menu-item">
+        <h5>
+          <a href="manage_course.php" class="menu-link">
+            <span><i class="bi bi-journal-code"></i>Management Course</span>
+          </a>
+        </h5>
+      </li>
+
+      <li class="menu-item">
+        <h5>
+          <a href="feedback.php" class="menu-link">
+            <span><i class="bi bi-chat-right-text-fill"></i>Feedback</span>
+          </a>
+        </h5>
+      </li>
+
+      <li class="menu-item">
+        <h5>
+          <a href="service_center.php" class="menu-link">
+            <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
+          </a>
+        </h5>
+      </li>
+
+      <div class="theme-toggle d-flex gap-2 align-items-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
           role="img"
           class="iconify iconify--system-uicons"
-          width="20"
-          height="20"
+          width="27"
+          height="27"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 21 21"
         >
@@ -69,7 +137,7 @@
             </g>
           </g>
         </svg>
-        <div class="form-check form-switch fs-6">
+        <div class="form-check form-switch fs-5">
           <input
             class="form-check-input me-0"
             type="checkbox"
@@ -84,8 +152,8 @@
           aria-hidden="true"
           role="img"
           class="iconify iconify--mdi"
-          width="20"
-          height="20"
+          width="27"
+          height="27"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24"
         >
@@ -95,60 +163,6 @@
           ></path>
         </svg>
       </div>
-    </div>
-  </div>
-</div>
-
-<nav class="main-navbar ">
-  <div class="container">
-    <ul>
-      <li class="menu-item">
-        <a href="index.php" class="menu-link">
-          <span><i class="bi bi-grid-fill"></i>Course</span>
-        </a>
-      </li>
-
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-person"></i>User</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              
-              <li class="submenu-item">
-                <a href="./users_student.php" class="submenu-link">Student</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="./users_teachers.php" class="submenu-link">Teacher</a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="menu-item">
-        <a href="manage_course.php" class="menu-link">
-          <span><i class="bi bi-journal-code"></i>Management Course</span>
-        </a>
-      </li>
-
-      <li class="menu-item">
-        <a href="index.php" class="menu-link">
-          <span><i class="bi bi-chat-right-text-fill"></i>Feedback</span>
-        </a>
-      </li>
-
-      <li class="menu-item">
-        <a href="index.php" class="menu-link">
-          <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
-        </a>
-      </li>
-
-
     </ul>
   </div>
 </nav>
