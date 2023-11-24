@@ -57,6 +57,9 @@
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 Tambah Data
+                                                <?php
+                                                    $kode_course = $_POST["kode_course1"];
+                                                ?>
                                             </button>
 
                                             <!-- Modal -->
@@ -71,9 +74,13 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body d-flex justify-content-around">
-                                                            <button type="button" onclick="window.location='./tambah_materi.php'" class="btn btn-primary">Materi</button>
-                                                            <button type="button" class="btn btn-primary">Quiz</button>
-                                                            <button type="button" class="btn btn-primary">Tugas</button>
+                                                            <form action="tambah_materi.php" method = "POST">
+                                                                <input name="kode_course" value="<?=$kode_course?>" type="text" hidden>
+                                                                <button type="submit"  class="btn btn-primary">Materi</button>
+                                                                <button type="button" class="btn btn-primary">Quiz</button>
+                                                                <button type="button" class="btn btn-primary">Tugas</button>
+                                                            </form>
+                                                            
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -88,26 +95,20 @@
                                             <table class="table table-striped table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>KODE COURSE</th>
                                                         <th>JUDUL</th>
                                                         <th>NAMA FILE</th>
-                                                        <th>TYPE</th>
                                                         <th>ACTION</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                         $res = query("SELECT * FROM materi"); // WHERE judul = 'Dasar Pemrograman'
-                                                        $kode = 0;
                                                         foreach($res as $data)
                                                         {
-                                                            $kode++;
                                                     ?>
                                                     <tr>
-                                                        <td class="text-bold-500"><?=$kode?></td>
                                                         <td><?=$data['judul']?></td>
                                                         <td class="text-bold-500"><?=$data['nama_file']?></td>
-                                                        <td class="text-bold-500"><?=$data['type']?></td>
                                                         <td><a href="#"><i class="badge-circle font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                         </td>
