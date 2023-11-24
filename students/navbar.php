@@ -1,7 +1,7 @@
 <div class="header-top">
   <div class="container">
     <div class="logo">
-      <a href="index.html">SKILL VORTEX</a>
+      <a href="index.php">SKILL VORTEX</a>
     </div>
     <div class="header-top-right">
       <div class="dropdown">
@@ -32,531 +32,114 @@
           <li><a class="dropdown-item" href="../authentication/logout.php">Logout</a></li>
         </ul>
       </div>
-
       <!-- Burger button responsive -->
       <a href="#" class="burger-btn d-block d-xl-none">
         <i class="bi bi-justify fs-3"></i>
       </a>
+
+      
     </div>
   </div>
 </div>
 
-<nav class="main-navbar">
+<nav class="main-navbar ">
   <div class="container">
-    <ul>
+    <ul class="d-flex justify-content-center ">
       <li class="menu-item">
-        <a href="index.html" class="menu-link">
-          <span><i class="bi bi-grid-fill"></i> Dashboard</span>
-        </a>
+        <h5>
+          <a href="index.php" class="menu-link">
+            <span><i class="bi bi-grid-fill"></i>Course</span>
+          </a>
+        </h5>
       </li>
 
+      
+
       <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-stack"></i> Components</span>
-        </a>
+        <h5>
+          <a href="#" class="menu-link">
+            <span><i class="bi bi-person-fill"></i>Class Participants</span>
+          </a>
+        </h5>
         <div class="submenu">
           <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
           <div class="submenu-group-wrapper">
             <ul class="submenu-group">
+              
+              
               <li class="submenu-item">
-                <a href="component-alert.html" class="submenu-link">Alert</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-badge.html" class="submenu-link">Badge</a>
+                <a href="./participant.php" class="submenu-link">Kelas A Daspro</a>
               </li>
 
               <li class="submenu-item">
-                <a href="component-breadcrumb.html" class="submenu-link"
-                  >Breadcrumb</a
-                >
+                <a href="./participant.php" class="submenu-link">Kelas B Daspro</a>
               </li>
 
-              <li class="submenu-item">
-                <a href="component-button.html" class="submenu-link">Button</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-card.html" class="submenu-link">Card</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-carousel.html" class="submenu-link"
-                  >Carousel</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-collapse.html" class="submenu-link"
-                  >Collapse</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-dropdown.html" class="submenu-link"
-                  >Dropdown</a
-                >
-              </li>
-            </ul>
-
-            <ul class="submenu-group">
-              <li class="submenu-item">
-                <a href="component-list-group.html" class="submenu-link"
-                  >List Group</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-modal.html" class="submenu-link">Modal</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-navs.html" class="submenu-link">Navs</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-pagination.html" class="submenu-link"
-                  >Pagination</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-progress.html" class="submenu-link"
-                  >Progress</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-spinner.html" class="submenu-link"
-                  >Spinner</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="component-tooltip.html" class="submenu-link"
-                  >Tooltip</a
-                >
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Extra Components</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a
-                      href="extra-component-avatar.html"
-                      class="subsubmenu-link"
-                      >Avatar</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="extra-component-sweetalert.html"
-                      class="subsubmenu-link"
-                      >Sweet Alert</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="extra-component-toastify.html"
-                      class="subsubmenu-link"
-                      >Toastify</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="extra-component-rating.html"
-                      class="subsubmenu-link"
-                      >Rating</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="extra-component-divider.html"
-                      class="subsubmenu-link"
-                      >Divider</a
-                    >
-                  </li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
       </li>
 
       <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-file-earmark-medical-fill"></i> Forms</span>
-        </a>
+        <h5>
+          <a href="#" class="menu-link">
+            <span><i class="bi bi-clipboard-data-fill"></i>Scoreboard</span>
+          </a>
+        </h5>
         <div class="submenu">
           <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
           <div class="submenu-group-wrapper">
             <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Elements</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="form-element-input.html" class="subsubmenu-link"
-                      >Input</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-element-input-group.html"
-                      class="subsubmenu-link"
-                      >Input Group</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-select.html" class="subsubmenu-link"
-                      >Select</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-radio.html" class="subsubmenu-link"
-                      >Radio</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-checkbox.html" class="subsubmenu-link"
-                      >Checkbox</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-element-textarea.html" class="subsubmenu-link"
-                      >Textarea</a
-                    >
-                  </li>
-                </ul>
+              
+              <!-- ntar pat ini kalo mau buat pake for each tiap kelas si student,
+              ke scoreboard.php nya ambil dari kode coursenya gitu , 
+              di scoreboard.php nanti daftar nilai yang terdaftar di kelas itu -->
+              <li class="submenu-item">
+                <a href="./scoreboard.php" class="submenu-link">Kelas A Daspro</a>
               </li>
 
               <li class="submenu-item">
-                <a href="form-layout.html" class="submenu-link">Form Layout</a>
+                <a href="./scoreboard.php" class="submenu-link">Kelas B Daspro</a>
               </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Validation</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-validation-parsley.html"
-                      class="subsubmenu-link"
-                      >Parsley</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Form Editor</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-quill.html" class="subsubmenu-link"
-                      >Quill</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-ckeditor.html" class="subsubmenu-link"
-                      >CKEditor</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a
-                      href="form-editor-summernote.html"
-                      class="subsubmenu-link"
-                      >Summernote</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="form-editor-tinymce.html" class="subsubmenu-link"
-                      >TinyMCE</a
-                    >
-                  </li>
-                </ul>
-              </li>
+              
             </ul>
           </div>
         </div>
       </li>
 
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-table"></i> Table</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item">
-                <a href="table.html" class="submenu-link">Table</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="table-datatable.html" class="submenu-link"
-                  >Datatable</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="table-datatable-jquery.html" class="submenu-link"
-                  >Datatable (jQuery)</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
+      <li class="menu-item">
+        <h5>
+          <a href="request.php" class="menu-link">
+            <span><i class="bi bi-envelope-exclamation-fill"></i>Request</span>
+          </a>
+        </h5>
       </li>
 
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-plus-square-fill"></i> Extras</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Widgets</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-chatbox.html" class="subsubmenu-link"
-                      >Chatbox</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-pricing.html" class="subsubmenu-link"
-                      >Pricing</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-widgets-todolist.html" class="subsubmenu-link"
-                      >To-do List</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Icons</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a
-                      href="ui-icons-bootstrap-icons.html"
-                      class="subsubmenu-link"
-                      >Bootstrap Icons
-                    </a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-icons-fontawesome.html" class="subsubmenu-link"
-                      >Fontawesome</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-icons-dripicons.html" class="subsubmenu-link"
-                      >Dripicons</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Charts</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-chart-chartjs.html" class="subsubmenu-link"
-                      >ChartJS</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-chart-apexcharts.html" class="subsubmenu-link"
-                      >Apexcharts</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <li class="menu-item">
+        <h5>
+          <a href="feedback.php" class="menu-link">
+            <span><i class="bi bi-chat-right-text-fill"></i>Feedback</span>
+          </a>
+        </h5>
       </li>
 
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-file-earmark-fill"></i> Pages</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Authentication</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="auth-login.html" class="subsubmenu-link">Login</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="auth-register.html" class="subsubmenu-link"
-                      >Register</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="auth-forgot-password.html" class="subsubmenu-link"
-                      >Forgot Password</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Errors</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="error-403.html" class="subsubmenu-link">403</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="error-404.html" class="subsubmenu-link">404</a>
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="error-500.html" class="subsubmenu-link">500</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item">
-                <a href="ui-file-uploader.html" class="submenu-link"
-                  >File Uploader</a
-                >
-              </li>
-
-              <li class="submenu-item has-sub">
-                <a href="#" class="submenu-link">Maps</a>
-
-                <!-- 3 Level Submenu -->
-                <ul class="subsubmenu">
-                  <li class="subsubmenu-item">
-                    <a href="ui-map-google-map.html" class="subsubmenu-link"
-                      >Google Map</a
-                    >
-                  </li>
-
-                  <li class="subsubmenu-item">
-                    <a href="ui-map-jsvectormap.html" class="subsubmenu-link"
-                      >JS Vector Map</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-email.html" class="submenu-link"
-                  >Email Application</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-chat.html" class="submenu-link"
-                  >Chat Application</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-gallery.html" class="submenu-link"
-                  >Photo Gallery</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a href="application-checkout.html" class="submenu-link"
-                  >Checkout Page</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
+      <li class="menu-item">
+        <h5>
+          <a href="service_center.php" class="menu-link">
+            <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
+          </a>
+        </h5>
       </li>
 
-      <li class="menu-item has-sub">
-        <a href="#" class="menu-link">
-          <span><i class="bi bi-life-preserver"></i> Support</span>
-        </a>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              <li class="submenu-item">
-                <a
-                  href="https://zuramai.github.io/mazer/docs"
-                  class="submenu-link"
-                  >Documentation</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a
-                  href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md"
-                  class="submenu-link"
-                  >Contribute</a
-                >
-              </li>
-
-              <li class="submenu-item">
-                <a
-                  href="https://github.com/zuramai/mazer#donation"
-                  class="submenu-link"
-                  >Donate</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+      <div class="theme-toggle d-flex gap-2 align-items-center ms-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
           role="img"
           class="iconify iconify--system-uicons"
-          width="20"
-          height="20"
+          width="27"
+          height="27"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 21 21"
         >
@@ -580,7 +163,7 @@
             </g>
           </g>
         </svg>
-        <div class="form-check form-switch fs-6">
+        <div class="form-check form-switch fs-5">
           <input
             class="form-check-input me-0"
             type="checkbox"
@@ -595,8 +178,8 @@
           aria-hidden="true"
           role="img"
           class="iconify iconify--mdi"
-          width="20"
-          height="20"
+          width="27"
+          height="27"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24"
         >
@@ -606,6 +189,7 @@
           ></path>
         </svg>
       </div>
+
     </ul>
   </div>
 </nav>
