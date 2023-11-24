@@ -56,17 +56,20 @@
                                     <div class="card-header">
                                         <h5 class="card-title">Upload Materi</h5>
                                     </div>
+                                    <?php
+                                        $kode_course = $_POST["kode_course"];
+                                    ?>
                                     <div class="card-content">
                                         <div class="card-body">
                                             <form action="./upload_materi.php" method="POST" enctype="multipart/form-data">
                                                 <!-- File uploader with multiple files upload -->
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="helpInputTop">Kode Materi</label>
+                                                        <div class="form-group " hidden>
+                                                            <label for="helpInputTop">Kode course</label>
                                                             <small
                                                                 class="text-muted">eg.<i>(Dasar Pemrograman)XXX</i></small>
-                                                            <input name="kode" type="text" class="form-control" id="helpInputTop" placeholder="DP001">
+                                                            <input name="kode" type="text" class="form-control" id="helpInputTop" value="<?=$kode_course?>">
                                                         </div>
                                                         
                                                         <div class="form-group">
@@ -74,11 +77,16 @@
                                                             <input name="judul" type="text" id="helperText" class="form-control"
                                                             placeholder="Dasar Pemrograman">
                                                         </div>
-                                                        
-                                                        <div class="form-group mb-4">
-                                                            <label for="basicInput">Tipe</label>
-                                                            <input name="tipe" type="text" class="form-control" id="basicInput"
-                                                                value="Materi">
+
+                                                        <div class="form-group">
+                                                            <label for="helperText">Deskripsi</label>
+                                                            <input name="judul" type="text" id="helperText" class="form-control"
+                                                            placeholder="Deskripsi Singkat">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="helperText">Judul Materi</label>
+                                                            <input name="judul" type="text" id="helperText" class="form-control"
+                                                            placeholder="Dasar Pemrograman">
                                                         </div>
                                                         <input name="berkas" type="file" class="basic-filepond" required>
                                                     </div>

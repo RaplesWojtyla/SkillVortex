@@ -55,24 +55,22 @@
                             <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
                                 <!-- untuk card -->
                                 <div class="card ">
-                                    <div class="card-content">
-                                        <a href="course.php">
-                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
+                                    <form action="./course.php" method ="POST">
+                                        <div class="card-content">
+                                            <a>
+                                                <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
                                                 alt="singleminded">
-                                        </a>
-                                        <div class="card-body">
-                                            <a href="course.php">
+                                            </a>
+                                            <div class="card-body">
                                                 <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
                                                 <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
-                                            </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-center">
-                                        <form action="./course.php">
-                                            <input name="kode" value="<?=$data['kode_course']?>" type="text" >
+                                        <div class="card-footer d-flex justify-content-center">
+                                            <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
                                             <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Start Learn</button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <?php } ?>
