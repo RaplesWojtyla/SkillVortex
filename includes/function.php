@@ -72,10 +72,12 @@ function insertData($data)
     $kodeMateri = $data['kodeMateri'];
     $judulMateri = $data['judulMateri'];
     $namaFile = $data['namaFile'];
+    $deskripsi = $data['deskripsi'];
+    $tipe = $data['tipe'];
     $ukuranFile = $data['ukuranFile'];
     $fileLoc = $data['fileLoc'];
 
-    $res = query("INSERT INTO materi (kode_course, judul, nama_file, size, berkas) VALUES ('$kodeMateri', '$judulMateri', '$namaFile', '$ukuranFile', '$fileLoc')");
+    $res = query("INSERT INTO materi (kode_course, judul, nama_file, deskripsi, type, size, berkas) VALUES ('$kodeMateri', '$judulMateri', '$namaFile', '$deskripsi', '$tipe', '$ukuranFile', '$fileLoc')");
     if ($res)
     {
         return 1;

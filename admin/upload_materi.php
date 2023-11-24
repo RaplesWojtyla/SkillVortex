@@ -6,6 +6,8 @@
         $kodeMateri = $_POST['kode'];
         $judulMateri = $_POST['judul'];
         $namaFile = $_FILES['berkas']['name'];
+        $deskripsiMateri = $_POST['deskripsi'];
+        $tipe = $_POST['tipe_materi'];
         $ukuranFile = $_FILES['berkas']['size'];
         $tmpFile = $_FILES['berkas']['tmp_name'];
 
@@ -18,6 +20,8 @@
             'kodeMateri' => $kodeMateri,
             'judulMateri' => $judulMateri,
             'namaFile' => $namaFile,
+            'deskripsi' => $deskripsiMateri,
+            'tipe' => $tipe,
             'ukuranFile' => $ukuranFile,
             'fileLoc' => $fileLoc
         );

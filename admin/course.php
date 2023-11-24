@@ -58,7 +58,15 @@
                                                 data-bs-target="#exampleModal">
                                                 Tambah Data
                                                 <?php
-                                                    $kode_course = $_POST["kode_course1"];
+                                                    if (!empty($_POST["kode_course1"]))
+                                                    {
+                                                        $kode_course = $_POST["kode_course1"];
+                                                        $_SESSION['kode_course'] = $kode_course;
+                                                    }
+                                                    else
+                                                    {
+                                                        $kode_course = $_SESSION['kode_course'];
+                                                    }
                                                 ?>
                                             </button>
 
@@ -76,9 +84,9 @@
                                                         <div class="modal-body d-flex justify-content-around">
                                                             <form action="tambah_materi.php" method = "POST">
                                                                 <input name="kode_course" value="<?=$kode_course?>" type="text" hidden>
-                                                                <button type="submit"  class="btn btn-primary">Materi</button>
-                                                                <button type="button" class="btn btn-primary">Quiz</button>
-                                                                <button type="button" class="btn btn-primary">Tugas</button>
+                                                                <button type="submit" class="btn btn-primary">Materi</button>
+                                                                <button type="submit" class="btn btn-primary">Quiz</button>
+                                                                <button type="submit" class="btn btn-primary">Tugas</button>
                                                             </form>
                                                             
                                                         </div>
@@ -96,19 +104,23 @@
                                                 <thead>
                                                     <tr>
                                                         <th>JUDUL</th>
+                                                        <th>DESKRIPSI</th>
                                                         <th>NAMA FILE</th>
+                                                        <th>TIPE</th>
                                                         <th>ACTION</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                                                        $res = query("SELECT * FROM materi"); // WHERE judul = 'Dasar Pemrograman'
+                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course'"); // WHERE judul = 'Dasar Pemrograman'
                                                         foreach($res as $data)
                                                         {
                                                     ?>
                                                     <tr>
-                                                        <td><?=$data['judul']?></td>
+                                                        <td class="text-bold-500"><?=$data['judul']?></td>
+                                                        <td class="text-bold-500"><?=$data['deskripsi']?></td>
                                                         <td class="text-bold-500"><?=$data['nama_file']?></td>
+                                                        <td class="text-bold-500"><?=$data['type']?></td>
                                                         <td><a href="#"><i class="badge-circle font-medium-1"
                                                                     data-feather="mail"></i></a>
                                                         </td>

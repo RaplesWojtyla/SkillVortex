@@ -80,19 +80,20 @@
 
                                                         <div class="form-group">
                                                             <label for="helperText">Deskripsi</label>
-                                                            <input name="judul" type="text" id="helperText" class="form-control"
+                                                            <input name="deskripsi" type="text" id="helperText" class="form-control"
                                                             placeholder="Deskripsi Singkat">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="helperText">Judul Materi</label>
-                                                            <input name="judul" type="text" id="helperText" class="form-control"
-                                                            placeholder="Dasar Pemrograman">
+                                                            <label for="helperText">Tipe</label>
+                                                            <input name="tipe_materi" type="text" id="helperText" class="form-control"
+                                                            value="Materi" readonly>
                                                         </div>
                                                         <input name="berkas" type="file" class="basic-filepond" required>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex justify-content-center mt-5">
                                                     <button name="uploadbtn" type="submit" class="btn btn-primary">Upload</button>
+                                                    <button name="cancelbtn" onclick="window.location='./course.php'" class="btn btn-danger mx-3">Cancel</button>
                                                 </div>
                                             </form>
                                         </div>
