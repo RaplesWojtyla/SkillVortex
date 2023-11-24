@@ -33,8 +33,8 @@
         <div id="main" class="layout-horizontal">
             <header class="mb-5">
                 <?php include("navbar.php"); ?>
-            </header>  
-            <div class="content-wrapper container">    
+            </header>
+            <div class="content-wrapper container">
                 <div class="page-heading">
                     <div class="page-title">
                         <div class="row">
@@ -45,46 +45,87 @@
                     </div>
 
                     <section class="section">
-                        <div class="row">
-                            <?php
-                                $res = query("SELECT * FROM vw_courses_teacher");
-
-                                foreach($res as $data)
-                                {
-                            ?>
-                            <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
-                                <!-- untuk card -->
-                                <div class="card ">
-                                    <div class="card-content">
-                                        <a href="course.php">
-                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
-                                                alt="singleminded">
-                                        </a>
-                                        <div class="card-body">
-                                            <a href="course.php">
-                                                <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
-                                                <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
-                                            </a>
-                                        </div>
+                        <div class="row" id="table-striped-dark">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Dasar Pemrograman</h4>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-center">
-                                        <form action="./course.php">
-                                            <input name="kode" value="<?=$data['kode_course']?>" type="text" >
-                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Start Learn</button>
-                                        </form>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Tambah Data
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body d-flex justify-content-around">
+                                                            <button type="button" onclick="window.location='./tambah_materi.php'" class="btn btn-primary">Materi</button>
+                                                            <button type="button" class="btn btn-primary">Quiz</button>
+                                                            <button type="button" class="btn btn-primary">Tugas</button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- table strip dark -->
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>KODE COURSE</th>
+                                                        <th>JUDUL</th>
+                                                        <th>NAMA FILE</th>
+                                                        <th>TYPE</th>
+                                                        <th>ACTION</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                        $res = query("SELECT * FROM materi"); // WHERE judul = 'Dasar Pemrograman'
+                                                        $kode = 0;
+                                                        foreach($res as $data)
+                                                        {
+                                                            $kode++;
+                                                    ?>
+                                                    <tr>
+                                                        <td class="text-bold-500"><?=$kode?></td>
+                                                        <td><?=$data['judul']?></td>
+                                                        <td class="text-bold-500"><?=$data['nama_file']?></td>
+                                                        <td class="text-bold-500"><?=$data['type']?></td>
+                                                        <td><a href="#"><i class="badge-circle font-medium-1"
+                                                                    data-feather="mail"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
                         </div>
                     </section>
                 </div>
             </div>
         </div>
+    </div>
 
-        
-    </div>
-    </div>
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>

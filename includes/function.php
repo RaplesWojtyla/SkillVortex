@@ -67,6 +67,26 @@ function register($data)
     }
 }
 
+function insertData($data)
+{
+    $kodeMateri = $data['kodeMateri'];
+    $judulMateri = $data['judulMateri'];
+    $namaFile = $data['namaFile'];
+    $tipe = $data['tipe'];
+    $ukuranFile = $data['ukuranFile'];
+    $fileLoc = $data['fileLoc'];
+
+    $res = query("INSERT INTO materi (judul, nama_file, type, size, berkas) VALUES ('$judulMateri', '$namaFile', '$tipe', '$ukuranFile', '$fileLoc')");
+    if ($res)
+    {
+        return 1;
+    }
+    else 
+    {
+        return 0;
+    }
+}
+
 function generateCode()
 {
     return random_int(100000, 999999);
