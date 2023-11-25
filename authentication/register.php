@@ -90,13 +90,13 @@
                                 <i class="bi bi-envelope"></i>
                             </div>
 
-                            <input type="button" onclick="sendCode()" class="btn btn-success" value="Send Code">
+                            <input type="button" onclick="sendCode()" class="btn btn-primary mt-3" value="Send Code">
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"
                                 placeholder="Verification Code" required />
                             <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
+                                <i class="bi bi-code"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -105,12 +105,24 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
+                            <div class="form-check mt-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" onclick="showPassword()" class="form-check-input form-check-primary form-check-glow" name="pass2" id="showpassword1">
+                                    <label class="form-check-label" for="showpassword1">Show Password</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="password2" id="password2" type="password" class="form-control form-control-xl"
                                 placeholder="Confirm Password" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
+                            </div>
+                            <div class="form-check mt-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" onclick="showPassword(2)" class="form-check-input form-check-primary form-check-glow" name="pass2" id="showpassword2">
+                                    <label class="form-check-label" for="showpassword2">Show Password</label>
+                                </div>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="registerbtn">
@@ -143,19 +155,48 @@
                 body: `email=${email}`
             })
 
-            // alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
+            alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
         }
     </script>
+
+    <script>
+        function showPassword(z = 1)
+        {
+            if (z == 1)
+            {
+                let x = document.getElementById('password1');
+                if (x.type === "password")
+                {
+                    x.type = "text"
+                }
+                else
+                {
+                    x.type = "password"
+                }
+            }
+            else if (z == 2)
+            {
+                let x = document.getElementById('password2');
+                if (x.type === "password")
+                {
+                    x.type = "text"
+                }
+                else
+                {
+                    x.type = "password"
+                }
+            }   
+        }
+    </script>
+
     <script src="../distassets/static/js/components/dark.js"></script>
     <script src="../distassets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-
     <script src="../dist/assets/compiled/js/app.js"></script>
-
-
 
     <script src="../dist/assets/extensions/sweetalert2/sweetalert2.min.js"></script>
     <script src="../dist/assets/static/js/pages/sweetalert2.js"></script>
+
 </body>
 
 </html>
