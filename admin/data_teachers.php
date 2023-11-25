@@ -68,29 +68,29 @@
 
                                             $res = query("SELECT * FROM users WHERE level = 2");
                                             foreach($res as $data)
-                                            {
-                                                echo"
-                                                    <tr>
-                                                        <td>$data[nama_lengkap]</td>
-                                                        <td>$data[username]</td>
-                                                        <td>$data[email]</td>
-                                                        <td class='text-center'>
-                                                            <form method='POST' action='./formedit.php'>
-                                                                <input type='text' hidden name='id' value=$data[id_users]>
-                                                                <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
-                                                                </form>
-                                                                </td>
-                                                                <td class='text-center'>
-                                                                <form method='POST' onsubmit=\"return confirm(`Apakah anda yakin ingin menghapus akun $data[username]`)\">
-                                                                <input type='text' hidden name='id' value=$data[id_users]>
-                                                                <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                ";
-                                            }
+                                            {     
+                                        ?>       
+                                        <tr>
+                                            <td><?=$data['nama_lengkap']?></td>
+                                            <td><?=$data['username']?></td>
+                                            <td><?=$data['email']?></td>
+                                            <td class='text-center'>
+                                                <form method='POST' action='./formedit.php'>
+                                                    <input type='text' hidden name='id' value=$data[id_users]>
+                                                    <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
+                                                </form>
+                                            </td>
+                                                    <!--Delete Button-->
 
-                                        ?>
+                                                    <!--Delete Button-->
+                                            <td class='text-center'>
+                                                <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus akun <?=$data['username']?>`)">
+                                                    <input type='text' hidden name='id' value=$data[id_users]>
+                                                    <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
 
                                         <?php
                                             if (isset($_POST['btndelete']))

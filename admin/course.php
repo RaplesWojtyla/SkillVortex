@@ -107,7 +107,7 @@
                                                         <th>DESKRIPSI</th>
                                                         <th>NAMA FILE</th>
                                                         <th>TIPE</th>
-                                                        <th>ACTION</th>
+                                                        <th class="text-center">ACTION</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -121,11 +121,34 @@
                                                         <td class="text-bold-500"><?=$data['deskripsi']?></td>
                                                         <td class="text-bold-500"><?=$data['nama_file']?></td>
                                                         <td class="text-bold-500"><?=$data['type']?></td>
-                                                        <td><a href="#"><i class="badge-circle font-medium-1"
-                                                                    data-feather="mail"></i></a>
+                                                        <td class="text-center">
+                                                            <!-- Download Button-->
+                                                            <form action="./download_file.php" method="POST">
+                                                                <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
+                                                                <button name="downloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
+                                                            </form>
+                                                            
+                                                            <!-- Delete Button -->
+                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
+                                                                <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
+                                                                <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
+
+                                                    <?php
+                                                        if (isset($_POST['deletebtn']))
+                                                        {
+                                                            $id_course = $_POST['id'];
+                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
+                                                            echo"
+                                                                <script>
+                                                                    window.location = './course.php'
+                                                                </script>
+                                                            ";
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
