@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="col-12 d-flex justify-content-center mt-5">
                                             <button name="updatebtn" type="submit" class="btn btn-success me-1 mb-1">Update</button>
-                                            <button name="cancelbtn" class="btn btn-danger me-1 mb-1">Cancel</button>
+                                            <button name="cancelbtn" type="submit" class="btn btn-danger me-1 mb-1">Cancel</button>
                                         </div>
                                     </div>
                                 </div>

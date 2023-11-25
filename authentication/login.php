@@ -127,10 +127,8 @@
                         <button name="loginbtn" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="register.php"
-                                class="font-bold">Sign
-                                up</a>.</p>
-                        <p><a class="font-bold" href="./forgotPassword.php">Forgot password?</a>.</p>
+                        <p class="text-gray-600">Don't have an account? <a href="register.php" class="font-bold">Signup</a></p>
+                        <p><a class="font-bold" href="./forgot_password.php">Forgot password?</a></p>
                     </div>
                 </div>
             </div>

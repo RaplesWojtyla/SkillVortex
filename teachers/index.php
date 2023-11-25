@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="card-footer d-flex justify-content-center">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Start Learn</button>
+                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Manage Course</button>
                                         </div>
                                     </form>
                                 </div>

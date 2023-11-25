@@ -55,25 +55,44 @@
                             <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
                                 <!-- untuk card -->
                                 <div class="card ">
-                                    <form action="./course.php" method ="POST">
-                                        <div class="card-content">
-                                            <a>
-                                                <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
-                                                alt="singleminded">
-                                            </a>
-                                            <div class="card-body">
-                                                <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
-                                                <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
-                                            </div>
+                                    <div class="card-content">
+                                        <a>
+                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
+                                            alt="singleminded">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
+                                            <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
                                         </div>
-                                        <div class="card-footer d-flex justify-content-center">
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center">
+                                        <form action="./course.php" method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Start Learn</button>
-                                        </div>
-                                    </form>
+                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block mx-3">Manage Course</button>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center mt-0">
+                                        <form onsubmit="return confirm(`Apakah anda yakin akan menghapus\nCourse: <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)" method ="POST">
+                                            <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
+                                            <button name="deletebtn" type="submit" class="btn btn-light-danger btn-block mx-3">Delete Course</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             <?php } ?>
+
+                            <?php
+                                if(isset($_POST['deletebtn']))
+                                {
+                                    $kode_course = $_POST['kode_course1'];
+                                    query("DELETE FROM courses WHERE kode_course = '$kode_course'");
+                                    echo"
+                                        <script>
+                                            window.location = './index.php'
+                                        </script>
+                                    ";
+                                }
+                            ?>
                         </div>
                     </section>
                 </div>

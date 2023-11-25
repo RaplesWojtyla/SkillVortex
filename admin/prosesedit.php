@@ -1,6 +1,8 @@
 <?php
     require '../includes/function.php';
 
+    $user_level = $_POST['user_level'];
+    
     if (isset($_POST['updatebtn']))
     {
         $userID = $_POST['id'];
@@ -8,12 +10,11 @@
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $userLevel = $_POST['user_level'];
 
         $sql = query("UPDATE users SET username = '$username', nama_lengkap = '$fullname', email = '$email', password = '$password' WHERE id_users = '$userID'");
         if ($sql)
         {
-            if ($userLevel == 2)
+            if ($user_level == 2)
             {
                 echo"
                     <script>
@@ -22,7 +23,7 @@
                     </script>
                 ";
             }
-            else 
+            else if ($user_level == 3)
             {
                 echo"
                     <script>
@@ -31,6 +32,17 @@
                     </script>
                 ";
             }
+        }
+    }
+    else if (isset($_POST['cancelbtn']))
+    {
+        if ($user_level == 2)
+        {
+            header("Location: ./data_teachers.php");
+        }
+        else if ($user_level == 3)
+        {
+            header("Location: ./data_students.php");
         }
     }
 

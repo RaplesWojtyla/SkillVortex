@@ -65,46 +65,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
+                                        <?php
 
-                                        $res = query("SELECT * FROM users WHERE level = 3");
-                                        foreach($res as $data)
-                                        {
-                                            echo"
-                                                <tr>
-                                                    <td>$data[nama_lengkap]</td>
-                                                    <td>$data[username]</td>
-                                                    <td>$data[email]</td>
-                                                    <td class='text-center'>
-                                                        <form method='POST' action='./formedit.php'>
-                                                            <input type='text' name='id' value=$data[id_users] hidden>
-                                                            <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
-                                                        </form>
-                                                            </td>
-                                                            <td class='text-center'>
-                                                        <form method='POST' onsubmit=\"return confirm(`Apakah anda yakin ingin menghapus akun $data[username]`)\">
-                                                            <input type='text' name='id' value=$data[id_users] hidden>
-                                                            <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            ";
-                                        }
+                                            $res = query("SELECT * FROM users WHERE level = 3");
+                                            foreach($res as $data)
+                                            {     
+                                        ?>       
+                                        <tr>
+                                            <td><?=$data['nama_lengkap']?></td>
+                                            <td><?=$data['username']?></td>
+                                            <td><?=$data['email']?></td>
+                                            <td class='text-center'>
+                                                <form method='POST' action='./formedit.php'>
+                                                    <input type='text' hidden name='id' value=<?=$data['id_users']?>>
+                                                    <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
+                                                </form>
+                                            </td>
+                                                    <!--Delete Button-->
 
-                                    ?>
+                                                    <!--Delete Button-->
+                                            <td class='text-center'>
+                                                <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus akun <?=$data['username']?>`)">
+                                                    <input type='text' hidden name='id' value=<?=$data['id_users']?>>
+                                                    <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
 
-                                    <?php
-                                        if (isset($_POST['btndelete']))
-                                        {
-                                            $userID = $_POST['id'];
-                                            query("DELETE FROM users WHERE id_users = '$userID'");
-                                            echo"
-                                                <script>
-                                                    window.location = './data_students.php'
-                                                </script>
-                                            ";
-                                        }
-                                    ?>
+                                        <?php
+                                            if (isset($_POST['btndelete']))
+                                            {
+                                                $userID = $_POST['id'];
+                                                query("DELETE FROM users WHERE id_users = '$userID'");
+                                                echo"
+                                                    <script>
+                                                        window.location = './data_teachers.php'
+                                                    </script>
+                                                ";
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

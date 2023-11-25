@@ -75,7 +75,7 @@
                                                         <div class="form-group">
                                                             <label for="helperText">Judul Materi</label>
                                                             <input name="judul" type="text" id="helperText" class="form-control"
-                                                            placeholder="Dasar Pemrograman">
+                                                            placeholder="Judul Materi">
                                                         </div>
 
                                                         <div class="form-group">
