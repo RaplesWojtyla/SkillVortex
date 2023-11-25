@@ -83,7 +83,7 @@
 
       <li class="menu-item">
         <h5>
-          <a href="manage_course.php" class="menu-link">
+          <a href="management_course.php" class="menu-link">
             <span><i class="bi bi-journal-code"></i>Management Course</span>
           </a>
         </h5>
