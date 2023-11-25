@@ -117,6 +117,12 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
+                            <div class="form-check mt-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" onclick="showPassword()" class="form-check-input form-check-primary form-check-glow" id="showpassword">
+                                    <label class="form-check-label" for="showpassword">Show Password</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-check form-check-lg d-flex align-items-end">
                             <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
@@ -128,7 +134,7 @@
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Don't have an account? <a href="register.php" class="font-bold">Signup</a></p>
-                        <p><a class="font-bold" href="./forgot_password.php">Forgot password?</a></p>
+                        <p><a class="font-bold" href="./cek_forgot_password.php">Forgot password?</a></p>
                     </div>
                 </div>
             </div>
@@ -140,6 +146,21 @@
         </div>
 
     </div>
+
+    <script>
+        function showPassword()
+        {
+            let x = document.getElementById('password');
+            if (x.type === "password")
+            {
+                x.type = "text"
+            }
+            else
+            {
+                x.type = "password"
+            }
+        }
+    </script>
 </body>
 
 </html>

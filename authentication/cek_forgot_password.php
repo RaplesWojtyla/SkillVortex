@@ -1,42 +1,36 @@
 <?php
     require '../includes/function.php';
 
-    if (isset($_POST['submit']))
+    if (isset($_POST['checkbtn']))
     {
-        $user_email = $_SESSION['email'];
-        $pass1 = $_POST['password1'];
-        $pass2 = $_POST['password2'];
+        $user_email = $_POST['email'];
+        $res = query("SELECT * FROM users WHERE email = '$user_email'");
 
-        if ($pass1 == $pass2)
+        if(mysqli_num_rows($res) == 1)
         {
-            $res = query("UPDATE users SET password = '$pass1' WHERE email = '$user_email'");
-
-            if($res)
+            $user_code = $_POST['code'];
+            if ($user_code == $_SESSION['verifCode'])
             {
-                $_SESSION['email'] = '';
-                echo"
-                    <script>
-                        alert('Password anda berhasil diubah, silahkan login')
-                        window.location = './login.php'
-                    </script>
-                ";
+                $_SESSION['email'] = $user_email;
+                header("Location: ./forgot_password.php");
             }
-            else
+            else 
             {
                 echo"
                     <script>
-                        alert('Terjadi kesalahan, silahkan coba lagi')
-                        window.location = './forgot_password.php'
+                        alert('Kode verifikasi salah')
+                        window.location = './cek_forgot_password.php'
                     </script>
                 ";
             }
+            $_SESSION['verifCode'] = '';
         }
         else
         {
             echo"
                 <script>
-                    alert('Password tidak sama')
-                    window.location = './forgot_password.php'
+                    alert('Email tidak ditemukan')
+                    window.location = './cek_forgot_password.php'
                 </script>
             ";
         }
@@ -76,37 +70,30 @@
                         <a href="index.html"><img src="../dist/assets/compiled/svg/logo.svg" alt="Logo"></a>
                     </div>
                     <h1 class="auth-title">Forgot Password</h1>
-                    <p class="auth-subtitle mb-5">Silahkan Buat Password Baru Anda</p>
+                    <p class="auth-subtitle mb-5">Kami Akan Mengirim Kode Verifikasi ke Email Anda</p>
 
                     <form method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="password1" id="password1" type="password" class="form-control form-control-xl" placeholder="Password" required>
+                            <input name="email" id="email" type="email" class="form-control form-control-xl"
+                                placeholder="Email" required>
                             <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
+                                <i class="bi bi-envelope"></i>
                             </div>
-                            <div class="form-check mt-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" onclick="showPassword()" class="form-check-input form-check-primary form-check-glow" name="customCheck" id="showpassword1">
-                                    <label class="form-check-label" for="showpassword1">Show Password</label>
-                                </div>
-                            </div>
+                            <input type="button" name="sendcode" onclick="sendCode()" class="btn btn-outline-info mt-3"
+                                value="Send Code" required>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="password2" id="password2" type="password" class="form-control form-control-xl" placeholder="Confirm Password" required>
+                            <input name="code" id="code" type="text" class="form-control form-control-xl"
+                                placeholder="Verification Code" required>
                             <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
-                            </div>
-                            <div class="form-check mt-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" onclick="showPassword(2)" class="form-check-input form-check-primary form-check-glow" name="pass2" id="showpassword2">
-                                    <label class="form-check-label" for="showpassword2">Show Password</label>
-                                </div>
+                                <i class="bi bi-code"></i>
                             </div>
                         </div>
-                        <button name="submit" type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Change Password</button>
+                        <button name="checkbtn" type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Check</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class='text-gray-600'>Remember your account? <a href="./login.php" class="font-bold">Login</a>.
+                        <p class='text-gray-600'>Remember your account? <a href="./login.php"
+                                class="font-bold">Login</a>.
                         </p>
                     </div>
                 </div>
@@ -124,33 +111,18 @@
     <script src="../dist/assets/compiled/js/app.js"></script>
 
     <script>
-        function showPassword(z = 1)
-        {
-            if (z == 1)
-            {
-                let x = document.getElementById('password1');
-                if (x.type === "password")
-                {
-                    x.type = "text"
-                }
-                else
-                {
-                    x.type = "password"
-                }
-            }
-            else if (z == 2)
-            {
-                let x = document.getElementById('password2');
-                if (x.type === "password")
-                {
-                    x.type = "text"
-                }
-                else
-                {
-                    x.type = "password"
-                }
-            }
-            
+        function sendCode() {
+            const email = document.getElementById('email').value
+
+            fetch('./sendMail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `email=${email}`
+            })
+
+            alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
         }
     </script>
 </body>
