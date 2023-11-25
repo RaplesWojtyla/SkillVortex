@@ -56,7 +56,7 @@
       <li class="menu-item has-sub">
         <h5>
           <a href="#" class="menu-link">
-            <span><i class="bi bi-person"></i>Management User</span>
+            <span><i class="bi bi-person-fill"></i>Management User</span>
           </a>
         </h5>
         <div class="submenu">
@@ -105,7 +105,7 @@
         </h5>
       </li>
 
-      <div class="theme-toggle d-flex gap-2 align-items-center ">
+      <div class="theme-toggle d-flex gap-2 align-items-center ms-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
