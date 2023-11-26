@@ -53,9 +53,10 @@
                                     {
                             
                             ?>
-                            <form action="prosesedit.php" method="POST" class="form form-horizontal">
+                            <form action="" method="POST" class="form form-horizontal">
                                 <div class="form-body">
                                     <div class="row">
+                                        <input name="id" type="number" value="<?=$data['id_course']?>" hidden>
                                         <div class="col-md-4">
                                             <label for="first-name-horizontal-icon">Kode Course</label>
                                         </div>
@@ -71,13 +72,13 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="username">Judul Course</label>
+                                            <label for="judul">Judul Course</label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input name="username" type="text" class="form-control" value="<?=$data['judul_course']?>"
-                                                        id="username">
+                                                    <input name="judul" type="text" class="form-control" value="<?=$data['judul_course']?>"
+                                                        id="judul">
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-journals"></i>
                                                     </div>
@@ -106,6 +107,34 @@
                                 </div>
                             </form>
                             <?php }} ?>
+
+
+                            <?php                               
+                                if (isset($_POST['updatebtn']))
+                                {
+                                    $id_course = $_POST['id'];
+                                    $kode_course = $_POST['kode_course'];
+                                    $judul_course = $_POST['judul'];
+                                    $e_teacher = $_POST['email'];
+
+
+                                    $sql = query("UPDATE courses SET kode_course = '$kode_course', judul_course = '$judul_course', e_teacher = '$e_teacher' WHERE id_course = '$id_course'");
+                                    if ($sql)
+                                    {
+                                        echo"
+                                            <script>
+                                                alert('Data berhasil diubah')
+                                                window.location = './management_course.php'
+                                            </script>
+                                        ";
+                                    }
+                                }
+                                else if (isset($_POST['cancelbtn']))
+                                {
+                                    header("Location: ./management_course.php");
+                                }
+                            ?>
+                            
                         </div>
                     </div>
                 </div>
