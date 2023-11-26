@@ -66,7 +66,7 @@
                                     <tbody>
                                         <?php
 
-                                            $res = query("SELECT * FROM users WHERE level = 2");
+                                            $res = query("SELECT * FROM users WHERE level = 2 ORDER BY id_users");
                                             foreach($res as $data)
                                             {     
                                         ?>       

@@ -68,13 +68,13 @@
                                     <div class="card-footer d-flex justify-content-center">
                                         <form action="./course.php" method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block mx-3">Manage Course</button>
+                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Manage Course</button>
                                         </form>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-center mt-0">
+                                    <div class="card-footer d-flex justify-content-center">
                                         <form onsubmit="return confirm(`Apakah anda yakin akan menghapus\nCourse: <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)" method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="deletebtn" type="submit" class="btn btn-light-danger btn-block mx-3">Delete Course</button>
+                                            <button name="deletebtn" type="submit" class="btn btn-light-danger btn-block">Delete Course</button>
                                         </form>
                                     </div>
                                 </div>

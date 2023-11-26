@@ -88,7 +88,6 @@
                                                                 <button type="submit" class="btn btn-primary">Quiz</button>
                                                                 <button type="submit" class="btn btn-primary">Tugas</button>
                                                             </form>
-                                                            
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -112,7 +111,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course'"); // WHERE judul = 'Dasar Pemrograman'
+                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); // WHERE judul = 'Dasar Pemrograman'
                                                         foreach($res as $data)
                                                         {
                                                     ?>
