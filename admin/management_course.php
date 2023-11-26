@@ -57,26 +57,28 @@
                                 <table class="table table-striped" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>Nama Lengkap</th>
-                                            <th>Username</th>
+                                            <th>Kode Course</th>
+                                            <th>Judul Course</th>
                                             <th>Email</th>
+                                            <th>Nama Teacher</th>
                                             <th colspan="2" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
 
-                                            $res = query("SELECT * FROM users WHERE level = 2");
+                                            $res = query("SELECT * FROM vw_courses_teacher");
                                             foreach($res as $data)
                                             {     
                                         ?>       
                                         <tr>
+                                            <td><?=$data['kode_course']?></td>
+                                            <td><?=$data['judul_course']?></td>
+                                            <td><?=$data['e_teacher']?></td>
                                             <td><?=$data['nama_lengkap']?></td>
-                                            <td><?=$data['username']?></td>
-                                            <td><?=$data['email']?></td>
                                             <td class='text-center'>
-                                                <form method='POST' action='./formedit.php'>
-                                                    <input type='text' hidden name='id' value=<?=$data['id_users']?>>
+                                                <form method='POST' action='./formedit_course.php'>
+                                                    <input type='text' hidden name='id_course' value=<?=$data['id_course']?>>
                                                     <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
                                                 </form>
                                             </td>
@@ -84,8 +86,8 @@
 
                                                     <!--Delete Button-->
                                             <td class='text-center'>
-                                                <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus akun <?=$data['username']?>`)">
-                                                    <input type='text' hidden name='id' value=<?=$data['id_users']?>>
+                                                <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus course <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)">
+                                                    <input type='text' hidden  name='kode_course1' value=<?=$data['kode_course']?>>
                                                     <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
                                                 </form>
                                             </td>
