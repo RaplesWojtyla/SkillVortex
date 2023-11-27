@@ -145,7 +145,7 @@
                                                                 <button name="downloadbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
                                                             </form>
                                                             
-                                                            <!-- Delete Button -->
+                                                            <!-- Delete Button -->  
                                                             <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus quiz <?=$data['judul']?>?`)" method="POST">
                                                                 <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
                                                                 <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>

@@ -7,6 +7,23 @@
         header("Location: ./error-403.html");
     }
 
+    if (!empty($_POST["kode_course1"]))
+    {
+        $kode_course = $_POST["kode_course1"];
+        $_SESSION['kode_course'] = $kode_course;
+    }
+    else
+    {
+        $kode_course = $_SESSION['kode_course'];
+    }
+
+    $result = query("SELECT * FROM courses WHERE kode_course = '$kode_course'");
+
+    while ($row = mysqli_fetch_assoc($result))
+    {
+        $judul_course = $row['judul_course'];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +66,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Dasar Pemrograman</h4>
+                                        <h4 class="card-title"><?=$judul_course?></h4>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
@@ -57,17 +74,6 @@
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 Tambah Data
-                                                <?php
-                                                    if (!empty($_POST["kode_course1"]))
-                                                    {
-                                                        $kode_course = $_POST["kode_course1"];
-                                                        $_SESSION['kode_course'] = $kode_course;
-                                                    }
-                                                    else
-                                                    {
-                                                        $kode_course = $_SESSION['kode_course'];
-                                                    }
-                                                ?>
                                             </button>
 
                                             <!-- Modal -->
@@ -111,7 +117,8 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); // WHERE judul = 'Dasar Pemrograman'
+                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); 
+                                                        
                                                         foreach($res as $data)
                                                         {
                                                     ?>
