@@ -54,14 +54,14 @@
                             <div class="col-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title">Upload Materi</h5>
+                                        <h5 class="card-title">Upload Quiz</h5>
                                     </div>
                                     <?php
                                         $kode_course = $_GET["kode_course"];
                                     ?>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <form action="./upload_materi.php" method="POST" enctype="multipart/form-data">
+                                            <form action="./upload_quiz.php" method="POST" enctype="multipart/form-data">
                                                 <!-- File uploader with multiple files upload -->
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-md-6">
@@ -71,11 +71,15 @@
                                                                 class="text-muted">eg.<i>(Dasar Pemrograman)XXX</i></small>
                                                             <input name="kode" type="text" class="form-control" id="helpInputTop" value="<?=$kode_course?>">
                                                         </div>
-                                                        
                                                         <div class="form-group">
-                                                            <label for="helperText">Judul Materi</label>
+                                                            <label for="helperText">Kode Quiz</label>
+                                                            <input name="kode_quiz" type="text" id="helperText" class="form-control"
+                                                            placeholder="Kode Quiz" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="helperText">Judul Quiz</label>
                                                             <input name="judul" type="text" id="helperText" class="form-control"
-                                                            placeholder="Judul Materi" required>
+                                                            placeholder="Judul Quiz" required>
                                                         </div>
 
                                                         <div class="form-group">
@@ -86,9 +90,13 @@
                                                         <div class="form-group">
                                                             <label for="helperText">Tipe</label>
                                                             <input name="tipe_materi" type="text" id="helperText" class="form-control"
-                                                            value="Materi" readonly>
+                                                            value="Quiz" readonly>
                                                         </div>
-                                                        <input name="berkas" type="file" class="basic-filepond" required>
+                                                        <div class="form-group">
+                                                            <label for="helperText">Durasi</label>
+                                                            <input name="durasi" type="number" id="helperText" class="form-control"
+                                                            placeholder="In-minute">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex justify-content-center mt-5">
