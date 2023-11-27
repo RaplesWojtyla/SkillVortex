@@ -56,7 +56,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Courses</h3>
+                                <h2>Courses</h2>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title"><?=$judul_course?></h4>
+                                        <h3 class="card-title"><?=$judul_course?></h3>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
@@ -82,82 +82,168 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title
-                                                            </h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Pilih Menu</h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body d-flex justify-content-around">
-                                                            <form action="tambah_materi.php" method = "POST">
-                                                                <input name="kode_course" value="<?=$kode_course?>" type="text" hidden>
-                                                                <button type="submit" class="btn btn-primary">Materi</button>
-                                                                <button type="submit" class="btn btn-primary">Quiz</button>
-                                                                <button type="submit" class="btn btn-primary">Tugas</button>
-                                                            </form>
+                                                            <a href=".\tambah_materi.php?kode_course=<?=$kode_course?>">Materi</a>
+                                                            <a href=".\tambah_quiz.php?kode_course=<?=$kode_course?>">Quiz</a>
+                                                            <a href=".\tambah_tugas.php?kode_course=<?=$kode_course?>">Tugas</a>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                                data-bs-dismiss="modal">Close
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- table strip dark -->
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-hover mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>JUDUL</th>
-                                                        <th>DESKRIPSI</th>
-                                                        <th>NAMA FILE</th>
-                                                        <th>TIPE</th>
-                                                        <th class="text-center">ACTION</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php 
-                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); 
-                                                        
-                                                        foreach($res as $data)
-                                                        {
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-bold-500"><?=$data['judul']?></td>
-                                                        <td class="text-bold-500"><?=$data['deskripsi']?></td>
-                                                        <td class="text-bold-500"><?=$data['nama_file']?></td>
-                                                        <td class="text-bold-500"><?=$data['type']?></td>
-                                                        <td class="text-center">
-                                                            <!-- Download Button-->
-                                                            <form action="./download_file.php" method="POST">
-                                                                <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
-                                                                <button name="downloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
-                                                            </form>
-                                                            
-                                                            <!-- Delete Button -->
-                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
-                                                                <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
-                                                                <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    <?php } ?>
 
-                                                    <?php
-                                                        if (isset($_POST['deletebtn']))
-                                                        {
-                                                            $id_course = $_POST['id'];
-                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
-                                                            echo"
-                                                                <script>
-                                                                    window.location = './course.php'
-                                                                </script>
-                                                            ";
-                                                        }
-                                                    ?>
-                                                </tbody>
-                                            </table>
+
+                                        <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
+
+                                            <div class="accordion-item">
+                                                <h5 class="accordion-header">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                        <h5>MATERI</h5>
+                                                    </button>
+                                                </h5>
+                                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                                    <div class="accordion-body">
+                                                        <!-- table strip dark -->
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-hover mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>JUDUL</th>
+                                                                        <th>DESKRIPSI</th>
+                                                                        <th>NAMA FILE</th>
+                                                                        <th>TIPE</th>
+                                                                        <th class="text-center">ACTION</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); 
+                                                                        
+                                                                        foreach($res as $data)
+                                                                        {
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td class="text-bold-500"><?=$data['judul']?></td>
+                                                                        <td class="text-bold-500"><?=$data['deskripsi']?></td>
+                                                                        <td class="text-bold-500"><?=$data['nama_file']?></td>
+                                                                        <td class="text-bold-500"><?=$data['type']?></td>
+                                                                        <td class="text-center">
+                                                                            <!-- Download Button-->
+                                                                            <form action="./download_file.php" method="POST">
+                                                                                <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
+                                                                                <button name="downloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
+                                                                            </form>
+                                                                            
+                                                                            <!-- Delete Button -->
+                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
+                                                                                <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
+                                                                                <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php } ?>
+
+                                                                    <?php
+                                                                        if (isset($_POST['deletebtn']))
+                                                                        {
+                                                                            $id_course = $_POST['id'];
+                                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
+                                                                            echo"
+                                                                                <script>
+                                                                                    window.location = './course.php'
+                                                                                </script>
+                                                                            ";
+                                                                        }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item">
+                                                <h5 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                        <h5>QUIZ</h5>
+                                                    </button>
+                                                </h5>
+                                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+                                                        <!-- table strip dark -->
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-hover mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>JUDUL</th>
+                                                                        <th>DESKRIPSI</th>
+                                                                        <th>DURASI</th>
+                                                                        <th>TIPE</th>
+                                                                        <th class="text-center">ACTION</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                                        $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$kode_course' "); 
+                                                                        
+                                                                        foreach($res_quiz as $data2)
+                                                                        {
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td class="text-bold-500"><?=$data2['nama_quiz']?></td>
+                                                                        <td class="text-bold-500"><?=$data2['deskripsi']?></td>
+                                                                        <td class="text-bold-500"><?=$data2['durasi']?> Menit</td>
+                                                                        <td class="text-bold-500"><?=$data2['type']?></td>
+                                                                        <td class="text-center">
+                                                                        <td>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php } ?>
+
+                                                                    <?php
+                                                                        if (isset($_POST['deletebtn']))
+                                                                        {
+                                                                            $id_course = $_POST['id'];
+                                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
+                                                                            echo"
+                                                                                <script>
+                                                                                    window.location = './course.php'
+                                                                                </script>
+                                                                            ";
+                                                                        }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item">
+                                                <h5 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                        <h5>TUGAS</h5>
+                                                    </button>
+                                                </h5>
+                                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
+
+                                        
                                     </div>
                                 </div>
                             </div>
