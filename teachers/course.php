@@ -63,7 +63,7 @@
                                                         $kode_course = $_POST["kode_course1"];
                                                         $_SESSION['kode_course'] = $kode_course;
                                                     }
-                                                    else
+                                                    else if(empty($_POST["kode_course1"]))
                                                     {
                                                         $kode_course = $_SESSION['kode_course'];
                                                     }
@@ -82,13 +82,9 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body d-flex justify-content-around">
-                                                            <form action="tambah_materi.php" method = "POST">
-                                                                <input name="kode_course" value="<?=$kode_course?>" type="text" hidden>
-                                                                <button type="submit" class="btn btn-primary">Materi</button>
-                                                                <button type="submit" class="btn btn-primary">Quiz</button>
-                                                                <button type="submit" class="btn btn-primary">Tugas</button>
-                                                            </form>
-                                                            
+                                                                <a href="./tambah_materi.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Materi</a>
+                                                                <a href="./tambah_quiz.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Quiz</a>
+                                                                <a href="./tambah_materi.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Tugas</a>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -123,6 +119,10 @@
                                                         <td class="text-bold-500"><?=$data['type']?></td>
                                                         <td class="text-center">
                                                             <!-- Download Button-->
+                                                        <?php
+                                                            if ($data['type'] == "Materi")
+                                                            {
+                                                        ?>
                                                             <form action="./download_file.php" method="POST">
                                                                 <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
                                                                 <button name="downloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
@@ -134,6 +134,24 @@
                                                                 <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
                                                             </form>
                                                         </td>
+                                                        <?php } ?>
+
+                                                        <?php
+                                                            if ($data['type'] == "Quiz")
+                                                            {
+                                                        ?>
+                                                            <form method="POST">
+                                                                <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
+                                                                <button name="downloadbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
+                                                            </form>
+                                                            
+                                                            <!-- Delete Button -->
+                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus quiz <?=$data['judul']?>?`)" method="POST">
+                                                                <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
+                                                                <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                            </form>
+                                                        </td>
+                                                        <?php } ?>
                                                     </tr>
                                                     <?php } ?>
 
