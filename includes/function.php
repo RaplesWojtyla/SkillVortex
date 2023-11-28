@@ -24,8 +24,8 @@ function query($query)
 
 function register($data)
 {
-    $sql1    = query("SELECT MAX(id_users) as id FROM users");
-    $maxID   = mysqli_fetch_array($sql1);
+    $getMaxID    = query("SELECT MAX(id_users) as id FROM users");
+    $maxID   = mysqli_fetch_array($getMaxID);
     $user_id = $maxID['id'];
     $user_id += 1;
 
@@ -36,8 +36,8 @@ function register($data)
     $password2 = mysqli_real_escape_string(conn(), $data['password2']);
 
 
-    $sql = query("SELECT email FROM users WHERE email = '$email'"); 
-    if (mysqli_num_rows($sql) > 0)
+    $res = query("SELECT email FROM users WHERE email = '$email'"); 
+    if (mysqli_num_rows($res) > 0)
     {
         echo"
             <script>
@@ -67,7 +67,7 @@ function register($data)
     }
 }
 
-function insertData($data)
+function insertFileData($data)
 {
     $kodeMateri = $data['kodeMateri'];
     $judulMateri = $data['judulMateri'];
@@ -88,13 +88,39 @@ function insertData($data)
     }
 }
 
-function generateCode()
+function insertQuizData($data)
+{
+    $getMaxID    = query("SELECT MAX(id_quiz) as id FROM quiz");
+    $maxID   = mysqli_fetch_array($getMaxID);
+    $id_quiz = $maxID['id'];
+    $id_quiz++;
+
+    $kode_course = $_POST['kode_course'];
+    $kode_quiz = $_POST['kode_quiz'];
+    $nama_quiz = $_POST['nama_quiz'];
+    $deskripsi_quiz = $_POST['deskripsi'];
+    $type = $_POST['tipe_materi'];
+    $durasi = $_POST['durasi'];
+
+    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', current_timestamp())");
+    if ($res)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+function generateCode() // Generate nomor acak
 {
     return random_int(100000, 999999);
 }
 
 function sendCode($code, $toEmail)
 {
+    // Mengirim kode verifikasi melalui email
     require '../vendor/autoload.php';
 
     $email    = 'skillvortex4@gmail.com';

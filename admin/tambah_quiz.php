@@ -61,15 +61,11 @@
                                     ?>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <form action="./upload_quiz.php" method="POST" enctype="multipart/form-data">
-                                                <!-- File uploader with multiple files upload -->
+                                            <form action="./add_questions.php" method="POST">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-md-6">
                                                         <div class="form-group " hidden>
-                                                            <label for="helpInputTop">Kode course</label>
-                                                            <small
-                                                                class="text-muted">eg.<i>(Dasar Pemrograman)XXX</i></small>
-                                                            <input name="kode" type="text" class="form-control" id="helpInputTop" value="<?=$kode_course?>">
+                                                            <input name="kode_course" type="text" class="form-control" id="helpInputTop" value="<?=$kode_course?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="helperText">Kode Quiz</label>
@@ -78,7 +74,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="helperText">Judul Quiz</label>
-                                                            <input name="judul" type="text" id="helperText" class="form-control"
+                                                            <input name="nama_quiz" type="text" id="helperText" class="form-control"
                                                             placeholder="Judul Quiz" required>
                                                         </div>
 
@@ -94,8 +90,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="helperText">Durasi</label>
-                                                            <input name="durasi" type="number" id="helperText" class="form-control"
-                                                            placeholder="In-minute">
+                                                            <input name="durasi" type="number" id="helperText" class="form-control" min="1" placeholder="In-minute">
                                                         </div>
                                                     </div>
                                                 </div>
