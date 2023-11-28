@@ -26,7 +26,7 @@
             'fileLoc' => $fileLoc
         );
 
-        if ($uploaded and insertData($dataAssoc) == 1)
+        if ($uploaded and insertFileData($dataAssoc) == 1)
         {
             echo"
                 <script>

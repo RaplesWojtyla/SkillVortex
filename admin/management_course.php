@@ -97,11 +97,11 @@
                                         <?php
                                             if (isset($_POST['btndelete']))
                                             {
-                                                $userID = $_POST['id'];
-                                                query("DELETE FROM users WHERE id_users = '$userID'");
+                                                $kode_course = $_POST['kode_course1'];
+                                                query("DELETE FROM courses WHERE kode_course = '$kode_course'");
                                                 echo"
                                                     <script>
-                                                        window.location = './data_teachers.php'
+                                                        window.location = './management_course.php'
                                                     </script>
                                                 ";
                                             }

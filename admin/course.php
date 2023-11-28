@@ -19,10 +19,7 @@
 
     $result = query("SELECT * FROM courses WHERE kode_course = '$kode_course'");
 
-    while ($row = mysqli_fetch_assoc($result))
-    {
-        $judul_course = $row['judul_course'];
-    }
+    $judul_course = mysqli_fetch_assoc($result)['judul_course'];
 
 ?>
 
@@ -87,9 +84,9 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body d-flex justify-content-around">
-                                                            <a href=".\tambah_materi.php?kode_course=<?=$kode_course?>">Materi</a>
-                                                            <a href=".\tambah_quiz.php?kode_course=<?=$kode_course?>">Quiz</a>
-                                                            <a href=".\tambah_tugas.php?kode_course=<?=$kode_course?>">Tugas</a>
+                                                            <a href=".\tambah_materi.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Materi</a>
+                                                            <a href=".\tambah_quiz.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Quiz</a>
+                                                            <a href=".\tambah_tugas.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Tugas</a>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -101,9 +98,8 @@
                                             </div>
                                         </div>
 
-
                                         <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
-
+                                            <!-- Table Materi -->
                                             <div class="accordion-item">
                                                 <h5 class="accordion-header">
                                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -112,7 +108,6 @@
                                                 </h5>
                                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                                     <div class="accordion-body">
-                                                        <!-- table strip dark -->
                                                         <div class="table-responsive">
                                                             <table class="table table-striped table-hover mb-0">
                                                                 <thead>
@@ -140,20 +135,20 @@
                                                                             <!-- Download Button-->
                                                                             <form action="./download_file.php" method="POST">
                                                                                 <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
-                                                                                <button name="downloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
+                                                                                <button name="mdownloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
                                                                             </form>
                                                                             
                                                                             <!-- Delete Button -->
                                                                             <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
                                                                                 <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
-                                                                                <button name="deletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                                <button name="mdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
                                                                             </form>
                                                                         </td>
                                                                     </tr>
                                                                     <?php } ?>
 
                                                                     <?php
-                                                                        if (isset($_POST['deletebtn']))
+                                                                        if (isset($_POST['mdeletebtn']))
                                                                         {
                                                                             $id_course = $_POST['id'];
                                                                             query("DELETE FROM materi WHERE id_materi = '$id_course'");
@@ -171,6 +166,7 @@
                                                 </div>
                                             </div>
 
+                                            <!-- Table Quiz -->
                                             <div class="accordion-item">
                                                 <h5 class="accordion-header">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
@@ -179,7 +175,6 @@
                                                 </h5>
                                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                                                     <div class="accordion-body">
-                                                        <!-- table strip dark -->
                                                         <div class="table-responsive">
                                                             <table class="table table-striped table-hover mb-0">
                                                                 <thead>
@@ -195,25 +190,34 @@
                                                                     <?php 
                                                                         $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$kode_course' "); 
                                                                         
-                                                                        foreach($res_quiz as $data2)
+                                                                        foreach($res_quiz as $data_quiz)
                                                                         {
                                                                     ?>
                                                                     <tr>
-                                                                        <td class="text-bold-500"><?=$data2['nama_quiz']?></td>
-                                                                        <td class="text-bold-500"><?=$data2['deskripsi']?></td>
-                                                                        <td class="text-bold-500"><?=$data2['durasi']?> Menit</td>
-                                                                        <td class="text-bold-500"><?=$data2['type']?></td>
+                                                                        <td class="text-bold-500"><?=$data_quiz['nama_quiz']?></td>
+                                                                        <td class="text-bold-500"><?=$data_quiz['deskripsi']?></td>
+                                                                        <td class="text-bold-500"><?=$data_quiz['durasi']?> Menit</td>
+                                                                        <td class="text-bold-500"><?=$data_quiz['type']?></td>
                                                                         <td class="text-center">
-                                                                        <td>
+                                                                            <form action="./add_questions.php" method="POST">
+                                                                                <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
+                                                                                <button name="qeditbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
+                                                                            </form>
+                                                                            
+                                                                            <!-- Delete Button -->
+                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
+                                                                                <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
+                                                                                <button name="qdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                            </form>
                                                                         </td>
                                                                     </tr>
                                                                     <?php } ?>
 
                                                                     <?php
-                                                                        if (isset($_POST['deletebtn']))
+                                                                        if (isset($_POST['qdeletebtn']))
                                                                         {
                                                                             $id_course = $_POST['id'];
-                                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
+                                                                            query("DELETE FROM quiz WHERE id_materi = '$id_course'");
                                                                             echo"
                                                                                 <script>
                                                                                     window.location = './course.php'

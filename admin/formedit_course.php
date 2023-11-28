@@ -7,6 +7,16 @@
         header("Location: ./error-403.html");
     }
 
+    if (!empty($_POST['id_course']))
+    {
+        $courseID = $_POST['id_course'];
+        $_SESSION['id_course'] = $courseID;
+    }
+    else
+    {
+        $courseID =  $_SESSION['id_course'];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +54,10 @@
                         <div class="card-body">
                             <?php
 
-                                if (isset($_POST['btnedit']))
-                                {
-                                    $courseID = $_POST['id_course'];
-                                    $res = query("SELECT * FROM courses WHERE id_course = '$courseID'");
+                                $res = query("SELECT * FROM courses WHERE id_course = '$courseID'");
 
-                                    foreach($res as $data)
-                                    {
+                                foreach($res as $data)
+                                {
                             
                             ?>
                             <form action="" method="POST" class="form form-horizontal">
@@ -106,7 +113,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <?php }} ?>
+                            <?php } ?>
 
 
                             <?php                               
@@ -117,14 +124,29 @@
                                     $judul_course = $_POST['judul'];
                                     $e_teacher = $_POST['email'];
 
-
-                                    $sql = query("UPDATE courses SET kode_course = '$kode_course', judul_course = '$judul_course', e_teacher = '$e_teacher' WHERE id_course = '$id_course'");
-                                    if ($sql)
+                                    $is_e_teacher = query("SELECT * FROM users WHERE email = '$e_teacher'");
+                                    if (mysqli_num_rows($is_e_teacher) > 0)
+                                    {
+                                        if (mysqli_fetch_assoc($is_e_teacher)['level'] == 2)
+                                            {
+                                            $sql = query("UPDATE courses SET kode_course = '$kode_course', judul_course = '$judul_course', e_teacher = '$e_teacher' WHERE id_course = '$id_course'");
+                                            if ($sql)
+                                            {
+                                                echo"
+                                                    <script>
+                                                        alert('Data berhasil diubah')
+                                                        window.location = './management_course.php'
+                                                    </script>
+                                                ";
+                                            }
+                                        }
+                                    }
+                                    else
                                     {
                                         echo"
                                             <script>
-                                                alert('Data berhasil diubah')
-                                                window.location = './management_course.php'
+                                                alert('Email tidak ditemukan atau itu bukan email seorang guru.')
+                                                window.location = './formedit_course.php'
                                             </script>
                                         ";
                                     }
