@@ -12,10 +12,6 @@
         $courseID = $_POST['id_course'];
         $_SESSION['id_course'] = $courseID;
     }
-    else
-    {
-        $courseID =  $_SESSION['id_course'];
-    }
 
 ?>
 
@@ -54,7 +50,7 @@
                         <div class="card-body">
                             <?php
 
-                                $res = query("SELECT * FROM courses WHERE id_course = '$courseID'");
+                                $res = query("SELECT * FROM courses WHERE id_course = '$_SESSION[id_course]'");
 
                                 foreach($res as $data)
                                 {
@@ -153,7 +149,11 @@
                                 }
                                 else if (isset($_POST['cancelbtn']))
                                 {
-                                    header("Location: ./management_course.php");
+                                    echo"
+                                        <script>
+                                            window.location = './management_course.php'
+                                        </script>
+                                    ";
                                 }
                             ?>
                             

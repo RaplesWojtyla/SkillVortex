@@ -31,7 +31,7 @@ function register($data)
 
     $fullname  = mysqli_real_escape_string(conn(), $data['fullname']);
     $username  = mysqli_real_escape_string(conn(), $data['username']);
-    $email     = $data['email'];
+    $email     = mysqli_real_escape_string(conn(), $data['email']);
     $password1 = mysqli_real_escape_string(conn(), $data['password1']);
     $password2 = mysqli_real_escape_string(conn(), $data['password2']);
 
@@ -101,15 +101,63 @@ function insertQuizData($data)
     $deskripsi_quiz = $_POST['deskripsi'];
     $type = $_POST['tipe_materi'];
     $durasi = $_POST['durasi'];
-
-    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', current_timestamp())");
+    $jumlah_soal = $_POST['jumlah_soal'];
+    
+    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp())");
     if ($res)
     {
-        return 1;
+        return true;
     }
     else
     {
-        return 0;
+        return false;
+    }
+}
+
+function addQuizQuestions($data)
+{
+    $kode_course = $data['kode_course'];
+    $kode_quiz = $data['kode_quiz'];
+    $no_soal = $data['no_soal'];
+    $soal = $data['question'];
+    $opt1 = $data['opt1'];
+    $opt2 = $data['opt2'];
+    $opt3 = $data['opt3'];
+    $opt4 = $data['opt4'];
+    $jawaban = $data['jawaban'];
+
+    $res = query("INSERT INTO questions VALUES ('', '$kode_course', '$kode_quiz', '$no_soal', '$soal', '$opt1', '$opt2', '$opt3', '$opt4', '$jawaban')");
+
+    if ($res)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function updateQuizQuestions($data)
+{
+    $kode_quiz = $data['kode_quiz'];
+    $no_soal = $data['no_soal'];
+    $soal = $data['question'];
+    $opt1 = $data['opt1'];
+    $opt2 = $data['opt2'];
+    $opt3 = $data['opt3'];
+    $opt4 = $data['opt4'];
+    $jawaban = $data['jawaban'];
+
+    $res = query("UPDATE questions SET soal = '$soal', opt1 = '$opt1', opt2 = '$opt2', opt3 = '$opt3', opt4 = '$opt4', jawaban = '$jawaban' WHERE kode_quiz = '$kode_quiz' and no_soal = '$no_soal'");
+
+    if ($res)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 

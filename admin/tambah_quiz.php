@@ -61,7 +61,7 @@
                                     ?>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <form action="./add_questions.php" method="POST">
+                                            <form action="" method="POST">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-md-6">
                                                         <div class="form-group " hidden>
@@ -89,15 +89,35 @@
                                                             value="Quiz" readonly>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="helperText">Jumlah Soal</label>
+                                                            <input name="jumlah_soal" type="number" id="helperText" class="form-control" min="1" placeholder="Jumlah Soal">
+                                                        </div>
+                                                        <div class="form-group">
                                                             <label for="helperText">Durasi</label>
                                                             <input name="durasi" type="number" id="helperText" class="form-control" min="1" placeholder="In-minute">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex justify-content-center mt-5">
-                                                    <button name="uploadbtn" type="submit" class="btn btn-primary">Upload</button>
+                                                    <button name="quploadbtn" type="submit" class="btn btn-primary">Upload</button>
                                                     <button name="cancelbtn" onclick="window.location='./course.php'" class="btn btn-danger mx-3">Cancel</button>
                                                 </div>
+
+                                                <?php 
+                                                    if (isset($_POST['quploadbtn']))
+                                                    {
+                                                        $_SESSION['kode_quiz'] = $_POST['kode_quiz'];
+                                                        if (insertQuizData($_POST))
+                                                        {
+                                                            echo "
+                                                                <script>
+                                                                    alert('Silahkan buat soal untuk quiz anda')
+                                                                    window.location = './add_questions.php'
+                                                                </script>
+                                                            ";
+                                                        }
+                                                    }
+                                                ?>
                                             </form>
                                         </div>
                                     </div>

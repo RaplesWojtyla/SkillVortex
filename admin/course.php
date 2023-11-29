@@ -9,15 +9,10 @@
 
     if (!empty($_POST["kode_course1"]))
     {
-        $kode_course = $_POST["kode_course1"];
-        $_SESSION['kode_course'] = $kode_course;
-    }
-    else
-    {
-        $kode_course = $_SESSION['kode_course'];
+        $_SESSION['kode_course'] = $_POST["kode_course1"];
     }
 
-    $result = query("SELECT * FROM courses WHERE kode_course = '$kode_course'");
+    $result = query("SELECT * FROM courses WHERE kode_course = '$_SESSION[kode_course]'");
 
     $judul_course = mysqli_fetch_assoc($result)['judul_course'];
 
@@ -84,9 +79,9 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body d-flex justify-content-around">
-                                                            <a href=".\tambah_materi.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Materi</a>
-                                                            <a href=".\tambah_quiz.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Quiz</a>
-                                                            <a href=".\tambah_tugas.php?kode_course=<?=$kode_course?>" class="btn btn-primary">Tugas</a>
+                                                            <a href=".\tambah_materi.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">Materi</a>
+                                                            <a href=".\tambah_quiz.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">Quiz</a>
+                                                            <a href=".\tambah_tugas.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">Tugas</a>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -121,7 +116,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php 
-                                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$kode_course' "); 
+                                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$_SESSION[kode_course]'"); 
                                                                         
                                                                         foreach($res as $data)
                                                                         {
@@ -188,7 +183,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php 
-                                                                        $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$kode_course' "); 
+                                                                        $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$_SESSION[kode_course]' "); 
                                                                         
                                                                         foreach($res_quiz as $data_quiz)
                                                                         {
@@ -205,7 +200,7 @@
                                                                             </form>
                                                                             
                                                                             <!-- Delete Button -->
-                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
+                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus quiz <?=$data_quiz['nama_quiz']?>`)" method="POST">
                                                                                 <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
                                                                                 <button name="qdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
                                                                             </form>
@@ -216,8 +211,8 @@
                                                                     <?php
                                                                         if (isset($_POST['qdeletebtn']))
                                                                         {
-                                                                            $id_course = $_POST['id'];
-                                                                            query("DELETE FROM quiz WHERE id_materi = '$id_course'");
+                                                                            $kode_quiz = $_POST['kode_quiz'];
+                                                                            query("DELETE FROM quiz WHERE kode_quiz = '$kode_quiz'");
                                                                             echo"
                                                                                 <script>
                                                                                     window.location = './course.php'
