@@ -55,12 +55,17 @@
 
                                 foreach($res as $data)
                                 {
+                                    $enrolled = 0;
                                     foreach($res2 as $data2)
                                     {
                                         if ($data['kode_course'] == $data2['kode_course'])
                                         {
-                                            continue;
+                                            $enrolled = 1;
                                         }
+                                    }
+
+                                    if (!$enrolled)
+                                    {
                             ?>
                             <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
                                 <!-- untuk card -->
