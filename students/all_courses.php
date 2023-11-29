@@ -48,29 +48,19 @@
                         <div class="row">
                             <?php
                                 $e_student = $_SESSION['email'];
-                                $res = query("SELECT * FROM vw_courses_student WHERE e_student = '$e_student' ");
-                                $row = mysqli_num_rows($res);
-
-                                for ($i = 0; $i < $row; $i++)
-                                {
-                                    foreach($res as $data)
-                                    {
-                                        $enrolled_kode_course[$i] = $data['kode_course']; 
-                                    }
-                                }
                                 
-                                $res2 = query("SELECT * FROM vw_courses_teacher");
-                                $i = 0;
-                                foreach($res2 as $data)
+                                $res = query("SELECT * FROM vw_courses_teacher");
+                                $res2 = query("SELECT * FROM vw_courses_student WHERE e_student = '$e_student' ");
+                                $row2 = mysqli_num_rows($res);
+
+                                foreach($res as $data)
                                 {
-                                    if ($data['kode_course'] == $enrolled_kode_course[$i])
+                                    foreach($res2 as $data2)
                                     {
-                                        $i++;
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                    
+                                        if ($data['kode_course'] == $data2['kode_course'])
+                                        {
+                                            continue;
+                                        }
                             ?>
                             <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
                                 <!-- untuk card -->
