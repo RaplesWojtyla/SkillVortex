@@ -48,36 +48,19 @@
       <li class="menu-item">
         <h5>
           <a href="index.php" class="menu-link">
-            <span><i class="bi bi-grid-fill"></i>Course</span>
+            <span><i class="bi bi-grid-fill"></i>Dashboard</span>
           </a>
         </h5>
       </li>
 
       
 
-      <li class="menu-item has-sub">
+      <li class="menu-item">
         <h5>
-          <a href="#" class="menu-link">
-            <span><i class="bi bi-person-fill"></i>Class Participants</span>
+          <a href="all_courses.php" class="menu-link">
+            <span><i class="bi bi-person-fill"></i>Courses</span>
           </a>
         </h5>
-        <div class="submenu">
-          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-          <div class="submenu-group-wrapper">
-            <ul class="submenu-group">
-              
-              
-              <li class="submenu-item">
-                <a href="./participant.php" class="submenu-link">Kelas A Daspro</a>
-              </li>
-
-              <li class="submenu-item">
-                <a href="./participant.php" class="submenu-link">Kelas B Daspro</a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
       </li>
 
       <li class="menu-item has-sub">
