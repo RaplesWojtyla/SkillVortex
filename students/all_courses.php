@@ -39,7 +39,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>My Courses</h3>
+                                <h3>All Courses</h3>
                             </div>
                         </div>
                     </div>
@@ -48,32 +48,67 @@
                         <div class="row">
                             <?php
                                 $e_student = $_SESSION['email'];
-                                $res = query("SELECT * FROM vw_courses_student WHERE e_student ='$e_student' ");
+                                $res = query("SELECT * FROM vw_courses_student WHERE e_student = '$e_student' ");
+                                $row = mysqli_num_rows($res);
 
-                                foreach($res as $data)
+                                for ($i = 0; $i < $row; $i++)
                                 {
+                                    foreach($res as $data)
+                                    {
+                                        $enrolled_kode_course[$i] = $data['kode_course']; 
+                                    }
+                                }
+                                
+                                $res2 = query("SELECT * FROM vw_courses_teacher");
+                                $i = 0;
+                                foreach($res2 as $data)
+                                {
+                                    if ($data['kode_course'] == $enrolled_kode_course[$i])
+                                    {
+                                        $i++;
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                    
                             ?>
                             <div class="col-xl-3 col-md-6 col-sm-12 mr-1">
                                 <!-- untuk card -->
                                 <div class="card ">
-                                    <form action="./course.php" method ="POST">
-                                        <div class="card-content">
-                                            <a>
-                                                <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
-                                                alt="singleminded">
-                                            </a>
-                                            <div class="card-body">
-                                                <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
-                                                <h6 class="mt-3"><?=$data['nama_teacher']?></h6>
-                                            </div>
+                                    <div class="card-content">
+                                        <a>
+                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
+                                            alt="singleminded">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>
+                                            <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
                                         </div>
-                                        <div class="card-footer d-flex justify-content-center">
-                                            <a href=".\course.php?kode_course=<?=$data['kode_course']?>" class="btn btn-primary btn-block">Course</a>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center">
+                                        
+                                        <form onsubmit="return confirm(`Apakah anda yakin mengikuti\nCourse: <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)" method ="POST" class="container-fluid">
+                                            <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
+                                            <button name="enroll" type="submit" class="btn btn-light-primary btn-block">Enroll</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php }} ?>
+
+                            <?php
+                                if(isset($_POST['enroll']))
+                                {
+                                    $kode_course = $_POST['kode_course1'];
+                                    
+                                    query("INSERT INTO my_courses (kode_course ,e_student) VALUES('$kode_course','$e_student')");
+                                    echo"
+                                        <script>
+                                            window.location = './index.php'
+                                        </script>
+                                    ";
+                                }
+                            ?>
                         </div>
                     </section>
                 </div>
