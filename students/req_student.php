@@ -2,7 +2,7 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Admin')
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Student')
     {
         header("Location: ./error-403.html");
     }
@@ -40,73 +40,51 @@
     <div id="app">
         <div id="main" class="layout-horizontal">
             <header class="mb-5">
-                <?php include("navbar.php"); ?>
+            <?php include("navbar.php"); ?>
             </header>
             <div class="content-wrapper container">
                 <div class="page-heading">
+                    
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Data Teachers</h3>
+                                <h3>Request Students</h3>
                             </div>
                         </div>
                     </div>
                     <section class="section">
                         <div class="card">
                             <div class="card-body">
-                                <a href="tambah_course1.php" class="btn btn-primary">Tambah Course</a>
+                                <a href="request.php" class="btn btn-primary">Tambah Request</a>
                                 <table class="table table-striped" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>Kode Course</th>
-                                            <th>Judul Course</th>
                                             <th>Email</th>
-                                            <th>Nama Teacher</th>
-                                            <th colspan="2" class="text-center">Aksi</th>
+                                            <th>Isi Request</th>
+                                            <th>Level</th>
+                                            <th>Berkas 1</th>
+                                            <th>Berkas 2</th>
+                                            <th>Berkas 3</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
 
-                                            $res = query("SELECT * FROM vw_courses_teacher");
+                                            $res = query("SELECT * FROM request WHERE level = 'Student' ORDER BY id_request DESC");
                                             foreach($res as $data)
                                             {     
                                         ?>       
                                         <tr>
-                                            <td><?=$data['kode_course']?></td>
-                                            <td><?=$data['judul_course']?></td>
-                                            <td><?=$data['e_teacher']?></td>
-                                            <td><?=$data['nama_lengkap']?></td>
-                                            <td class='text-center'>
-                                                <form method='POST' action='./formedit_course.php'>
-                                                    <input type='text' hidden name='id_course' value=<?=$data['id_course']?>>
-                                                    <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
-                                                </form>
-                                            </td>
-                                                    <!--Delete Button-->
-
-                                                    <!--Delete Button-->
-                                            <td class='text-center'>
-                                                <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus course <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)">
-                                                    <input type='text' hidden  name='kode_course1' value=<?=$data['kode_course']?>>
-                                                    <button name='btndelete' type='submit' class='btn icon icon-left btn-danger'><i data-feather='trash'></i> Delete</button>
-                                                </form>
-                                            </td>
+                                            <td><?=$data['e_pengirim']?></td>
+                                            <td><?=$data['isi_request']?></td>
+                                            <td><?=$data['level']?></td>
+                                            <td><?=$data['nama_file1']?></td>
+                                            <td><?=$data['nama_file2']?></td>
+                                            <td><?=$data['nama_file3']?></td>
+                                            <td><?=$data['status']?></td>
                                         </tr>
                                         <?php } ?>
-
-                                        <?php
-                                            if (isset($_POST['btndelete']))
-                                            {
-                                                $kode_course = $_POST['kode_course1'];
-                                                query("DELETE FROM courses WHERE kode_course = '$kode_course'");
-                                                echo"
-                                                    <script>
-                                                        window.location = './management_course.php'
-                                                    </script>
-                                                ";
-                                            }
-                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -115,6 +93,7 @@
                     </section>
                 </div>
             </div>
+            
         </div>
     </div>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>

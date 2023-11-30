@@ -50,7 +50,7 @@
             echo"
                 <script>
                     alert('Request berhasil dikirim!')
-                    window.location = './index.php'
+                    window.location = './req_student.php'
                 </script>
             ";
         }
