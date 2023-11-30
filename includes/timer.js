@@ -13,7 +13,7 @@ function timer()
         {
             if (this.responseText == "00:00:00")
             {
-                window.location = "../students/materi.php"
+                window.location = "../students/quiz_result.php"
             }
             else
             {

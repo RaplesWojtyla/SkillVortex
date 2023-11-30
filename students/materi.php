@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title><?=$judul_course?> - Student Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -47,7 +47,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h2>Courses</h2>
+                                <h2>Course</h2>
                             </div>
                         </div>
                     </div>
