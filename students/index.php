@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer d-flex justify-content-center">
-                                            <a href=".\course.php?kode_course=<?=$data['kode_course']?>" class="btn btn-primary btn-block">Course</a>
+                                            <a href=".\materi.php?kode_course=<?=$data['kode_course']?>" class="btn btn-primary btn-block">Course</a>
                                         </div>
                                     </form>
                                 </div>

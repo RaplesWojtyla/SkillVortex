@@ -16,11 +16,11 @@
             {
                 if (this.readyState == 4 && this.status == 200)
                 {
-                    window.location = `./ajax/set_time.php?time=${time}`
+                    window.location = `./ajax/set_timer.php?time=${time}`
                 }
             }
 
-            xmlhttp.open("GET", `./ajax/set_time.php?time=${time}`)
+            xmlhttp.open("GET", `./ajax/set_timer.php?time=${time}`)
             xmlhttp.send()
         }
     </script>
