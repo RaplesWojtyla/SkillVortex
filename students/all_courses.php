@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Enroll Course - Student Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -96,10 +96,10 @@
                                 {
                                     $kode_course = $_POST['kode_course1'];
                                     
-                                    query("INSERT INTO my_courses (kode_course ,e_student) VALUES('$kode_course','$e_student')");
+                                    query("INSERT INTO my_courses (kode_course, e_student) VALUES('$kode_course','$e_student')");
                                     echo"
                                         <script>
-                                            window.location = './index.php'
+                                            window.location = './all_courses.php'
                                         </script>
                                     ";
                                 }

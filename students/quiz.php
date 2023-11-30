@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Quiz - Student Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -79,9 +79,10 @@
                     <div class="container">
                         <ul class="d-flex justify-content-center my-1">
                             <!-- ini nanti tambahkan untuk timer disini -->
-
-                            <!-- timer -->
-
+                            <div class="d-flex align-items-center">
+                                <p style="font-size: 1.1rem; color: white;" class="font-bold" id="timer" style="color: white;"></p>
+                            </div>
+                            <!-- end timer -->
                             <div class="theme-toggle d-flex gap-2 align-items-center ms-auto">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -115,12 +116,7 @@
                                 </g>
                                 </svg>
                                 <div class="form-check form-switch fs-5">
-                                <input
-                                    class="form-check-input me-0"
-                                    type="checkbox"
-                                    id="toggle-dark"
-                                    style="cursor: pointer"
-                                />
+                                <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer" />
                                 <label class="form-check-label"></label>
                                 </div>
                                 <svg
@@ -162,44 +158,22 @@
                                     <div class="card-content">
                                         <div class="row col-lg-12">
                                             <div class="col-lg-2 ml-5">
-                                                <h4>
-                                                <div id="current_que" style="float: left">1</div>
-                                                <div style="float: left">/</div>
-                                                <div id="total_que" style="float: left">10</div>
-                                                </h4>
+                                                <p>
+                                                    <div id="current_question_num" style="float: left"></div>
+                                                    <div style="float: left">/</div>
+                                                    <div id="total_soal" style="float: left"><?=$_SESSION['jumlah_soal']?></div>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row col-lg-12 justify-content-center">  
-                                            <div class="col-lg-7"  id="load_questions">
-                                                <h4>
-                                                    <p class="my-4">
-                                                    <strong>
-                                                        1.
-                                                    </strong> 
-                                                        Apa makanan kesukaan Borutod Uzumaki? psjdapsodjp soajdopsajdpjsoasdsadasdsdap jadpoadosajdposaj
-                                                    </p>
-
-                                                    <input type="radio" id="opt1" name="jawaban" value="Ichiraku Ramen">
-                                                    <label for="opt1">Ichiraku Ramen</label><br>
-
-                                                    <input type="radio" id="opt2" name="jawaban" value="Thunder Burger">
-                                                    <label for="opt2">Thunder Burger</label><br>
-
-                                                    <input type="radio" id="opt3" name="jawaban" value="Dango">
-                                                    <label for="opt3">Dango</label><br>
-
-                                                    <input type="radio" id="opt4" name="jawaban" value="Onigiri">
-                                                    <label for="opt4">Onigiri</label>
-                                                </h4>
-
-                                            </div>     
+                                            <div class="col-lg-7" style="min-height: 300px;" id="load_question"></div>     
                                         </div>
 
                                         <div class="row col-lg-12 mt-4 mb-5" style="margin-top: 10px">
                                             <div class="col-lg-2" style="min-height: 50px"></div>
                                             <div class="col-lg-8 text-center">
-                                                <input type="button" class="btn btn-primary" value="Previous" onclick="load_previous();"> &nbsp;
-                                                <input type="button" class="btn btn-primary" value="Next" onclick="load_next();">
+                                                <input type="button" class="btn btn-primary" value="Previous" onclick="previous_question()"> &nbsp;
+                                                <input id="nextbtn" type="button" class="btn btn-primary" value="Next" onclick="next_question(<?=$_SESSION['jumlah_soal']?>)">
                                             </div>
                                             <div class="col-lg-2"></div>    
                                         </div>
@@ -215,6 +189,10 @@
         
     </div>
     </div>
+
+    <script src="../includes/function.js"></script>
+    <script src="../includes/timer.js"></script>
+
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>

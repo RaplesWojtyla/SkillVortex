@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require '../includes/function.php';
     date_default_timezone_set('Asia/Jakarta');
 
     
