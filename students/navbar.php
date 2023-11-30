@@ -92,7 +92,7 @@
 
       <li class="menu-item">
         <h5>
-          <a href="request.php" class="menu-link">
+          <a href="req_student.php" class="menu-link">
             <span><i class="bi bi-envelope-exclamation-fill"></i>Request</span>
           </a>
         </h5>

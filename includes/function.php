@@ -93,6 +93,7 @@ function insertFileRequest($data)
     $e_penerima = $data['e_penerima'];
     $isi_request = $data['isi_request'];
     $level = $data['level'];
+    $status = 'Belum Disetujui';
     $namaFile1 = $data['namaFile1'];
     $namaFile2 = $data['namaFile2'];
     $namaFile3 = $data['namaFile3'];
@@ -103,8 +104,8 @@ function insertFileRequest($data)
     $fileLoc2 = $data['fileLoc2'];
     $fileLoc3 = $data['fileLoc3'];
 
-    $res = query("INSERT INTO request (e_pengirim ,e_penerima ,isi_request ,level ,nama_file1, size1, berkas1, nama_file2, size2, berkas2, nama_file3 ,size3, berkas3) VALUES 
-                    ('$e_pengirim' , '$e_penerima' , '$isi_request' ,'$level' , '$namaFile1' , '$ukuranFile1' ,'$fileLoc1' ,'$namaFile2' , '$ukuranFile2' ,'$fileLoc2' ,'$namaFile3' , '$ukuranFile3' ,'$fileLoc3')");
+    $res = query("INSERT INTO request (e_pengirim ,e_penerima ,isi_request ,level ,status , nama_file1, size1, berkas1, nama_file2, size2, berkas2, nama_file3 ,size3, berkas3) VALUES 
+                    ('$e_pengirim' , '$e_penerima' , '$isi_request' ,'$level' ,'$status', '$namaFile1' , '$ukuranFile1' ,'$fileLoc1' ,'$namaFile2' , '$ukuranFile2' ,'$fileLoc2' ,'$namaFile3' , '$ukuranFile3' ,'$fileLoc3')");
     if ($res)
     {
         return 1;
