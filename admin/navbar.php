@@ -72,10 +72,6 @@
                 <a href="./data_teachers.php" class="submenu-link">Teacher</a>
               </li>
 
-              <li class="submenu-item">
-                <a href="#" class="submenu-link">Request</a>
-              </li>
-
             </ul>
           </div>
         </div>
@@ -89,6 +85,29 @@
         </h5>
       </li>
 
+      <li class="menu-item has-sub">
+        <h5>
+          <a href="#" class="menu-link">
+            <span><i class="bi bi-envelope-exclamation-fill"></i>Request</span>
+          </a>
+        </h5>
+        <div class="submenu">
+          <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+          <div class="submenu-group-wrapper">
+            <ul class="submenu-group"> 
+              <li class="submenu-item">
+                <a href="./req_students.php" class="submenu-link">Student</a>
+              </li>
+
+              <li class="submenu-item">
+                <a href="./req_teachers.php" class="submenu-link">Teacher</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
       <li class="menu-item">
         <h5>
           <a href="feedback.php" class="menu-link">

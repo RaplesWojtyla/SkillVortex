@@ -72,7 +72,7 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="status"><h5>Status</h5></label>
+                                                            <label for="status"><h5>Level</h5></label>
                                                             <input name="level" type="text" id="status" class="form-control"
                                                             value="<?=$_SESSION['status']?>" readonly>
                                                         </div>
@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-center mt-5">
                                                     <button name="uploadbtn" type="submit" class="btn btn-primary">Upload</button>
-                                                    <button name="cancelbtn" onclick="window.location='./index.php'" class="btn btn-danger mx-3">Cancel</button>
+                                                    <button name="cancelbtn" onclick="window.location='./req_student.php'" class="btn btn-danger mx-3">Cancel</button>
                                                 </div>
                                             </form>
                                         </div>
