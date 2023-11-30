@@ -189,6 +189,24 @@ function updateQuizQuestions($data)
     }
 }
 
+function insertQuizResult($data)
+{
+    $email = $data['email'];
+    $kode_course = $data['kode_course'];
+    $kode_quiz = $data['kode_quiz'];
+    $total_questions = $data['total_questions'];
+    $correct_answer = $data['correct_answer'];
+    $wrong_answer = $data['wrong_answer'];
+
+    $res = query("INSERT INTO quiz_result VALUES ('', '$email', '$kode_course', '$kode_quiz', '$total_questions', '$correct_answer', '$wrong_answer')");
+    if($res)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
 function generateCode() // Generate nomor acak
 {
     return random_int(100000, 999999);

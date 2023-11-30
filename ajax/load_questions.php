@@ -10,23 +10,17 @@
     }
 
     $res = query("SELECT * FROM questions WHERE kode_quiz = '$_SESSION[kode_quiz]' AND kode_course = '$_SESSION[kode_course]' AND no_soal = '$no_soal'");
-    $rows = mysqli_num_rows($res);
-    if ($rows == 0)
+
+    while ($row = mysqli_fetch_assoc($res))
     {
-        echo "done";
-    }
-    else
-    {
-        while ($row = mysqli_fetch_assoc($res))
+        $nomor_soal = $row['no_soal'];
+        $soal = $row['soal'];
+        for ($i  = 0; $i < 4; $i++)
         {
-            $nomor_soal = $row['no_soal'];
-            $soal = $row['soal'];
-            for ($i  = 0; $i < 4; $i++)
-            {
-                $opt[$i] = $row['opt' . $i + 1];
-            }
-            $jawaban = $row['jawaban'];
+            $opt[$i] = $row['opt' . $i + 1];
         }
+        $jawaban = $row['jawaban'];
+    }
 ?>
 
 <table style="margin-top: 20px;">
@@ -48,7 +42,5 @@
             <span style="margin-left: 5px;"><?=$opt[$i]?></span>
         </td>
     <tr>
-    <?php } ?>
+    <?php } ?> <!-- Tutup for($i = 0; $i < 4; $i++) { -->
 </table>
-
-<?php } ?>

@@ -1,6 +1,7 @@
 function setTimer()
 {
     let xmlhttp = new XMLHttpRequest()
+    
     xmlhttp.onreadystatechange = function()
     {
         if (this.readyState == 4 && this.status == 200)
@@ -18,7 +19,6 @@ loadQuestion(nomor_soal)
 
 function loadQuestion(noSoal)
 {
-    
     let xmlhttp = new XMLHttpRequest()
     
     xmlhttp.onreadystatechange = function()
@@ -27,7 +27,7 @@ function loadQuestion(noSoal)
         {
             if (this.responseText == "done")
             {
-                window.location = "../students/materi.php"
+                window.location = "../students/quiz_result.php"
             }
             else
             {
@@ -67,9 +67,9 @@ function next_question(totalSoal)
 {   
     if (nomor_soal == totalSoal)
     {
-        if (confirm("Apakah anda yakin sudah menjawab semua soal yang ada, dan ingin mengakhiri quiz saat ini?"))
+        if (confirm("Apakah anda yakin sudah menjawab semua soal yang ada dengan benar, dan ingin mengakhiri quiz saat ini?"))
         {
-            window.location = "../students/materi.php"
+            window.location = "../students/quiz_result.php"
         }
     }
     else
@@ -79,6 +79,7 @@ function next_question(totalSoal)
         {
             document.getElementById('nextbtn').value = "Selesai"
         }
+        
         loadQuestion(nomor_soal)
     }
 }
