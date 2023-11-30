@@ -26,9 +26,16 @@
 
         for ($j = 1; $j <= $_SESSION['jumlah_soal']; $j++)
         {
-            if ($answer[$j-1] == $_SESSION['answer'][$j])
+            if (isset($_SESSION['answer'][$j]))
             {
-                $correct_answer++;
+                if ($answer[$j-1] == $_SESSION['answer'][$j])
+                {
+                    $correct_answer++;
+                }
+                else
+                {
+                    $wrong_answer++;
+                }
             }
             else
             {
@@ -36,18 +43,21 @@
             }
         }
 
+        // Kalau laman web direfresh, total jawaban yang benar dan salah tidak menjadi 0
+        $_SESSION['correct_answer'] = $correct_answer;
+        $_SESSION['wrong_answer'] = $wrong_answer;
+
         $dataArr = array(
             'email' => $_SESSION['email'],
             'kode_course' => $_SESSION['kode_course'],
             'kode_quiz' => $_SESSION['kode_quiz'],
             'total_questions' => $_SESSION['jumlah_soal'],
-            'correct_answer' => $correct_answer,
-            'wrong_answer' => $wrong_answer
+            'correct_answer' => $_SESSION['correct_answer'],
+            'wrong_answer' => $_SESSION['wrong_answer']
         );
 
         insertQuizResult($dataArr);
         unset($_SESSION['answer']); // Untuk menghindari bug di mana saat mulai menjawab quiz, ada momen di mana jawaban sudah terjawab. Ini biasanya terjadi ketika kita baru selesai mengerjakan satu quiz, dan lanjut mengerjakan quiz lainnya
-        unset($_SESSION['kode_quiz']); // Pengen aja
     }
 ?>
 <!DOCTYPE html>
@@ -93,8 +103,8 @@
                                     <div class="card-content">
                                         <div class="card-body">
                                             <h4 style="text-align: center;">Total Soal: <?=$_SESSION['jumlah_soal']?></h4>
-                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Benar: <?=$correct_answer?></h4>
-                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Salah: <?=$wrong_answer?></h4>
+                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Benar: <?=$_SESSION['correct_answer']?></h4>
+                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Salah: <?=$_SESSION['wrong_answer']?></h4>
                                         </div>
                                         <div class="d-flex justify-content-center" style="margin-top: 10px;">
                                             <a href="./materi.php" class="btn btn-primary" style="margin-right: 15px;">Course</a>
