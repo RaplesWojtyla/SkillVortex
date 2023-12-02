@@ -16,7 +16,7 @@
 
         $uploaded = move_uploaded_file($tmpFile, $fileLoc);
 
-        $dataAssoc = array(
+        $dataArr = array(
             'kodeMateri' => $kodeMateri,
             'judulMateri' => $judulMateri,
             'namaFile' => $namaFile,
@@ -26,11 +26,20 @@
             'fileLoc' => $fileLoc
         );
 
-        if ($uploaded and insertFileData($dataAssoc) == 1)
+        if ($uploaded and insertFileData($dataArr) == 1)
         {
             echo"
                 <script>
-                    alert('File berhasil diupload!')
+                    alert('Materi berhasil diupload!')
+                    window.location = './course.php'
+                </script>
+            ";
+        }
+        else
+        {
+            echo"
+                <script>
+                    alert('Terjadi kesalahan. Tugas gagal diupload!')
                     window.location = './course.php'
                 </script>
             ";

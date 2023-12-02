@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Course - Teacher Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -109,7 +109,6 @@
                                                                         <th>JUDUL</th>
                                                                         <th>DESKRIPSI</th>
                                                                         <th>NAMA FILE</th>
-                                                                        <th>TIPE</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -123,18 +122,18 @@
                                                                     <tr>
                                                                         <td class="text-bold-500"><?=$data['judul']?></td>
                                                                         <td class="text-bold-500"><?=$data['deskripsi']?></td>
-                                                                        <td class="text-bold-500"><?=$data['nama_file']?></td>
-                                                                        <td class="text-bold-500"><?=$data['type']?></td>
+                                                                        <td class="text-bold-500"><a href="./download_file.php?url=<?=$data['berkas']?>"><?=$data['nama_file']?></a></td>
                                                                         <td class="text-center">
-                                                                            <!-- Download Button-->
-                                                                            <form action="./download_file.php" method="POST">
-                                                                                <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
-                                                                                <button name="mdownloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
+                                                                            <!-- Materi - Edit Button-->
+                                                                            <form action="./edit_materi.php" method="POST">
+                                                                                <input name="id_materi" type="text" value="<?=$data['id_materi']?>" hidden>
+                                                                                <button name="meditbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
                                                                             </form>
                                                                             
-                                                                            <!-- Delete Button -->
+                                                                            <!-- Materi - Delete Button -->
                                                                             <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
                                                                                 <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
+                                                                                <input name="judul" type="text" value="<?=$data['judul']?>" hidden>
                                                                                 <button name="mdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
                                                                             </form>
                                                                         </td>
@@ -145,12 +144,17 @@
                                                                         if (isset($_POST['mdeletebtn']))
                                                                         {
                                                                             $id_course = $_POST['id'];
-                                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
-                                                                            echo"
-                                                                                <script>
-                                                                                    window.location = './course.php'
-                                                                                </script>
-                                                                            ";
+                                                                            $judul = $_POST['judul'];
+                                                                            $res = query("DELETE FROM materi WHERE id_materi = '$id_course'");
+                                                                            if ($res)
+                                                                            {
+                                                                                echo"
+                                                                                    <script>
+                                                                                        alert(`Materi $judul berhasil dihapus`)
+                                                                                        window.location = './course.php'
+                                                                                    </script>
+                                                                                ";
+                                                                            }
                                                                         }
                                                                     ?>
                                                                 </tbody>
@@ -175,8 +179,8 @@
                                                                     <tr>
                                                                         <th>JUDUL</th>
                                                                         <th>DESKRIPSI</th>
+                                                                        <th>Jumlah Soal</th>
                                                                         <th>DURASI</th>
-                                                                        <th>TIPE</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -190,17 +194,19 @@
                                                                     <tr>
                                                                         <td class="text-bold-500"><?=$data_quiz['nama_quiz']?></td>
                                                                         <td class="text-bold-500"><?=$data_quiz['deskripsi']?></td>
+                                                                        <td class="text-bold-500"><?=$data_quiz['jumlah_soal']?></td>
                                                                         <td class="text-bold-500"><?=$data_quiz['durasi']?> Menit</td>
-                                                                        <td class="text-bold-500"><?=$data_quiz['type']?></td>
                                                                         <td class="text-center">
+                                                                            <!-- Quiz - Add Questions Button -->
                                                                             <form action="./add_questions.php" method="POST">
                                                                                 <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
                                                                                 <button name="qeditbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
                                                                             </form>
                                                                             
-                                                                            <!-- Delete Button -->
+                                                                            <!-- Quiz - Delete Button -->
                                                                             <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus quiz <?=$data_quiz['nama_quiz']?>`)" method="POST">
                                                                                 <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
+                                                                                <input name="nama_quiz" type="text" value="<?=$data_quiz['nama_quiz']?>" hidden>
                                                                                 <button name="qdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
                                                                             </form>
                                                                         </td>
@@ -211,12 +217,28 @@
                                                                         if (isset($_POST['qdeletebtn']))
                                                                         {
                                                                             $kode_quiz = $_POST['kode_quiz'];
-                                                                            query("DELETE FROM quiz WHERE kode_quiz = '$kode_quiz'");
-                                                                            echo"
-                                                                                <script>
-                                                                                    window.location = './course.php'
-                                                                                </script>
-                                                                            ";
+                                                                            $nama_quiz = $_POST['nama_quiz'];
+                                                                            $res1 = query("DELETE FROM quiz WHERE kode_quiz = '$kode_quiz'");
+                                                                            $res2 = query("DELETE FROM questions WHERE kode_quiz = '$kode_quiz' AND kode_course = '$_SESSION[kode_course]'");
+
+                                                                            if ($res1 and $res2)
+                                                                            {
+                                                                                echo"
+                                                                                    <script>
+                                                                                        alert(`Quiz $nama_quiz berhasil dihapus.`) 
+                                                                                        window.location = './course.php'
+                                                                                    </script>
+                                                                                ";
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                echo"
+                                                                                    <script>
+                                                                                        alert(`Quiz $nama_quiz gagal dihapus.`) 
+                                                                                        window.location = './course.php'
+                                                                                    </script>
+                                                                                ";
+                                                                            }
                                                                         }
                                                                     ?>
                                                                 </tbody>
@@ -234,14 +256,79 @@
                                                 </h5>
                                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                                     <div class="accordion-body">
-                                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    <div class="table-responsive">
+                                                            <table class="table table-striped table-hover mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nama Tugas</th>
+                                                                        <th>Deskripsi</th>
+                                                                        <th>Nama File</th>
+                                                                        <th class="text-center">ACTION</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                                        $res_tugas = query("SELECT * FROM tugas WHERE kode_course = '$_SESSION[kode_course]' ORDER BY id_tugas"); 
+                                                                        
+                                                                        foreach($res_tugas as $data_tugas)
+                                                                        {
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td class="text-bold-500"><a href="./assignment_submission.php?kode_tugas=<?=$data_tugas['kode_tugas']?>&nama_tugas=<?=$data_tugas['nama_tugas']?>"><?=$data_tugas['nama_tugas']?></a></td>
+                                                                        <td class="text-bold-500"><?=$data_tugas['deskripsi']?></td>
+                                                                        <td class="text-bold-500"><a href="./download_file.php?url=<?=$data_tugas['berkas']?>"><?=$data_tugas['nama_file']?></a></td>
+                                                                        <td class="text-center">
+                                                                            <!-- Tugas - Edit Button -->
+                                                                            <form action="./edit_submission.php" method="POST">
+                                                                                <input name="kode_tugas" type="text" value="<?=$data_tugas['kode_tugas']?>" hidden>
+                                                                                <input name="id_tugas" type="text" value="<?=$data_tugas['id_tugas']?>" hidden>
+                                                                                <button name="teditbtn" type="submit" class="btn btn-success"><i class="badge-circle font-medium-1" data-feather="edit"></i></button>
+                                                                            </form>
+                                                                            
+                                                                            <!--Tugas - Delete Button -->
+                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus tugas <?=$data_tugas['nama_tugas']?>`)" method="POST">
+                                                                                <input name="kode_tugas" type="text" value="<?=$data_tugas['kode_tugas']?>" hidden>
+                                                                                <input name="id_tugas" type="text" value="<?=$data_tugas['id_tugas']?>" hidden>
+                                                                                <button name="tdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php } ?>
+
+                                                                    <?php
+                                                                        if (isset($_POST['tdeletebtn']))
+                                                                        {
+                                                                            $kode_tugas = $_POST['kode_tugas'];
+                                                                            $nama_tugas = $_POST['nama_tugas'];
+                                                                            $res = query("DELETE FROM tugas WHERE kode_tugas = '$kode_tugas'");
+
+                                                                            if ($res)
+                                                                            {
+                                                                                echo"
+                                                                                    <script>
+                                                                                        alert(`Tugas $nama_tugas berhasil dihapus.`) 
+                                                                                        window.location = './course.php'
+                                                                                    </script>
+                                                                                ";
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                echo"
+                                                                                    <script>
+                                                                                        alert(`Tugas $nama_tugas gagal dihapus.`) 
+                                                                                        window.location = './course.php'
+                                                                                    </script>
+                                                                                ";
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                        </div>
-
-                                        
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
