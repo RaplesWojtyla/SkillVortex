@@ -71,7 +71,7 @@
                                     <tbody>
                                         <?php
 
-                                            $res = query("SELECT * FROM request WHERE level = 'Student' ORDER BY id_request DESC");
+                                            $res = query("SELECT * FROM request WHERE e_pengirim = '$_SESSION[email]'  ORDER BY id_request DESC");
                                             foreach($res as $data)
                                             {     
                                         ?>       

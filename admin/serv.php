@@ -2,7 +2,7 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Teacher')
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Admin')
     {
         header("Location: ./error-403.html");
     }
@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Feedback</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/app.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/app-dark.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/iconly.css">
+    <link rel="stylesheet" href="../dist/assets/compiled/css/ui-widgets-chatbox.css">
 
 
     <link rel="stylesheet" href="../dist/assets/extensions/simple-datatables/style.css">
@@ -45,45 +46,61 @@
             <div class="content-wrapper container">
                 <div class="page-heading">
                     
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Request Teacher</h3>
-                            </div>
-                        </div>
-                    </div>
                     <section class="section">
-                        <div class="card">
-                            <div class="card-body">
-                                <a href="request.php" class="btn btn-primary">Tambah Request</a>
-                                <table class="table table-striped" id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Email</th>
-                                            <th>Isi Request</th>
-                                            <th>Level</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-
-                                            $res = query("SELECT * FROM request WHERE e_pengirim ='$_SESSION[email]' ORDER BY id_request DESC");
-                                            foreach($res as $data)
-                                            {     
-                                        ?>       
-                                        <tr>
-                                            <td><?=$data['e_pengirim']?></td>
-                                            <td><?=$data['isi_request']?></td>
-                                            <td><?=$data['level']?></td>
-                                            <td><?=$data['status']?></td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="media d-flex align-items-center">
+                                            <div class="avatar me-3">
+                                                <img src="./assets/compiled/jpg/1.jpg" alt="" srcset="">
+                                                <span class="avatar-status bg-success"></span>
+                                            </div>
+                                            <div class="name flex-grow-1">
+                                                <h6 class="mb-0">Alfy</h6>
+                                                <span class="text-xs">Online</span>
+                                            </div>
+                                            <button class="btn btn-sm">
+                                                <i data-feather="x"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body pt-4 bg-grey">
+                                        <div class="chat-content">
+                                            <div class="chat">
+                                                <div class="chat-body">
+                                                    <div class="chat-message">Hi Alfy, how can i help you?</div>
+                                                </div>
+                                            </div>
+                                            <div class="chat chat-left">
+                                                <div class="chat-body">
+                                                    <div class="chat-message">I'm looking for the best admin dashboard template</div>
+                                                    <div class="chat-message">With bootstrap certainly</div>
+                                                </div>
+                                            </div>
+                                            <div class="chat">
+                                                <div class="chat-body">
+                                                    <div class="chat-message">I recommend you to use Mazer Dashboard</div>
+                                                </div>
+                                            </div>
+                                            <div class="chat chat-left">
+                                                <div class="chat-body">
+                                                    <div class="chat-message">That's great! I like it so much :)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="message-form d-flex flex-direction-column align-items-center">
+                                            <a href="http://" class="black"><i data-feather="smile"></i></a>
+                                            <div class="d-flex flex-grow-1 ms-4">
+                                                <input type="text" class="form-control" placeholder="Type your message..">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </section>
                 </div>
             </div>

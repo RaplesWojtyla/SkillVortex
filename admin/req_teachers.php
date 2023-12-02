@@ -90,12 +90,7 @@
                                                             <td><?=$data['level']?></td>
                                                             <td><?=$data['status']?></td>
                                                             <td class='text-center'>
-                                                                <form method='POST' action="tambah_course2.php">
-                                                                    <input type='email' hidden name='email' value=<?=$data['e_pengirim']?>>
-                                                                    <input type='text' hidden name='id' value=<?=$data['id_request']?>>
-                                                                    <input type='text' hidden name='isi_request' value=<?=$data['isi_request']?>>
-                                                                    <button name='btnapprove' type='submit' class='btn icon icon-left btn-success'><i data-feather='check-circle'></i> Setujui</button>
-                                                                </form>
+                                                                <a href="tambah_course2.php?id_request=<?=$data['id_request']?>" class='btn icon icon-left btn-success'><i data-feather='check-circle'></i>Setujui </a>
                                                             </td>
                                                                     <!--Delete Button-->
 
@@ -110,17 +105,6 @@
                                                         <?php } ?>
                                                         
                                                         <?php
-                                                            if (isset($_POST['btnapprove']))
-                                                            {
-                                                                $email = $_POST['email'];
-                                                                $id = $_POST['id'];
-                                                                query("UPDATE request SET status = 'Disetujui' WHERE id_request = '$id'");
-                                                                echo"
-                                                                    <script>
-                                                                        window.location = './req_teachers.php'
-                                                                    </script>
-                                                                ";
-                                                            }
 
                                                             if (isset($_POST['btntolak']))
                                                             {
