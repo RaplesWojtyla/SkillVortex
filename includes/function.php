@@ -118,18 +118,18 @@ function insertFileRequest($data)
 
 function insertQuizData($data)
 {
-    $getMaxID    = query("SELECT MAX(id_quiz) as id FROM quiz");
+    $getMaxID = query("SELECT MAX(id_quiz) as id FROM quiz");
     $maxID   = mysqli_fetch_array($getMaxID);
     $id_quiz = $maxID['id'];
     $id_quiz++;
 
-    $kode_course = $_POST['kode_course'];
-    $kode_quiz = $_POST['kode_quiz'];
-    $nama_quiz = $_POST['nama_quiz'];
-    $deskripsi_quiz = $_POST['deskripsi'];
-    $type = $_POST['tipe_materi'];
-    $durasi = $_POST['durasi'];
-    $jumlah_soal = $_POST['jumlah_soal'];
+    $kode_course = $data['kode_course'];
+    $kode_quiz = $data['kode_quiz'];
+    $nama_quiz = $data['nama_quiz'];
+    $deskripsi_quiz = $data['deskripsi'];
+    $type = $data['tipe_materi'];
+    $durasi = $data['durasi'];
+    $jumlah_soal = $data['jumlah_soal'];
     
     $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp())");
     if ($res)
@@ -204,6 +204,58 @@ function insertQuizResult($data)
         return true;
     }
     
+    return false;
+}
+
+function insertTugasData($data)
+{
+    $getMaxID = query("SELECT MAX(id_tugas) as id FROM tugas");
+    $maxID   = mysqli_fetch_array($getMaxID);
+    $id_tugas = $maxID['id'];
+    $id_tugas++;
+
+    $kode_tugas = $data['kode_tugas'];
+    $kode_course = $data['kode_course'];
+    $nama_tugas = $data['nama_tugas'];
+    $deskripsi = $data['deskripsi'];
+    $nama_file = $data['nama_file'];
+    $size = $data['size'];
+    $berkas = $data['berkas'];
+
+    $res = query("INSERT INTO tugas VALUES ('$id_tugas', '$kode_tugas', '$kode_course', '$nama_tugas', '$deskripsi', '$nama_file', '$size', '$berkas')");
+
+    if ($res)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+function updateTugasData($data)
+{
+    $id_tugas = $data['id_tugas'];
+    $kode_tugas = $data['kode_tugas'];
+    $nama_tugas = $data['nama_tugas'];
+    $deskripsi = $data['deskripsi'];
+    $nama_file = $data['nama_file'];
+    $size = $data['size'];
+    $berkas = $data['berkas'];
+
+    if (empty($nama_file) or empty($berkas))
+    {
+        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi' WHERE id_tugas = '$id_tugas'");
+    }
+    else
+    {
+        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi', nama_file = '$nama_file', size = '$size', berkas = '$berkas' WHERE id_tugas = '$id_tugas'");
+    }
+
+    if ($res)
+    {
+        return true;
+    }
+
     return false;
 }
 

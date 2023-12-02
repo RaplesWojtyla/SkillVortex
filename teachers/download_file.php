@@ -1,6 +1,6 @@
 <?php
 
-    $file = $_POST['url'];
+    $file = $_GET['url'];
 
     if (file_exists($file))
     {

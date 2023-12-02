@@ -56,16 +56,13 @@
                                     <div class="card-header">
                                         <h5 class="card-title">Upload Quiz</h5>
                                     </div>
-                                    <?php
-                                        $kode_course = $_GET["kode_course"];
-                                    ?>
                                     <div class="card-content">
                                         <div class="card-body">
                                             <form action="" method="POST">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-md-6">
                                                         <div class="form-group " hidden>
-                                                            <input name="kode_course" type="text" class="form-control" id="helpInputTop" value="<?=$kode_course?>">
+                                                            <input name="kode_course" type="text" class="form-control" id="helpInputTop" value="<?=$_SESSION['kode_course']?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="helperText">Kode Quiz</label>
@@ -103,7 +100,7 @@
                                                     <button name="cancelbtn" onclick="window.location='./course.php'" class="btn btn-danger mx-3">Cancel</button>
                                                 </div>
 
-                                                <?php 
+                                                <?php
                                                     if (isset($_POST['quploadbtn']))
                                                     {
                                                         $_SESSION['kode_quiz'] = $_POST['kode_quiz'];
