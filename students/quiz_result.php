@@ -44,8 +44,7 @@
         }
 
         // Kalau laman web direfresh, total jawaban yang benar dan salah tidak menjadi 0
-        $_SESSION['correct_answer'] = $correct_answer;
-        $_SESSION['wrong_answer'] = $wrong_answer;
+        $_SESSION['score'] = ($correct_answer / $_SESSION['jumlah_soal']) * 100;
 
         $dataArr = array(
             'email' => $_SESSION['email'],
@@ -102,9 +101,8 @@
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <h4 style="text-align: center;">Total Soal: <?=$_SESSION['jumlah_soal']?></h4>
-                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Benar: <?=$_SESSION['correct_answer']?></h4>
-                                            <h4 style="text-align: center; margin-top: 15px;">Jumlah Salah: <?=$_SESSION['wrong_answer']?></h4>
+                                            <input type="number" id="score" value="<?=$_SESSION['score']?>" hidden>
+                                            <div id="radialGradient"></div>
                                         </div>
                                         <div class="d-flex justify-content-center" style="margin-top: 10px;">
                                             <a href="./materi.php" class="btn btn-primary" style="margin-right: 15px;">Course</a>
@@ -128,10 +126,95 @@
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="../dist/assets/compiled/js/app.js"></script>
-
-
-    <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+        let score = parseInt(document.getElementById('score').value)
+        var radialGradientOptions = {
+        series: [score],
+        chart: {
+          height: 300,
+          type: "radialBar",
+          toolbar: {
+            show: true,
+          },
+        },
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 225,
+            hollow: {
+              margin: 0,
+              size: "70%",
+              background: "#fff",
+              image: undefined,
+              imageOffsetX: 0,
+              imageOffsetY: 0,
+              position: "front",
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24,
+              },
+            },
+            track: {
+              background: "#fff",
+              strokeWidth: "67%",
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35,
+              },
+            },
+      
+            dataLabels: {
+              show: true,
+              name: {
+                offsetY: -10,
+                show: true,
+                color: "#888",
+                fontSize: "17px",
+              },
+              value: {
+                formatter: function (val) {
+                  return parseInt(val)
+                },
+                color: "#111",
+                fontSize: "36px",
+                show: true,
+              },
+            },
+          },
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            type: "horizontal",
+            shadeIntensity: 0.5,
+            gradientToColors: ["#ABE5A1"],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100],
+          },
+        },
+        stroke: {
+          lineCap: "round",
+        },
+        labels: ["Score"],
+    }
+
+    var radialGradient = new ApexCharts(document.querySelector("#radialGradient"), radialGradientOptions)
+    radialGradient.render()
+
+    </script>
 
 </body>
 
