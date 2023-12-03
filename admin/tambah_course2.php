@@ -54,18 +54,16 @@
                         <div class="card-body">
 
                             <?php
-                                if (isset($_POST['btnapprove']))
-                                {
-                                    $id = $_POST['id'];
-                                    $sql2 = query("SELECT * FROM request WHERE id_request = $id");
-                                    $row2 = mysqli_fetch_assoc($sql2);
-                                }
+                                $id = $_GET["id_request"];
+                                $sql2 = query("SELECT * FROM request WHERE id_request = $id");
+                                $row2 = mysqli_fetch_array($sql2);
                             ?>
                             
-                            <form action="" method="POST" class="form form-horizontal">
+                            <form method="POST" class="form form-horizontal">
                                 <div class="form-body">
                                     <div class="row">
-                                        <input name="id" type="number" value="<?=$maxID?>" hidden>
+                                        <input name="id2" type="number" value="<?=$maxID?>" hidden>
+                                        <input name="idreq" type="number" value="<?=$id?>" hidden>
                                         <div class="col-md-4">
                                             <label for="first-name-horizontal-icon">Kode Course</label>
                                         </div>
@@ -73,7 +71,7 @@
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
                                                     <input name="kode_course" type="text" class="form-control" value=""
-                                                        id="first-name-horizontal-icon" placeholder="Masukkan Kode Course" required>
+                                                        id="first-name-horizontal-icon" placeholder="Masukkan Kode Course" >
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-code-square"></i>
                                                     </div>
@@ -120,25 +118,27 @@
                             <?php                               
                                 if (isset($_POST['insertbtn']))
                                 {
-                                    $id_course = $_POST['id'];
+                                    $id_course = $_POST['id2'];
                                     $kode_course = $_POST['kode_course'];
                                     $judul_course = $_POST['judul'];
                                     $e_teacher = $_POST['email'];
+                                    $idreq = $_POST['idreq'];
 
                                     $is_e_teacher = query("SELECT * FROM users WHERE email = '$e_teacher'");
                                     if (mysqli_num_rows($is_e_teacher) > 0)
                                     {
                                         if (mysqli_fetch_assoc($is_e_teacher)['level'] == 2)
+                                        {
+                                            $sql3 = query("INSERT INTO courses(id_course ,kode_course ,judul_course ,e_teacher) VALUES ( $id_course, '$kode_course', '$judul_course', '$e_teacher')");
+                                            if ($sql3)
                                             {
-                                            $sql = query("INSERT INTO courses(id_course ,kode_course ,judul_course ,e_teacher) VALUES ( $id_course, '$kode_course', '$judul_course', '$e_teacher')");
-                                            if ($sql)
-                                            {
+                                                query("UPDATE request SET status = 'Disetujui' WHERE id_request = '$idreq'");
                                                 echo"
-                                                    <script>
-                                                        alert('Course berhasil Ditambahkan')
-                                                        window.location = './req_teachers.php'
-                                                    </script>
-                                                ";
+                                                        <script>
+                                                            alert('Course Berhasil Ditambahkan.')
+                                                            window.location = './req_teachers.php'
+                                                        </script>
+                                                    ";
                                             }
                                         }
                                     }

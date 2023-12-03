@@ -100,8 +100,9 @@
 
       <li class="menu-item">
         <h5>
-          <a href="feedback.php" class="menu-link">
-            <span><i class="bi bi-chat-right-text-fill"></i>Feedback</span>
+          <a href="#" class="menu-link" data-bs-toggle="modal"
+            data-bs-target="#exampleModal2">
+            <span><i class="bi bi-chat-right-text-fill" ></i>Feedback</span>
           </a>
         </h5>
       </li>
@@ -175,4 +176,51 @@
 
     </ul>
   </div>
+
+  <!-- Modal Feedback -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Feedback</h3>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <form action="" method="POST">
+              <div class="modal-body">
+                <div class="form-floating">
+                  
+                    <textarea class="form-control" placeholder="Leave a comment here"
+                      id="floatingTextarea" name="feedback"></textarea>
+                    <label for="floatingTextarea">Comments</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button name='kirim' type='submit' class='btn btn-primary'>
+                  Kirim
+                </button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+  <?php
+    if (isset($_POST['kirim']))
+      {
+          $pesan = $_POST['feedback'];
+          query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
+          echo"
+              <script>
+                alert('Feedback telah dikirim.')
+              </script>
+          ";
+      }
+  ?>
+
 </nav>
