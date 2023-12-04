@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="col-12 d-flex justify-content-center mt-5">
                                             <button name="insertbtn" type="submit" class="btn btn-success me-1 mb-1">Upload</button>
-                                            <button name="cancelbtn" type="submit" class="btn btn-danger me-1 mb-1">Cancel</button>
+                                            <button name="cancelbtn" onclick="window.location='./management_course.php'" type="submit" class="btn btn-danger me-1 mb-1">Cancel</button>
                                         </div>
                                     </div>
                                 </div>

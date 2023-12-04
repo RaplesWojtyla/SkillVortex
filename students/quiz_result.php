@@ -51,8 +51,8 @@
             'kode_course' => $_SESSION['kode_course'],
             'kode_quiz' => $_SESSION['kode_quiz'],
             'total_questions' => $_SESSION['jumlah_soal'],
-            'correct_answer' => $_SESSION['correct_answer'],
-            'wrong_answer' => $_SESSION['wrong_answer']
+            'correct_answer' => $correct_answer,
+            'wrong_answer' => $wrong_answer
         );
 
         insertQuizResult($dataArr);
@@ -142,8 +142,8 @@
         },
         plotOptions: {
           radialBar: {
-            startAngle: -135,
-            endAngle: 225,
+            startAngle: 0,
+            endAngle: 360,
             hollow: {
               margin: 0,
               size: "70%",
