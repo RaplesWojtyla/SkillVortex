@@ -33,6 +33,17 @@
 
     <link rel="stylesheet" href="../dist/assets/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/table-datatable.css">
+
+    <style>   
+        #card-body2 {
+            height: 300px; 
+            overflow-y: auto; 
+        }
+        #card-body1 {
+            height: 477px; 
+            overflow-y: auto; 
+        }
+    </style>
 </head>
 
 <body>
@@ -52,14 +63,41 @@
                     ?>
                     <section class="section">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body" id="card-body1">
+                                        <table class="table" >
+                                            
+                                            <tbody>
+                                                <?php
+
+                                                    $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");
+                                                    foreach($res as $data)
+                                                    {     
+                                                ?>       
+                                                <tr>
+                                                    
+                                                    <td>
+                                                        <div class="avatar avatar-lg me-3">
+                                                            <img src="../dist/assets/compiled/jpg/2.jpg" alt="" srcset="">
+                                                            <span class="avatar-status bg-success"></span>
+                                                        </div>
+                                                        <?=$data['nama_pengirim']?>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="media d-flex align-items-center">
                                             <div class="avatar me-3">
-                                                <img src="../dist/assets/compiled/jpg/1.jpg" alt="" srcset="">
+                                                <img src="../dist/assets/compiled/jpg/2.jpg" alt="" srcset="">
                                                 <span class="avatar-status bg-success"></span>
                                             </div>
                                             <div class="name flex-grow-1">
@@ -71,11 +109,11 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-4 bg-grey">
+                                    <div class="card-body pt-4 bg-grey" id="card-body2">
                                         <?php
-                                            $res = query("SELECT * FROM service_center WHERE (e_penerima ='marcc2421@gmail.com' AND e_pengirim ='skillvortex4@gmail.com') OR (e_pengirim ='marcc2421@gmail.com' AND e_penerima ='skillvortex4@gmail.com') ");
+                                            $res2 = query("SELECT * FROM service_center WHERE (e_penerima ='marcc2421@gmail.com' AND e_pengirim ='skillvortex4@gmail.com') OR (e_pengirim ='marcc2421@gmail.com' AND e_penerima ='skillvortex4@gmail.com') ");
 
-                                            foreach($res as $data)
+                                            foreach($res2 as $data)
                                             {
                                         ?>
                                         <div class="chat-content">

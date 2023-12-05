@@ -116,13 +116,13 @@
         </h5>
       </li>
 
-      <!-- <li class="menu-item">
+      <li class="menu-item">
         <h5>
-          <a href="service_center.php" class="menu-link">
+          <a href="serv.php" class="menu-link">
             <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
           </a>
         </h5>
-      </li> -->
+      </li>
 
       <div class="theme-toggle d-flex gap-2 align-items-center ms-auto">
         <svg

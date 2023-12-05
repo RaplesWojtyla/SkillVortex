@@ -34,7 +34,13 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/app-dark.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/iconly.css">
 
-    
+    <style>   
+        
+        #rec_message {
+            height: 161px; 
+            overflow-y: auto; 
+        }
+    </style>
 
 </head>
 
@@ -119,38 +125,33 @@
                             <div class="col-3">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Recent Messages</h4>
+                                        <h3>Recent Messages</h3>
                                     </div>
-                                    <div class="card-content pb-4 overflow-auto">
+                                    <div class="card-content pb-4" id="rec_message">
                                         
-                                        <div class="recent-message d-flex px-4 py-3">
+                                    <?php
+
+                                        $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");
+                                        foreach($res as $data)
+                                        {     
+                                    ?>  
+
+                                        <div class="recent-message d-flex px-1 py-3">
                                             <div class="avatar avatar-lg">
-                                                <img src="../dist/assets/compiled/jpg/4.jpg">
+                                                <img src="../dist/assets/compiled/jpg/2.jpg">
                                             </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Hank Schrader</h5>
-                                                <h6 class="text-muted mb-0">@johnducky</h6>
+                                            <div class="name ms-3">
+                                                <h5 class="mb-1"><?=$data['nama_pengirim']?></h5>
+                                                <h6 class="text-muted mb-0"><?=$data['e_pengirim']?></h6>
                                             </div>
                                         </div>
-                                        <div class="recent-message d-flex px-4 py-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../dist/assets/compiled/jpg/5.jpg">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">Dean Winchester</h5>
-                                                <h6 class="text-muted mb-0">@imdean</h6>
-                                            </div>
-                                        </div>
-                                        <div class="recent-message d-flex px-4 py-3">
-                                            <div class="avatar avatar-lg">
-                                                <img src="../dist/assets/compiled/jpg/1.jpg">
-                                            </div>
-                                            <div class="name ms-4">
-                                                <h5 class="mb-1">John Dodol</h5>
-                                                <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                            </div>
-                                        </div>
-                                        
+
+                                    <?php } ?>
+
+                                    </div>
+
+                                    <div class="px-4">
+                                        <a href="serv.php" class='btn btn-block btn-xl btn-outline-primary font-bold my-3'>Start Conversation</a>
                                     </div>
                                 </div> 
                             </div>
