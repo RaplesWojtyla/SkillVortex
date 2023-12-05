@@ -194,7 +194,7 @@
                   
                     <textarea class="form-control" placeholder="Leave a comment here"
                       id="floatingTextarea" name="feedback"></textarea>
-                    <label for="floatingTextarea">Comments</label>
+                    
                 </div>
               </div>
               <div class="modal-footer">
