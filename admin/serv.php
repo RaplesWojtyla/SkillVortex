@@ -33,6 +33,17 @@
 
     <link rel="stylesheet" href="../dist/assets/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/table-datatable.css">
+
+    <style>   
+        #card-body2 {
+            height: 300px; 
+            overflow-y: auto; 
+        }
+        #card-body1 {
+            height: 477px; 
+            overflow-y: auto; 
+        }
+    </style>
 </head>
 
 <body>
@@ -45,19 +56,52 @@
             </header>
             <div class="content-wrapper container">
                 <div class="page-heading">
-                    
+                    <?php
+
+                        $res = query("SELECT nama_lengkap FROM users WHERE email = 'marcc2421@gmail.com'");
+                        $nama_lengkap = mysqli_fetch_assoc($res)['nama_lengkap'];
+                    ?>
                     <section class="section">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body" id="card-body1">
+                                        <table class="table" >
+                                            
+                                            <tbody>
+                                                <?php
+
+                                                    $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");
+                                                    foreach($res as $data)
+                                                    {     
+                                                ?>       
+                                                <tr>
+                                                    
+                                                    <td>
+                                                        <div class="avatar avatar-lg me-3">
+                                                            <img src="../dist/assets/compiled/jpg/2.jpg" alt="" srcset="">
+                                                            <span class="avatar-status bg-success"></span>
+                                                        </div>
+                                                        <?=$data['nama_pengirim']?>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="media d-flex align-items-center">
                                             <div class="avatar me-3">
-                                                <img src="./assets/compiled/jpg/1.jpg" alt="" srcset="">
+                                                <img src="../dist/assets/compiled/jpg/2.jpg" alt="" srcset="">
                                                 <span class="avatar-status bg-success"></span>
                                             </div>
                                             <div class="name flex-grow-1">
-                                                <h6 class="mb-0">Alfy</h6>
+                                                <h6 class="mb-0"><?=$nama_lengkap?></h6>
                                                 <span class="text-xs">Online</span>
                                             </div>
                                             <button class="btn btn-sm">
@@ -65,36 +109,49 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-4 bg-grey">
+                                    <div class="card-body pt-4 bg-grey" id="card-body2">
+                                        <?php
+                                            $res2 = query("SELECT * FROM service_center WHERE (e_penerima ='marcc2421@gmail.com' AND e_pengirim ='skillvortex4@gmail.com') OR (e_pengirim ='marcc2421@gmail.com' AND e_penerima ='skillvortex4@gmail.com') ");
+
+                                            foreach($res2 as $data)
+                                            {
+                                        ?>
                                         <div class="chat-content">
-                                            <div class="chat">
-                                                <div class="chat-body">
-                                                    <div class="chat-message">Hi Alfy, how can i help you?</div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-body">
-                                                    <div class="chat-message">I'm looking for the best admin dashboard template</div>
-                                                    <div class="chat-message">With bootstrap certainly</div>
-                                                </div>
-                                            </div>
-                                            <div class="chat">
-                                                <div class="chat-body">
-                                                    <div class="chat-message">I recommend you to use Mazer Dashboard</div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-body">
-                                                    <div class="chat-message">That's great! I like it so much :)</div>
-                                                </div>
-                                            </div>
+                                            <?php 
+                                                if ($data['e_pengirim'] == 'marcc2421@gmail.com' )
+                                                {
+                                            ?>
+                                                    <div class="chat chat-left">
+                                                        <div class="chat-body">
+                                                            <div class="chat-message"><?= $data['isi_pesan'] ?></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                            <?php 
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <div class="chat">
+                                                        <div class="chat-body">
+                                                            <div class="chat-message"><?= $data['isi_pesan'] ?></div>
+                                                        </div>
+                                                    </div>
+                                            <?php    
+                                                } 
+                                            ?>
                                         </div>
+
+                                        <?php 
+                                            } 
+                                        ?>
                                     </div>
                                     <div class="card-footer">
                                         <div class="message-form d-flex flex-direction-column align-items-center">
                                             <a href="http://" class="black"><i data-feather="smile"></i></a>
                                             <div class="d-flex flex-grow-1 ms-4">
                                                 <input type="text" class="form-control" placeholder="Type your message..">
+                                                <button ></button>
                                             </div>
                                         </div>
                                     </div>
