@@ -128,7 +128,7 @@
                                         <h3>Recent Messages</h3>
                                     </div>
                                     <div class="card-content pb-4" id="rec_message">
-                                        
+
                                     <?php
 
                                         $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");

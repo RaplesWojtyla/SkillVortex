@@ -83,7 +83,6 @@
                                                                         <th>JUDUL</th>
                                                                         <th>DESKRIPSI</th>
                                                                         <th>NAMA FILE</th>
-                                                                        <th>TIPE</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -104,9 +103,6 @@
                                                                         <td class="text-bold-500">
                                                                             <?=$data['nama_file']?>
                                                                         </td>
-                                                                        <td class="text-bold-500">
-                                                                            <?=$data['type']?>
-                                                                        </td>
                                                                         <td class="text-center">
                                                                             <!-- Download Button-->
                                                                             <form action="./download_file.php" method="POST">
@@ -116,19 +112,6 @@
                                                                         </td>
                                                                     </tr>
                                                                     <?php } ?>
-
-                                                                    <?php
-                                                                        if (isset($_POST['mdeletebtn']))
-                                                                        {
-                                                                            $id_course = $_POST['id'];
-                                                                            query("DELETE FROM materi WHERE id_materi = '$id_course'");
-                                                                            echo"
-                                                                                <script>
-                                                                                    window.location = './course.php'
-                                                                                </script>
-                                                                            ";
-                                                                        }
-                                                                    ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -158,7 +141,6 @@
                                                                         <th>DESKRIPSI</th>
                                                                         <th>Total Soal</th>
                                                                         <th>DURASI</th>
-                                                                        <th>TIPE</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -181,9 +163,6 @@
                                                                         </td>
                                                                         <td class="text-bold-500">
                                                                             <?=$data_quiz['durasi']?> Menit
-                                                                        </td>
-                                                                        <td class="text-bold-500">
-                                                                            <?=$data_quiz['type']?>
                                                                         </td>
                                                                         <td class="text-center">
                                                                             <a href="./quiz_prepare.php?kode_quiz=<?=$data_quiz['kode_quiz']?>" class="btn btn-primary"><i class="badge-circle font-medium-2" data-feather="play-circle"></i> Start</a>
@@ -210,22 +189,56 @@
                                                 <div id="panelsStayOpen-collapseThree"
                                                     class="accordion-collapse collapse">
                                                     <div class="accordion-body">
-                                                        <strong>This is the third item's accordion body.</strong> It is
-                                                        hidden by default, until the collapse plugin adds the
-                                                        appropriate classes that we use to style each element. These
-                                                        classes control the overall appearance, as well as the showing
-                                                        and hiding via CSS transitions. You can modify any of this with
-                                                        custom CSS or overriding our default variables. It's also worth
-                                                        noting that just about any HTML can go within the
-                                                        <code>.accordion-body</code>, though the transition does limit
-                                                        overflow.
+														<div class="table-responsive">
+                                                            <table class="table table-striped table-hover mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>JUDUL</th>
+                                                                        <th>DESKRIPSI</th>
+                                                                        <th>NAMA FILE</th>
+                                                                        <th>Tanggal Dibuat</th>
+                                                                        <th>Tenggat Waktu</th>
+                                                                        <th class="text-center">ACTION</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                                        $res = query("SELECT * FROM tugas WHERE kode_course = '$_SESSION[kode_course]' ORDER BY id_tugas"); 
+                                                                        
+                                                                        foreach($res as $data)
+                                                                        {
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td class="text-bold-500">
+                                                                            <?=$data['nama_tugas']?>
+                                                                        </td>
+                                                                        <td class="text-bold-500">
+                                                                            <?=$data['deskripsi']?>
+                                                                        </td>
+                                                                        <td class="text-bold-500">
+                                                                            <a href="./download_file.php?url=<?=$data['berkas']?>"><?=$data['nama_file']?></a>
+                                                                        </td>
+                                                                        <td class="text-bold-500"><?=date('d-m-Y', strtotime($data['date_added']))?></td>
+                                                                        <td class="text-bold-500"><?=date('d-m-Y', strtotime($data['date_collected']))?></td>
+                                                                        <td class="text-center">
+                                                                            <!-- Submit Tugas Button-->
+                                                                            <form action="./submit_tugas.php" method="POST">
+                                                                                <input name="kode_tugas" type="text" value="<?=$data['kode_tugas']?>" hidden>
+                                                                                <input name="deadline" type="text" value="<?=$data['date_collected']?>" hidden>
+                                                                                <button name="uTugasModalBtn" type="submit" class="btn btn-primary">
+                                                                                    <i class="badge-circle font-medium-1" data-feather="eye"></i>
+                                                                                </button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>

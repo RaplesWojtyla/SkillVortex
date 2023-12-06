@@ -263,6 +263,8 @@
                                                                         <th>Nama Tugas</th>
                                                                         <th>Deskripsi</th>
                                                                         <th>Nama File</th>
+                                                                        <th>Tanggal Dibuat</th>
+                                                                        <th>Tenggat Waktu</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -277,6 +279,8 @@
                                                                         <td class="text-bold-500"><a href="./assignment_submission.php?kode_tugas=<?=$data_tugas['kode_tugas']?>&nama_tugas=<?=$data_tugas['nama_tugas']?>"><?=$data_tugas['nama_tugas']?></a></td>
                                                                         <td class="text-bold-500"><?=$data_tugas['deskripsi']?></td>
                                                                         <td class="text-bold-500"><a href="./download_file.php?url=<?=$data_tugas['berkas']?>"><?=$data_tugas['nama_file']?></a></td>
+                                                                        <td class="text-bold-500"><?=date('d-m-Y H:i:s', strtotime($data_tugas['date_added']))?></td>
+                                                                        <td class="text-bold-500"><?=date('d-m-Y H:i:s', strtotime($data_tugas['date_collected']))?></td>
                                                                         <td class="text-center">
                                                                             <!-- Tugas - Edit Button -->
                                                                             <form action="./edit_submission.php" method="POST">
