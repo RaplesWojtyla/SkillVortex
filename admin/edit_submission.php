@@ -105,6 +105,34 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <label for="tenggat_waktu">Tenggat Waktu (Tanggal)</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input name="date_collected" type="text" class="form-control" value="<?=date('d-m-Y', strtotime($data['date_collected']))?>"
+                                                        id="tenggat_waktu">
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-calendar-date"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="hour_collected">Tenggat Waktu (Jam)</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input name="hour_collected" type="text" class="form-control" value="<?=date('H:i:s', strtotime($data['date_collected']))?>"
+                                                        id="hour_collected">
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-clock"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <label for="email-horizontal-icon">File (Optional)</label>
                                         </div>
                                         <div class="col-md-8">
@@ -116,7 +144,7 @@
                                         </div>
                                         <div class="col-12 d-flex justify-content-center mt-3">
                                             <button name="updatebtn" type="submit" class="btn btn-success me-1 mb-1">Update</button>
-                                            <button name="cancelbtn" onclick="window.location='./course.php'" class="btn btn-danger me-1 mb-1">Cancel</button>
+                                            <button name="cancelbtn" type="button" onclick="window.location='./course.php'" class="btn btn-danger me-1 mb-1">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
@@ -129,6 +157,8 @@
                                 {
                                     $nama_tugas = $_POST['nama_tugas'];
                                     $deskripsi = $_POST['deskripsi'];
+                                    $date_collected = $_POST['date_collected'];
+                                    $hour_collected = $_POST['hour_collected'];
                                     $nama_file = "";
                                     $size = "";
                                     $tmp_file = "";
@@ -153,7 +183,9 @@
                                         'deskripsi' => $deskripsi,
                                         'nama_file' => $nama_file,
                                         'size' => $size,
-                                        'berkas' => $fileLoc
+                                        'berkas' => $fileLoc,
+                                        'date_collected' => $date_collected,
+                                        'hour_collected' => $hour_collected
                                     );
 
                                     if (updateTugasData($dataArr) or $uploaded)

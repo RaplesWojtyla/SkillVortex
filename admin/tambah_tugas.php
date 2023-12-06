@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Tambah Tugas - Teacher Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -78,9 +78,32 @@
                                                         <div class="form-group">
                                                             <label for="helperText">Deskripsi</label>
                                                             <input name="deskripsi" type="text" id="helperText" class="form-control"
-                                                            placeholder="Deskripsi Singkat">
+                                                            placeholder="Deskripsi Singkat" required>
                                                         </div>
-                                                        <input name="berkas" type="file" class="basic-filepond">
+
+                                                        <div class="form-group">
+                                                            <label for="helperText">Tenggat Waktu (Hari)</label>
+                                                            <small
+                                                                class="text-muted"> Format: (DD-MM-YYYY)
+                                                            </small>
+                                                            <input name="date_collected" value="<?=date('d-m-Y', strtotime(date('d-m-Y') . "+1 days"))?>" type="text" id="helperText" class="form-control" required>
+                                                        </div> 
+                                                        
+                                                        <div class="form-group"
+                                                            <label for="helperText">Tenggat Waktu (Jam)</label>
+                                                            <small
+                                                                class="text-muted"> Format: (Jam:Menit:Detik)
+                                                            </small>
+                                                            <input name="hour_collected" value="<?=date('H:i:s', strtotime(date('H:i:s') . "+1 hours"))?>" type="text" id="helperText" class="form-control" required>
+                                                        </div> 
+
+                                                        <div class="form-group">
+                                                            <label for="helperText">File Tugas</label>
+                                                            <small
+                                                                class="text-muted"> <i>Opsional</i>
+                                                            </small>
+                                                            <input name="berkas" type="file" class="basic-filepond">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex justify-content-center mt-5">

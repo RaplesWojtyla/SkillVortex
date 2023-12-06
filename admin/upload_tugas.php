@@ -7,6 +7,8 @@
         $kode_course = $_SESSION['kode_course'];
         $nama_tugas = $_POST['nama_tugas'];
         $deskripsi = $_POST['deskripsi'];
+        $date_collected = $_POST['date_collected'];
+        $hour_collected = $_POST['hour_collected'];
         $nama_file = $_FILES['berkas']['name'];
         $size = "";
         $tmp_file = "";
@@ -32,7 +34,9 @@
             'deskripsi' => $deskripsi,
             'nama_file' => $nama_file,
             'size' => $size,
-            'berkas' => $fileLoc
+            'berkas' => $fileLoc,
+            'date_collected' => $date_collected,
+            'hour_collected' => $hour_collected
         );
 
         if (insertTugasData($dataArr) or $uploaded)

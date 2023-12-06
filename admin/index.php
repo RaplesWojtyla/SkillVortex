@@ -66,10 +66,10 @@
                                             <img class="card-img-top img-fluid" src="../dist/assets/compiled/png/1.png"
                                                 alt="Card image cap" />
                                             <div class="card-body">
-                                                <h2 class="card-title"><?=$jum_siswa?></h2>
                                                 <h4 class="card-text">
                                                     Student    
                                                 </h4>
+                                                <h2 class="card-title"><?=$jum_siswa?></h2>
                                                 <div class="icon">
                                                     <i class="fas fa-users"></i>
                                                 </div>
@@ -81,10 +81,10 @@
                                         <div class="card-content">
                                             <img class="card-img-top img-fluid" src="../dist/assets/compiled/png/2.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <h2 class="card-title"><?=$jum_guru?></h2>
                                                 <h4 class="card-text">
                                                     Teacher    
                                                 </h4>
+                                                <h2 class="card-title"><?=$jum_guru?></h2>
                                                 <a href="data_teachers.php" class="btn btn-primary btn-block">More Info</a>
                                             </div>
                                         </div>
@@ -93,10 +93,10 @@
                                         <div class="card-content">
                                             <img class="card-img-top img-fluid" src="../dist/assets/compiled/png/3.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <h2 class="card-title"><?=$jum_course?></h2>
                                                 <h4 class="card-text">
                                                     Course    
                                                 </h4>
+                                                <h2 class="card-title"><?=$jum_course?></h2>
                                                 <a href="management_course.php" class="btn btn-primary btn-block">More Info</a>
                                             </div>
                                         </div>
@@ -105,10 +105,10 @@
                                         <div class="card-content">
                                             <img class="card-img-top img-fluid" src="../dist/assets/compiled/png/4.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <h2 class="card-title"><?=$jum_feedback?></h2>
                                                 <h4 class="card-text">
                                                     Feedback    
                                                 </h4>
+                                                <h2 class="card-title"><?=$jum_feedback?></h2>
                                                 <a href="feedback.php" class="btn btn-primary btn-block">More Info</a>
                                             </div>
                                         </div>
@@ -128,8 +128,8 @@
                                                 <img src="../dist/assets/compiled/jpg/4.jpg">
                                             </div>
                                             <div class="name ms-4">
-                                                <h5 class="mb-1">Hank Schrader</h5>
-                                                <h6 class="text-muted mb-0">@johnducky</h6>
+                                                <a href=""><h5 class="mb-1">Hank Schrader</h5></a>
+                                                <a href=""><h6 class="text-muted mb-0">@johnducky</h6></a>
                                             </div>
                                         </div>
                                         <div class="recent-message d-flex px-4 py-3">

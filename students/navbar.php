@@ -191,10 +191,7 @@
             <form action="" method="POST">
               <div class="modal-body">
                 <div class="form-floating">
-                  
-                    <textarea class="form-control" placeholder="Leave a comment here"
-                      id="floatingTextarea" name="feedback"></textarea>
-                    
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="feedback"></textarea>    
                 </div>
               </div>
               <div class="modal-footer">
@@ -212,15 +209,20 @@
 
   <?php
     if (isset($_POST['kirim']))
-      {
-          $pesan = $_POST['feedback'];
-          query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
-          echo"
-              <script>
-                alert('Feedback telah dikirim.')
-              </script>
-          ";
-      }
+    {
+		$pesan = $_POST['feedback'];
+		$res = query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
+
+		if ($res)
+		{
+			echo"
+				<script>
+					alert('Feedback telah dikirim.')
+					window.location = './materi.php'
+				</script>
+			";
+		}
+    }
   ?>
 
 </nav>

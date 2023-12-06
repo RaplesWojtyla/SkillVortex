@@ -1,6 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+date_default_timezone_set('Asia/Jakarta');
 
 if (!isset($_SESSION)) 
 {
@@ -131,7 +132,7 @@ function insertQuizData($data)
     $durasi = $data['durasi'];
     $jumlah_soal = $data['jumlah_soal'];
     
-    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp())");
+    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp('DD-MM-YYYY'))");
     if ($res)
     {
         return true;
@@ -222,7 +223,11 @@ function insertTugasData($data)
     $size = $data['size'];
     $berkas = $data['berkas'];
 
-    $res = query("INSERT INTO tugas VALUES ('$id_tugas', '$kode_tugas', '$kode_course', '$nama_tugas', '$deskripsi', '$nama_file', '$size', '$berkas')");
+    $current_date = date('Y-m-d H:i:s');
+    $date_collected = new DateTime(date('Y-m-d H:i:s', strtotime($data['date_collected'] . $data['hour_collected'])));
+    $formatted_date_collected = $date_collected->format('Y-m-d H:i:s');
+
+    $res = query("INSERT INTO tugas VALUES ('$id_tugas', '$kode_tugas', '$kode_course', '$nama_tugas', '$deskripsi', '$nama_file', '$size', '$berkas', '$current_date', '$formatted_date_collected')");
 
     if ($res)
     {
@@ -241,15 +246,38 @@ function updateTugasData($data)
     $nama_file = $data['nama_file'];
     $size = $data['size'];
     $berkas = $data['berkas'];
+    
+    $date_collected = new DateTime(date('Y-m-d H:i:s', strtotime($data['date_collected'] . $data['hour_collected'])));
+    $formatted_date_collected = $date_collected->format('Y-m-d H:i:s');
 
     if (empty($nama_file) or empty($berkas))
     {
-        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi' WHERE id_tugas = '$id_tugas'");
+        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi', date_collected = '$formatted_date_collected' WHERE id_tugas = '$id_tugas'");
     }
     else
     {
-        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi', nama_file = '$nama_file', size = '$size', berkas = '$berkas' WHERE id_tugas = '$id_tugas'");
+        $res = query("UPDATE tugas SET kode_tugas = '$kode_tugas', nama_tugas = '$nama_tugas', deskripsi = '$deskripsi', nama_file = '$nama_file', size = '$size', berkas = '$berkas', date_collected = '$formatted_date_collected' WHERE id_tugas = '$id_tugas'");
     }
+
+    if ($res)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+function submit_assignment($data)
+{
+    $kode_tugas = $data['kode_tugas'];
+    $kode_course = $data['kode_course'];
+    $email = $data['email'];
+    $nama_file = $data['nama_file'];
+    $size = $data['size'];
+    $berkas = $data['berkas'];
+    $current_date = date('Y-m-d');
+
+    $res = query("INSERT INTO submit_tugas VALUES ('', '$kode_tugas', '$kode_course', '$email', '$nama_file', '$size', '$berkas', '$current_date')");
 
     if ($res)
     {
