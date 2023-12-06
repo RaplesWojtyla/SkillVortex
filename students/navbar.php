@@ -74,16 +74,19 @@
           <div class="submenu-group-wrapper">
             <ul class="submenu-group">
               
-              <!-- ntar pat ini kalo mau buat pake for each tiap kelas si student,
-              ke scoreboard.php nya ambil dari kode coursenya gitu , 
-              di scoreboard.php nanti daftar nilai yang terdaftar di kelas itu -->
-              <li class="submenu-item">
-                <a href="./scoreboard.php" class="submenu-link">Kelas A Daspro</a>
-              </li>
+              <?php
+                $e_student = $_SESSION['email'];
+                $res = query("SELECT * FROM vw_courses_student WHERE e_student='$e_student' ");
 
-              <li class="submenu-item">
-                <a href="./scoreboard.php" class="submenu-link">Kelas B Daspro</a>
-              </li>
+                foreach($res as $data)
+                {
+              ?>
+
+                <li class="submenu-item">
+                  <a href="scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
+                </li>
+
+              <?php } ?>
               
             </ul>
           </div>

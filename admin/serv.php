@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
+    <title>Service Center</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -71,18 +71,22 @@
                                             <tbody>
                                                 <?php
 
-                                                    $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");
+                                                    $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com' AND id_service IN (SELECT MAX(id_service) FROM vw_service_center GROUP BY e_pengirim) ORDER BY id_service DESC");
                                                     foreach($res as $data)
                                                     {     
                                                 ?>       
                                                 <tr>
                                                     
                                                     <td>
-                                                        <div class="avatar avatar-lg me-3">
-                                                            <img src="../dist/assets/compiled/jpg/2.jpg" alt="" srcset="">
-                                                            <span class="avatar-status bg-success"></span>
+                                                        <div class="recent-message d-flex px-1 py-3">
+                                                            <div class="avatar avatar-lg">
+                                                                <img src="../dist/assets/compiled/jpg/2.jpg">
+                                                            </div>
+                                                            <div class="name ms-3">
+                                                                <h5 class="mb-1"><?=$data['nama_pengirim']?></h5>
+                                                                <h6 class="text-muted mb-0"><?=$data['e_pengirim']?></h6>
+                                                            </div>
                                                         </div>
-                                                        <?=$data['nama_pengirim']?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

@@ -131,12 +131,12 @@
                                         
                                     <?php
 
-                                        $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com'  GROUP BY e_pengirim ORDER BY id_service DESC");
+                                        $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com' AND id_service IN (SELECT MAX(id_service) FROM vw_service_center GROUP BY e_pengirim) ORDER BY id_service DESC");
                                         foreach($res as $data)
                                         {     
                                     ?>  
 
-                                        <div class="recent-message d-flex px-1 py-3">
+                                        <div class="recent-message d-flex px-2 py-3">
                                             <div class="avatar avatar-lg">
                                                 <img src="../dist/assets/compiled/jpg/2.jpg">
                                             </div>
