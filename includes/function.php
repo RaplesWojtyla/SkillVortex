@@ -269,15 +269,43 @@ function updateTugasData($data)
 
 function submit_assignment($data)
 {
+    $id_submit = $data['id_submit'];
     $kode_tugas = $data['kode_tugas'];
     $kode_course = $data['kode_course'];
     $email = $data['email'];
     $nama_file = $data['nama_file'];
     $size = $data['size'];
     $berkas = $data['berkas'];
-    $current_date = date('Y-m-d');
+    $status = '';
+    $keterangan = '';
+    $nilai = '';
 
-    $res = query("INSERT INTO submit_tugas VALUES ('', '$kode_tugas', '$kode_course', '$email', '$nama_file', '$size', '$berkas', '$current_date')");
+    $current_date = new DateTime(date('Y-m-d H:i:s'));
+    $formatted_current_date = $current_date->format('Y-m-d H:i:s');
+
+    $date_collected = new DateTime(date('Y-m-d H:i:s', strtotime($data['date_collected'])));
+    $diff_time = $current_date->diff($date_collected);
+
+    if ($current_date > $date_collected)
+    {
+        $status = 'late';
+        $keterangan = $diff_time->format('Assignment was submitted %d days %h hours %i mins %s secs late');
+    }
+    else
+    {
+        $status = 'early';
+        $keterangan = $diff_time->format('Assignment was submitted %d days %h hours %i mins %s secs early');
+    }
+    
+    $method = $data['method'];
+    if ($method == 'Update')
+    {   
+        $res = query("UPDATE submit_tugas SET nama_file = '$nama_file', size = '$size', berkas = '$berkas', date_submitted = '$formatted_current_date', status = '$status', keterangan = '$keterangan' WHERE id_submit = '$id_submit'");
+    }
+    else 
+    {
+        $res = query("INSERT INTO submit_tugas VALUES ('', '$kode_tugas', '$kode_course', '$email', '$nama_file', '$size', '$berkas', '$formatted_current_date', '$status', '$keterangan', '$nilai')");
+    }
 
     if ($res)
     {
