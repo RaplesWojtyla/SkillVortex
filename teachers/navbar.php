@@ -92,15 +92,21 @@
           <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
           <div class="submenu-group-wrapper">
             <ul class="submenu-group">
-              
-              <!-- ni pun sama juga -->
-              <li class="submenu-item">
-                <a href="./scoreboard.php" class="submenu-link">Kelas A Daspro</a>
-              </li>
+            
+              <?php
+                $e_teacher = $_SESSION['email'];
+                $res = query("SELECT * FROM vw_courses_teacher WHERE e_teacher='$e_teacher' ");
 
-              <li class="submenu-item">
-                <a href="./scoreboard.php" class="submenu-link">Kelas B Daspro</a>
-              </li>
+                foreach($res as $data)
+                {
+              ?>
+
+                <li class="submenu-item">
+                  <a href="scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
+                </li>
+
+              <?php } ?>
+              
 
             </ul>
           </div>

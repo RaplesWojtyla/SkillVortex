@@ -2,7 +2,7 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Student')
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Teacher')
     {
         header("Location: ./error-403.html");
     }
@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoreboard - Student Skill Vortex</title>
+    <title>Scoreboard - Teacher Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
