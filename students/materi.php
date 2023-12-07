@@ -82,7 +82,7 @@
                                                                     <tr>
                                                                         <th>JUDUL</th>
                                                                         <th>DESKRIPSI</th>
-                                                                        <th>NAMA FILE</th>
+                                                                        <th>FILE</th>
                                                                         <th class="text-center">ACTION</th>
                                                                     </tr>
                                                                 </thead>
@@ -101,11 +101,11 @@
                                                                             <?=$data['deskripsi']?>
                                                                         </td>
                                                                         <td class="text-bold-500">
-                                                                            <?=$data['nama_file']?>
+                                                                            <a href="./download_file.php?url=<?=$data['berkas']?>"><?=$data['nama_file']?></a>
                                                                         </td>
                                                                         <td class="text-center">
                                                                             <!-- Download Button-->
-                                                                            <form action="./download_file.php" method="POST">
+                                                                            <form action="./download_file.php" method="GET">
                                                                                 <input name="url" type="text" value="<?=$data['berkas']?>" hidden>
                                                                                 <button name="mdownloadbtn" type="submit" class="btn btn-primary"><i class="badge-circle font-medium-1" data-feather="download"></i></button>
                                                                             </form>
@@ -195,7 +195,7 @@
                                                                     <tr>
                                                                         <th>JUDUL</th>
                                                                         <th>DESKRIPSI</th>
-                                                                        <th>NAMA FILE</th>
+                                                                        <th>FILE</th>
                                                                         <th>Tanggal Dibuat</th>
                                                                         <th>Tenggat Waktu</th>
                                                                         <th class="text-center">ACTION</th>
@@ -205,26 +205,38 @@
                                                                     <?php 
                                                                         $res = query("SELECT * FROM tugas WHERE kode_course = '$_SESSION[kode_course]' ORDER BY id_tugas"); 
                                                                         
-                                                                        foreach($res as $data)
+                                                                        foreach($res as $data_tugas)
                                                                         {
                                                                     ?>
                                                                     <tr>
                                                                         <td class="text-bold-500">
-                                                                            <?=$data['nama_tugas']?>
+                                                                            <?=$data_tugas['nama_tugas']?>
                                                                         </td>
                                                                         <td class="text-bold-500">
-                                                                            <?=$data['deskripsi']?>
+                                                                            <?=$data_tugas['deskripsi']?>
                                                                         </td>
                                                                         <td class="text-bold-500">
-                                                                            <a href="./download_file.php?url=<?=$data['berkas']?>"><?=$data['nama_file']?></a>
+                                                                            <a href="./download_file.php?url=<?=$data_tugas['berkas']?>"><?=$data_tugas['nama_file']?></a>
                                                                         </td>
-                                                                        <td class="text-bold-500"><?=date('d-m-Y', strtotime($data['date_added']))?></td>
-                                                                        <td class="text-bold-500"><?=date('d-m-Y', strtotime($data['date_collected']))?></td>
+                                                                        <td class="text-bold-500"><?=date('d-m-Y H:i:s', strtotime($data_tugas['date_added']))?></td>
+                                                                        <td class="text-bold-500"
+                                                                        <?php
+                                                                            $res = query("SELECT * FROM submit_tugas WHERE kode_tugas = '$data_tugas[kode_tugas]' AND email = '$_SESSION[email]'");
+                                                                            $current_date = new DateTime(date('Y-m-d H:i:s'));
+                                                                            $date_collected = new DateTime(date('Y-m-d H:i:s', strtotime($data_tugas['date_collected'])));
+
+                                                                            if ($current_date > $date_collected and (mysqli_num_rows($res) == 0 or mysqli_fetch_assoc($res)['status'] == 'late'))
+                                                                            {
+                                                                                echo 'style="color: red;"';
+                                                                            }
+                                                                        ?>
+                                                                        ><?=date('d-m-Y H:i:s', strtotime($data_tugas['date_collected']))?></td>
                                                                         <td class="text-center">
                                                                             <!-- Submit Tugas Button-->
-                                                                            <form action="./submit_tugas.php" method="POST">
-                                                                                <input name="kode_tugas" type="text" value="<?=$data['kode_tugas']?>" hidden>
-                                                                                <input name="deadline" type="text" value="<?=$data['date_collected']?>" hidden>
+                                                                            <form action="./submission_info.php" method="POST">
+                                                                                <input name="kode_tugas" type="text" value="<?=$data_tugas['kode_tugas']?>" hidden>
+                                                                                <input name="nama_tugas" type="text" value="<?=$data_tugas['nama_tugas']?>" hidden>
+                                                                                <input name="deadline" type="text" value="<?=$data_tugas['date_collected']?>" hidden>
                                                                                 <button name="uTugasModalBtn" type="submit" class="btn btn-primary">
                                                                                     <i class="badge-circle font-medium-1" data-feather="eye"></i>
                                                                                 </button>
