@@ -18,17 +18,26 @@
 
     // Ngecek apakah quiz itu sudah pernah dikerjakan atau belum
     $res2 = query("SELECT * FROM quiz_result WHERE kode_quiz = '$_SESSION[kode_quiz]' AND kode_course = '$_SESSION[kode_course]' AND e_student = '$_SESSION[email]'");
+    $res3 = query("SELECT * FROM questions WHERE kode_quiz = '$_SESSION[kode_quiz]' AND kode_course = '$_SESSION[kode_course]'");
     if (mysqli_num_rows($res2) == 1)
     {
         echo"
             <script>
                 window.location = './quiz_done.php'
             </script>
+            ";
+    }
+    else if (mysqli_num_rows($res3) == 0)
+    {
+        echo"
+        <script>
+            alert('Teacher masih belum membuat soal untuk quiz ini')
+            window.location = './materi.php'
+        </script>
         ";
     }
     else
     {
-        $res3 = query("SELECT * FROM questions WHERE kode_quiz = '$_SESSION[kode_quiz]' AND kode_course = '$_SESSION[kode_course]'");
         $_SESSION['jumlah_soal'] = mysqli_num_rows($res3);
 ?>
 <!DOCTYPE html>
