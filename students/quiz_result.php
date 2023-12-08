@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center" style="margin-top: 10px;">
                                             <a href="./materi.php" class="btn btn-primary" style="margin-right: 15px;">Course</a>
-                                            <a href="./scoreboard.php" class="btn btn-primary">Scoreboard</a>
+                                            <a href="./single_quiz_scoreboard.php" class="btn btn-primary">Scoreboard</a>
                                         </div>
                                     </div>
                                 </div>
