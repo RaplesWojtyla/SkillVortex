@@ -237,6 +237,32 @@ function insertTugasData($data)
     return false;
 }
 
+function updateMateriData($data)
+{
+    $id_materi = $data['id_materi'];
+    $judul = $data['judul'];
+    $deskripsi = $data['deskripsi'];
+    $nama_file = $data['nama_file'];
+    $size = $data['size'];
+    $berkas = $data['berkas'];
+
+    if (empty($nama_file) or empty($berkas) or $size == 0)
+    {
+        $res = query("UPDATE materi SET judul = '$judul', deskripsi = '$deskripsi' WHERE id_materi = '$id_materi'");
+    }
+    else
+    {
+        $res = query("UPDATE materi SET judul = '$judul', deskripsi = '$deskripsi', nama_file = '$nama_file', size = '$size', berkas = '$berkas' WHERE id_materi = '$id_materi'");
+    }
+
+    if ($res)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 function updateTugasData($data)
 {
     $id_tugas = $data['id_tugas'];
