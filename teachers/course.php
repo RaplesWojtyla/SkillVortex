@@ -66,6 +66,9 @@
                                                 data-bs-target="#exampleModal">
                                                 Tambah Data
                                             </button>
+                                            <a href="participant.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary mx-2">
+                                                Participants
+                                            </a>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1"
