@@ -102,12 +102,10 @@
               ?>
 
                 <li class="submenu-item">
-                  <a href="scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
+                  <a href="all_quiz_scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
                 </li>
 
               <?php } ?>
-              
-
             </ul>
           </div>
         </div>

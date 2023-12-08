@@ -192,7 +192,7 @@
                                                                         {
                                                                     ?>
                                                                     <tr>
-                                                                        <td class="text-bold-500"><?=$data_quiz['nama_quiz']?></td>
+                                                                        <td class="text-bold-500"><a href="single_quiz_scoreboard.php?kode_quiz=<?=$data_quiz['kode_quiz']?>"><?=$data_quiz['nama_quiz']?></a></td>
                                                                         <td class="text-bold-500"><?=$data_quiz['deskripsi']?></td>
                                                                         <td class="text-bold-500"><?=$data_quiz['jumlah_soal']?></td>
                                                                         <td class="text-bold-500"><?=$data_quiz['durasi']?> Menit</td>

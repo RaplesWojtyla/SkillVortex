@@ -83,7 +83,7 @@
               ?>
 
                 <li class="submenu-item">
-                  <a href="scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
+                  <a href="all_quiz_scoreboard.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
                 </li>
 
               <?php } ?>
@@ -213,18 +213,18 @@
   <?php
     if (isset($_POST['kirim']))
     {
-		$pesan = $_POST['feedback'];
-		$res = query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
+      $pesan = $_POST['feedback'];
+      $res = query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
 
-		if ($res)
-		{
-			echo"
-				<script>
-					alert('Feedback telah dikirim.')
-					window.location = './materi.php'
-				</script>
-			";
-		}
+      if ($res)
+      {
+        echo"
+          <script>
+            alert('Feedback telah dikirim.')
+            window.location = './materi.php'
+          </script>
+        ";
+      }
     }
   ?>
 

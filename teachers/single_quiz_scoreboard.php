@@ -1,18 +1,29 @@
 <?php
+
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Student')
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Teacher')
     {
         header("Location: ./error-403.html");
     }
+
+    if (!empty($_GET["kode_quiz"]))
+    {
+        $_SESSION['kode_quiz'] = $_GET["kode_quiz"];
+    }
+
+    $result = query("SELECT * FROM quiz WHERE kode_course = '$_SESSION[kode_course]' AND kode_quiz = '$_SESSION[kode_quiz]' ");
+    $nama_quiz = mysqli_fetch_assoc($result)['nama_quiz'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Has Been Done - Skill Vortex</title>
+    <title>Scoreboard - Student Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -33,27 +44,49 @@
             </header>
             <div class="content-wrapper container">
                 <div class="page-heading">
+                
 
-                    <section id="multiple-column-form ">
-                        <div class="row match-height d-flex justify-content-center">
-                            <div class="col-6">
+                    <section class="section">
+                        <div class="row" id="table-striped-dark">
+                            <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="card-title text-center">
-                                            <?=$_SESSION['nama_quiz']?>
-                                        </h2>
-                                        <h4 class="card-title text-center">
-                                            Quiz Has Been Done
-                                        </h4>
+                                    <div class="card-header text-center">
+                                        <h3 class="card-title">Hasil Quis</h3>
                                     </div>
+                                    <br>
+                                    <h4 class="card-title"><?=$nama_quiz?></h4>
                                     <div class="card-content">
-                                        <div class="card-body">
-                                            <p style="font-size: 1.2rem; text-align: center;">Anda telah mengerjakan quiz ini. Silahkan kembali ke halaman materi untuk mengecek quiz lainnya atau melihat scoreboard</p>
-                                        </div>
-                                        <div class="d-flex justify-content-center" style="margin-top: 10px; margin-bottom: 35px;">
-                                            <a href="./materi.php" class="btn btn-primary" style="margin-right: 15px;">Course</a>
-                                            <a href="./single_quiz_scoreboard.php?kode_quiz=<?=$_SESSION['kode_quiz']?>" class="btn btn-primary">Scoreboard</a>
-                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover mb-4">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nama</th>
+                                                        <th>Total Soal</th>
+                                                        <th>Benar</th>
+                                                        <th>Salah</th>
+                                                        <th>Nilai</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                        $res2 = query("SELECT * FROM vw_quiz_result WHERE kode_course = '$_SESSION[kode_course]' AND kode_quiz = '$_SESSION[kode_quiz]' ORDER BY nilai DESC"); 
+                                                        
+                                                        foreach($res2 as $data2)
+                                                        {
+                                                            $angka_format = number_format($data2['nilai'], 2, '.', '');
+                                                    ?>
+                                                    <tr>
+                                                        <td class="text-bold-500"><?=$data2['nama_lengkap']?></td>
+                                                        <td class="text-bold-500"><?=$data2['total_question']?></td>
+                                                        <td class="text-bold-500"><?=$data2['correct_answer']?></td>
+                                                        <td class="text-bold-500"><?=$data2['wrong_answer']?></td>
+                                                        <td class="text-bold-500"><?=$angka_format?></td>
+                                                    </tr>
+
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>   
                                     </div>
                                 </div>
                             </div>
@@ -62,12 +95,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-    </div>
-
-    <script src="../includes/function.js"></script>
 
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
