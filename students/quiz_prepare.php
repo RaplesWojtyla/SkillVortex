@@ -25,15 +25,15 @@
             <script>
                 window.location = './quiz_done.php'
             </script>
-            ";
+        ";
     }
     else if (mysqli_num_rows($res3) == 0)
     {
         echo"
-        <script>
-            alert('Teacher masih belum membuat soal untuk quiz ini')
-            window.location = './materi.php'
-        </script>
+            <script>
+                alert('Teacher masih belum membuat soal untuk quiz ini')
+                window.location = './materi.php'
+            </script>
         ";
     }
     else
