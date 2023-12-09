@@ -30,10 +30,18 @@
         $berkas = $data['berkas'];
         
         $submission_status = 'Submitted For Grading';
-        $grade_status = 'Not Graded'; // ???
         $time_remaining = $data['keterangan'];
         $last_modified = $data['date_submitted'];
         $file_submission = $data['nama_file'];
+
+        if ($data['nilai'] == '0')
+        {
+            $grade_status = 'Not Graded';
+        }
+        else
+        {
+            $grade_status = $data['nilai'];
+        }
 
         if ($data['status'] == 'early')
         {
@@ -97,6 +105,7 @@
 
                     <section id="multiple-column-form ">
                         <div class="row match-height d-flex justify-content-center">
+                            <h2><a href="./materi.php"><i class="bi bi-arrow-left"></i></a></h2>
                             <div class="col-8">
                                 <div class="card">
                                     <div class="card-header">
