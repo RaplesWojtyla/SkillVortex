@@ -66,16 +66,19 @@
           <div class="submenu-group-wrapper">
             <ul class="submenu-group">
               
-              <!-- ntar pat ini kalo mau buat pake for each tiap kelas si teachernya,
-              ke participant.php nya ambil dari kode coursenya gitu , 
-              di participant.php nanti daftar siswa yang terdaftar di kelas itu -->
-              <li class="submenu-item">
-                <a href="./participant.php" class="submenu-link">Kelas A Daspro</a>
-              </li>
+            <?php
+                $e_teacher = $_SESSION['email'];
+                $res = query("SELECT * FROM vw_courses_teacher WHERE e_teacher='$e_teacher' ");
 
-              <li class="submenu-item">
-                <a href="./participant.php" class="submenu-link">Kelas B Daspro</a>
-              </li>
+                foreach($res as $data)
+                {
+              ?>
+
+                <li class="submenu-item">
+                  <a href="participant.php?kode_course=<?=$data['kode_course']?>" class="submenu-link"><?=$data['judul_course']?></a>
+                </li>
+
+              <?php } ?>
 
             </ul>
           </div>

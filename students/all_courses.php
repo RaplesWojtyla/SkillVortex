@@ -49,7 +49,7 @@
                             <?php
                                 $e_student = $_SESSION['email'];
                                 
-                                $res = query("SELECT * FROM vw_courses_teacher");
+                                $res = query("SELECT * FROM vw_courses_teacher ORDER BY RAND()");
                                 $res2 = query("SELECT * FROM vw_courses_student WHERE e_student = '$e_student' ");
                                 $row2 = mysqli_num_rows($res);
 

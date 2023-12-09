@@ -62,6 +62,12 @@
                                         </h3>
                                     </div>
                                     <div class="card-content">
+                                        <div class= "card-body">
+                                            <a href="participant.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">
+                                                Participants
+                                            </a>
+                                        </div>
+                                        
                                         <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
                                             <!-- Table Materi -->
                                             <div class="accordion-item">
