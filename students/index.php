@@ -7,6 +7,16 @@
         header("Location: ./error-403.html");
     }
 
+    $sql = query("SELECT * FROM vw_courses_student WHERE e_student = '$_SESSION[email]'");
+
+    if (mysqli_num_rows($sql) < 1) //Belum enroll course satupun
+    {
+       echo"
+            <script>
+                window.location = './enroll_courses.php'
+            </script>
+       ";
+    }
 ?>
 
 <!DOCTYPE html>

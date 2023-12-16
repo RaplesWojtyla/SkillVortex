@@ -12,8 +12,10 @@
         $_SESSION['kode_course'] = $_GET["kode_course"];
     }
 
-    $result = query("SELECT * FROM courses WHERE kode_course = '$_SESSION[kode_course]'");
-    $judul_course = mysqli_fetch_assoc($result)['judul_course'];
+    $sql = query("SELECT * FROM vw_courses_student WHERE kode_course = '$_SESSION[kode_course]'");
+    $res = mysqli_fetch_assoc($sql);
+    $judul_course = $res['judul_course'];
+    $nama_teacher = $res['nama_teacher'];
 
 ?>
 
@@ -62,11 +64,54 @@
                                         </h3>
                                     </div>
                                     <div class="card-content">
-                                        <div class= "card-body">
-                                            <a href="participant.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">
-                                                Participants
-                                            </a>
-                                        </div>
+                                        <form method="GET">
+                                            <div class= "card-body">
+                                                <a href="participant.php?kode_course=<?=$_SESSION['kode_course']?>" class="btn btn-primary">
+                                                    Participants
+                                                </a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                    Unenroll
+                                                </button>
+                                                
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi
+                                                                </h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Apakah anda yakin untuk berhenti mengikuti course <?=$judul_course?> oleh <?=$nama_teacher?>?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button name="unenrollBtn" type="submit" class="btn btn-primary">Unenroll</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <?php
+                                                if (isset($_GET['unenrollBtn']))
+                                                {
+                                                    $res = query("DELETE FROM my_courses WHERE kode_course = '$_SESSION[kode_course]' and e_student = '$_SESSION[email]'");
+                                                    if ($res)
+                                                    {
+                                                        echo"
+                                                            <script>
+                                                                window.location = './index.php'
+                                                            </script>
+                                                        ";
+                                                    }
+                                                }
+                                            ?>
+                                        </form>
                                         
                                         <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
                                             <!-- Table Materi -->

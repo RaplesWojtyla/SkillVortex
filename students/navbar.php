@@ -57,7 +57,7 @@
 
       <li class="menu-item">
         <h5>
-          <a href="all_courses.php" class="menu-link">
+          <a href="enroll_courses.php" class="menu-link">
             <span><i class="bi bi-person-fill"></i>Courses</span>
           </a>
         </h5>
