@@ -39,7 +39,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>All Courses</h3>
+                                <h3>Enroll Courses</h3>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,6 @@
                                 
                                 $res = query("SELECT * FROM vw_courses_teacher ORDER BY RAND()");
                                 $res2 = query("SELECT * FROM vw_courses_student WHERE e_student = '$e_student' ");
-                                $row2 = mysqli_num_rows($res);
 
                                 foreach($res as $data)
                                 {
@@ -82,9 +81,33 @@
                                     </div>
                                     <div class="card-footer d-flex justify-content-center">
                                         
-                                        <form onsubmit="return confirm(`Apakah anda yakin mengikuti\nCourse: <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)" method ="POST" class="container-fluid">
-                                            <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="enroll" type="submit" class="btn btn-light-primary btn-block">Enroll</button>
+                                        <form method="GET" class="container-fluid">
+                                            <input name="kode_course" value="<?=$data['kode_course']?>" type="text" hidden>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#<?=$data['kode_course']?>">
+                                                Enroll
+                                            </button>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="<?=$data['kode_course']?>" data-bs-backdrop="static"
+                                                data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                                                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Apakah anda yakin untuk mengikuti course <span style="font-weight: bold;"><?=$data['judul_course']?></span> oleh <?=$data['nama_lengkap']?>?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button name="enrollBtn" type="submit" class="btn btn-primary">Enroll</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -92,14 +115,14 @@
                             <?php }} ?>
 
                             <?php
-                                if(isset($_POST['enroll']))
+                                if(isset($_GET['enrollBtn']))
                                 {
-                                    $kode_course = $_POST['kode_course1'];
+                                    $kode_course = $_GET['kode_course'];
                                     
                                     query("INSERT INTO my_courses (kode_course, e_student) VALUES('$kode_course','$e_student')");
                                     echo"
                                         <script>
-                                            window.location = './all_courses.php'
+                                            window.location = './enroll_courses.php'
                                         </script>
                                     ";
                                 }

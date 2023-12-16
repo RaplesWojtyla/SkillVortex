@@ -119,7 +119,7 @@
     </div>
     </div>
 
-    <script src="../includes/function.js"></script>
+    <script src="../includes/quizFunction.js"></script>
 
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
