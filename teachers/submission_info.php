@@ -21,10 +21,15 @@
     $nama_file = $data['nama_file'];
     $berkas = $data['berkas'];
     
+    $submission_status = 'Submitted For Grading';
+
     if ($data['nilai'] == 0)
         $grade_status = 'Not Graded';
     else
+    {
         $grade_status = $data['nilai'];
+        $submission_status = 'Graded';
+    }
 
     if ($data['status'] == 'early')
         $color = 'green';
@@ -76,7 +81,7 @@
                                     <div class="card-content">
                                         <div class="card-body">
                                             <p style="font-size: 1.2rem;">
-                                                Submission Status <span style="margin-left: 35px;">Submitted For Grading</span>
+                                                Submission Status <span style="margin-left: 35px;"><?=$submission_status?></span>
                                             </p>
                                             
                                             <p style="font-size: 1.2rem;">

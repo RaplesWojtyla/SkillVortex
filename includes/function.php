@@ -324,6 +324,7 @@ function submit_assignment($data)
     }
     
     $method = $data['method'];
+
     if ($method == 'Update')
     {   
         $res = query("UPDATE submit_tugas SET nama_file = '$nama_file', size = '$size', berkas = '$berkas', date_submitted = '$formatted_current_date', status = '$status', keterangan = '$keterangan' WHERE id_submit = '$id_submit'");
@@ -348,7 +349,7 @@ function generateCode() // Generate nomor acak
 
 function sendCode($fromEmail, $name, $toEmail, $subject, $message)
 {
-    // Mengirim kode verifikasi melalui email
+    /* Mengirim kode verifikasi melalui email */
     require '../vendor/autoload.php';
 
     $email    = 'skillvortex4@gmail.com';

@@ -12,7 +12,6 @@
         $_SESSION['kode_tugas'] = $_GET['kode_tugas'];
         $_SESSION['nama_tugas'] = $_GET['nama_tugas'];
     }
-    
 
 ?>
 
