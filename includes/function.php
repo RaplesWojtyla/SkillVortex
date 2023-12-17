@@ -346,7 +346,7 @@ function generateCode() // Generate nomor acak
     return random_int(100000, 999999);
 }
 
-function sendCode($code, $toEmail)
+function sendCode($fromEmail, $name, $toEmail, $subject, $message)
 {
     // Mengirim kode verifikasi melalui email
     require '../vendor/autoload.php';
@@ -367,10 +367,10 @@ function sendCode($code, $toEmail)
         $mail->Port = 587;
 
         // bagian isi email
-        $mail->setFrom($email, 'Skill Vortex');
+        $mail->setFrom($fromEmail, $name);
         $mail->addAddress($toEmail);
-        $mail->Subject = 'Verification Code';
-        $mail->Body = $code;
+        $mail->Subject = $subject;
+        $mail->Body = $message;
 
         $mail->send(); // Mengirim email
     } catch (Exception) {

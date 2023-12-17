@@ -118,9 +118,11 @@
                                             <td>Not Submitted</td>
                                             <td>Not Graded</td>
                                             <td>
-                                                <a name="seeSubmission" href="" class="btn btn-danger">
+                                                <input id="path" type="text" value="remainder" hidden>
+                                                <input id="email" type="text" value="<?=$data1['e_student']?>" hidden>
+                                                <button type="button" name="sendRemainder" onclick="sendMail()" class="btn btn-danger">
                                                     <i class="bi bi-exclamation-square"></i>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                         
@@ -136,21 +138,17 @@
             
         </div>
     </div>
+    
+    <script src="../includes/function.js"></script>
+
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
-
-
-
-
 
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-
     <script src="../dist/assets/compiled/js/app.js"></script>
-
-
 
     <script src="../dist/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="../dist/assets/static/js/pages/simple-datatables.js"></script>
