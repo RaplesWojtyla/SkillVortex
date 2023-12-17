@@ -84,13 +84,15 @@
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="email" id="email" type="text" class="form-control form-control-xl"
+                            <input name="email" id="email" type="email" class="form-control form-control-xl"
                                 placeholder="Email" required />
-                            <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-
-                            <input type="button" onclick="sendCode()" class="btn btn-primary mt-3" value="Send Code">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                
+                            <input name="path" id="path" type="text" class="form-control form-control-xl"
+                                value="register" hidden/>
+                            <input type="button" onclick="sendMail()" class="btn btn-primary mt-3" value="Send Code">
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"
@@ -100,7 +102,7 @@
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input name="password1" id="password1" type="password" class="form-control form-control-xl"
+                            <input name="password1" id="password" type="password" class="form-control form-control-xl"
                                 placeholder="Password" required />
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
@@ -143,50 +145,10 @@
         </div>
     </div>
 
-    <script>
-        function sendCode() {
-            const email = document.getElementById('email').value
-
-            fetch('./sendMail.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `email=${email}`
-            })
-
-            alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
-        }
-    </script>
+    <script src="../includes/function.js"></script>
 
     <script>
-        function showPassword(z = 1)
-        {
-            if (z == 1)
-            {
-                let x = document.getElementById('password1');
-                if (x.type === "password")
-                {
-                    x.type = "text"
-                }
-                else
-                {
-                    x.type = "password"
-                }
-            }
-            else if (z == 2)
-            {
-                let x = document.getElementById('password2');
-                if (x.type === "password")
-                {
-                    x.type = "text"
-                }
-                else
-                {
-                    x.type = "password"
-                }
-            }   
-        }
+        
     </script>
 
     <script src="../distassets/static/js/components/dark.js"></script>

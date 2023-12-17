@@ -79,7 +79,7 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
-                            <input type="button" name="sendcode" onclick="sendCode()" class="btn btn-outline-info mt-3"
+                            <input type="button" name="sendcode" onclick="sendMail()" class="btn btn-outline-info mt-3"
                                 value="Send Code" required>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -89,12 +89,11 @@
                                 <i class="bi bi-code"></i>
                             </div>
                         </div>
+                        <input name="path" id="path" type="text" class="form-control form-control-xl" value="forgot_password" hidden/>
                         <button name="checkbtn" type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Check</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class='text-gray-600'>Remember your account? <a href="./login.php"
-                                class="font-bold">Login</a>.
-                        </p>
+                        <p class='text-gray-600'>Remember your account? <a href="./login.php" class="font-bold">Login</a></p>
                     </div>
                 </div>
             </div>
@@ -110,21 +109,7 @@
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/compiled/js/app.js"></script>
 
-    <script>
-        function sendCode() {
-            const email = document.getElementById('email').value
-
-            fetch('./sendMail.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `email=${email}`
-            })
-
-            alert("Kode Verifikasi telah terkirim, harap cek folder spam.")
-        }
-    </script>
+    <script src="../includes/function.js"></script>
 </body>
 
 </html>

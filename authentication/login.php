@@ -58,7 +58,7 @@
         {
             echo"
                 <script>
-                    alert('Username atau password tidak ditemukan!!')
+                    alert('Username atau password tidak ditemukan!')
                     window.location = './login.php'
                 </script>
             ";
@@ -139,28 +139,13 @@
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
-
-                </div>
+                <div id="auth-right"></div>
             </div>
         </div>
 
     </div>
 
-    <script>
-        function showPassword()
-        {
-            let x = document.getElementById('password');
-            if (x.type === "password")
-            {
-                x.type = "text"
-            }
-            else
-            {
-                x.type = "password"
-            }
-        }
-    </script>
+    <script src="../includes/function.js"></script>
 </body>
 
 </html>
