@@ -2,9 +2,9 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Teacher')
+    if (empty($_SESSION['username']) or $_SESSION['banned'] == 'Banned' or $_SESSION['status'] != 'Teacher')
     {
-        header("Location: ./error-403.html");
+        header("Location: ./error-403.php");
     }
 
     if (!empty($_GET["kode_quiz"]))

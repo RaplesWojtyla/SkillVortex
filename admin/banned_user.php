@@ -2,15 +2,9 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['banned'] == 'Banned' or $_SESSION['status'] != 'Teacher')
+    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Admin')
     {
-        header("Location: ./error-403.php");
-    }
-
-    if (!empty($_GET['kode_tugas']) and !empty($_GET['nama_tugas']))
-    {
-        $_SESSION['kode_tugas'] = $_GET['kode_tugas'];
-        $_SESSION['nama_tugas'] = $_GET['nama_tugas'];
+        header("Location: ./error-403.html");
     }
 
 ?>
@@ -21,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment Submission - Skill Vortex</title>
+    <title>Dashboard Admin Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -41,7 +35,6 @@
 </head>
 
 <body>
-    
     <script src="../dist/assets/static/js/initTheme.js"></script>
     <div id="app">
         <div id="main" class="layout-horizontal">
@@ -54,8 +47,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3><a href="./course.php"><i class="bi bi-arrow-left"></i></a></h3>
-                                <h3><?=$_SESSION['nama_tugas']?></h3>
+                                <h3>Banned User</h3>
                             </div>
                         </div>
                     </div>
@@ -66,66 +58,82 @@
                                     <thead>
                                         <tr>
                                             <th>Nama Lengkap</th>
+                                            <th>Username</th>
                                             <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Grade</th>
-                                            <th>Submission</th>
+                                            <th>Level</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
 
-                                            $res = query("SELECT * FROM vw_courses_student WHERE kode_course = '$_SESSION[kode_course]'");
-                                            foreach($res as $data1)
-                                            {  
-                                                $res2 = query("SELECT * FROM vw_tugas WHERE kode_course = '$_SESSION[kode_course]' AND kode_tugas = '$_SESSION[kode_tugas]' AND email = '$data1[e_student]'");
-                                                if (mysqli_num_rows($res2) > 0){
-                                                    $data2 = mysqli_fetch_assoc($res2);
-                                                  
+                                            $res = query("SELECT * FROM users WHERE level  != 1 ORDER BY id_users");
+                                            foreach($res as $data)
+                                            {     
                                         ?>       
                                         <tr>
-                                            <td><?=$data1['nama_student']?></td>
-                                            <td><?=$data1['e_student']?></td>
-                                            <td
-                                            <?php
+                                            <td> <?=$data['nama_lengkap']?></td>
+                                            <td><?=$data['username']?></td>
+                                            <td><?=$data['email']?></td>
+                                            <td><?=($data['level'] == 2) ? "Teacher" : "Student" ?></td>
+                                            <!--Banned Button-->
+                                            <td>
+                                                <form method="GET">
+                                                    <!-- Button trigger modal -->
+                                                    <input name='id_user' type='text' value="<?=$data['id_users']?>" hidden>
+                                                    <input name='status' type='text' value="<?=$data['status']?>" hidden>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?=str_replace(' ', '', $data['username'])?>">
+                                                        <?=($data['status'] == Null) ? "Banned" : "Unbanned" ?>
+                                                    </button>
+                                                    
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="<?=str_replace(' ', '', $data['username'])?>" data-bs-backdrop="static"
+                                                        data-bs-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel"><?=($data['status'] == Null) ? "Banned" : "Unbanned" ?> User</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Nama Lengkap: <?=$data['nama_lengkap']?></p>
+                                                                    <p>Username: <?=$data['username']?></p>
+                                                                    <p>Email: <?=$data['email']?></p>
+                                                                    <p>Level: <?=($data['level'] == 2) ? "Teacher" : "Student" ?></p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button name="bannedBtn" type="submit" class="btn btn-danger"><?=($data['status'] == Null) ? "Banned" : "Unbanned" ?></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
 
-                                                if ($data2['status'] == 'early')
-                                                    echo 'style="color: green;"';
+                                        <?php
+                                            if (isset($_GET['bannedBtn']))
+                                            {
+                                                $id_user = $_GET['id_user'];
+                                                $status = $_GET['status'];
+
+                                                if ($status == Null)
+                                                {
+                                                    query("UPDATE users SET status = 'Banned' WHERE id_users = '$id_user'");
+                                                }
                                                 else
-                                                    echo 'style="color: red;"';
-                                                
-                                            ?>
-                                            ><?=ucfirst($data2['status'])?></td>
-                                            <td>
-                                            <?php 
-                                                if ($data2['nilai'] == 0)
-                                                    echo "Not Graded";
-                                                else
-                                                    echo $data2['nilai'];
-                                            ?>
-                                            </td>
-                                            <td>
-                                                <a name="seeSubmission" href="./submission_info.php?id_submit=<?=$data2['id_submit']?>&nama_tugas=<?=$data2['nama_tugas']?>" class="btn btn-primary">
-                                                    <i class="badge-circle font-medium-1" data-feather="eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php } else {?>
-                                            <tr>
-                                            <td><?=$data1['nama_student']?></td>
-                                            <td><?=$data1['e_student']?></td>
-                                            <td>Not Submitted</td>
-                                            <td>Not Graded</td>
-                                            <td>
-                                                <input id="path" type="text" value="remainder" hidden>
-                                                <input id="email" type="text" value="<?=$data1['e_student']?>" hidden>
-                                                <button type="button" name="sendRemainder" onclick="sendMail()" class="btn btn-danger">
-                                                    <i class="bi bi-exclamation-square"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        
-                                        <?php }} ?> <!-- End of Nested foreach -->
+                                                {
+                                                    query("UPDATE users SET status = Null WHERE id_users = '$id_user'");
+                                                }
+                                                echo "
+                                                    <script>
+                                                        window.location = './banned_user.php'
+                                                    </script>
+                                                ";
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -137,17 +145,21 @@
             
         </div>
     </div>
-    
-    <script src="../includes/function.js"></script>
-
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
+
+
+
+
 
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
+
     <script src="../dist/assets/compiled/js/app.js"></script>
+
+
 
     <script src="../dist/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="../dist/assets/static/js/pages/simple-datatables.js"></script>

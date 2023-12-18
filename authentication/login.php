@@ -18,6 +18,7 @@
                 $username = $row['username'];
                 $email = $row['email'];
                 $userLevel = $row['level'];
+                $userStatus = $row['status'];
             
                 if ($userLevel == 1)
                 {
@@ -33,6 +34,7 @@
                     $_SESSION['fullname'] = $fullname; 
                     $_SESSION['username'] = $username; 
                     $_SESSION['email'] = $email; 
+                    $_SESSION['banned'] = $userStatus; 
                     $_SESSION['status'] = 'Teacher'; 
                 }
                 else if ($userLevel == 3)
@@ -41,6 +43,7 @@
                     $_SESSION['fullname'] = $fullname; 
                     $_SESSION['username'] = $username; 
                     $_SESSION['email'] = $email; 
+                    $_SESSION['banned'] = $userStatus; 
                     $_SESSION['status'] = 'Student'; 
                 }
             }

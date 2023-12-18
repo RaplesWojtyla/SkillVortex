@@ -72,6 +72,10 @@
                 <a href="./data_teachers.php" class="submenu-link">Teacher</a>
               </li>
 
+              <li class="submenu-item">
+                <a href="./banned_user.php" class="submenu-link">Banned</a>
+              </li>
+
             </ul>
           </div>
         </div>
