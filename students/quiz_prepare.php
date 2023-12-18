@@ -1,12 +1,13 @@
 <?php
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Student')
+    if (empty($_SESSION['username']) or $_SESSION['banned'] == 'Banned' or $_SESSION['status'] != 'Student')
     {
-        header("Location: ./error-403.html");
+        header("Location: ./error-403.php");
     }
 
-    $_SESSION['kode_quiz'] = $_GET['kode_quiz'];
+    if (!empty($_GET['kode_quiz']))
+        $_SESSION['kode_quiz'] = $_GET['kode_quiz'];
 
     // Pengen buat sesi aja biar gampang nampilin nama quiz dan set timer dengan sesi durasi
     $res = query("SELECT * FROM quiz WHERE kode_quiz = '$_SESSION[kode_quiz]' AND kode_course = '$_SESSION[kode_course]'");
