@@ -122,7 +122,7 @@
 
       <li class="menu-item">
         <h5>
-          <a href="serv.php" class="menu-link">
+          <a href="service_center.php" class="menu-link">
             <span><i class="bi bi-person-lines-fill"></i>Service Center</span>
           </a>
         </h5>

@@ -141,8 +141,8 @@
                                                 <img src="../dist/assets/compiled/jpg/2.jpg">
                                             </div>
                                             <div class="name ms-3">
-                                                <h5 class="mb-1"><?=$data['nama_pengirim']?></h5>
-                                                <h6 class="text-muted mb-0"><?=$data['e_pengirim']?></h6>
+                                                <a style="cursor: pointer;" class="mb-1 font-bold" href="service_center.php"><?=$data['nama_pengirim']?></a>
+                                                <a style="cursor: pointer;" class="text-muted mb-0" href="service_center.php"><?=$data['e_pengirim']?></a>
                                             </div>
                                         </div>
 
@@ -151,7 +151,7 @@
                                     </div>
 
                                     <div class="px-4">
-                                        <a href="serv.php" class='btn btn-block btn-xl btn-outline-primary font-bold my-3'>Start Conversation</a>
+                                        <a href="service_center.php" class='btn btn-block btn-xl btn-outline-primary font-bold my-3'>Start Conversation</a>
                                     </div>
                                 </div> 
                             </div>
@@ -229,12 +229,12 @@
         
     </div>
     </div>
+    
     <script src="../dist/assets/static/js/components/dark.js"></script>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="../dist/assets/compiled/js/app.js"></script>
-
 
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>

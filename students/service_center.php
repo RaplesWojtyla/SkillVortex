@@ -2,9 +2,9 @@
 
     require '../includes/function.php';
 
-    if (empty($_SESSION['username']) or $_SESSION['status'] != 'Admin')
+    if (empty($_SESSION['username']) or $_SESSION['banned'] == 'Banned' or $_SESSION['status'] != 'Student')
     {
-        header("Location: ./error-403.html");
+        header("Location: ./error-403.php");
     }
 
 ?>
@@ -63,28 +63,21 @@
                                     <div class="card-body" id="card-body1">
                                         <table class="table" >
                                             
-                                            <tbody>
-                                                <?php
-
-                                                    $res = query("SELECT * FROM vw_service_center WHERE e_pengirim != 'skillvortex4@gmail.com' AND id_service IN (SELECT MAX(id_service) FROM vw_service_center GROUP BY e_pengirim) ORDER BY id_service DESC");
-                                                    foreach($res as $data)
-                                                    {     
-                                                ?>       
-                                                <tr>
-                                                    
+                                            <tbody> 
+                                                <tr> 
                                                     <td>
                                                         <div class="recent-message d-flex px-1 py-3">
                                                             <div class="avatar avatar-lg">
                                                                 <img src="../dist/assets/compiled/jpg/2.jpg">
                                                             </div>
                                                             <div class="name ms-3">
-                                                                <a style="cursor: pointer;" onclick="loadChat('<?=$data['e_pengirim']?>')" class="mb-1"><?=$data['nama_pengirim']?></a><br>
-                                                                <a style="cursor: pointer;" onclick="loadChat('<?=$data['e_pengirim']?>')" class="text-muted mb-0"><?=$data['e_pengirim']?></a>
+                                                                <a style="cursor: pointer;" onclick="loadChat('skillvortex4@gmail.com')" class="mb-1">Skill Vortex - Admin</a><br>
+                                                                <a style="cursor: pointer;" onclick="loadChat('skillvortex4@gmail.com')" class="text-muted mb-0">skillvortex4@gmail.com</a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <?php } ?>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
