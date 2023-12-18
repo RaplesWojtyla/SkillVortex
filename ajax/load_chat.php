@@ -45,7 +45,6 @@
                 <div class="chat chat-left">
                     <div class="chat-body">
                         <div class="chat-message"><?= $data['isi_pesan'] ?></div>
-                        <div id="email_pengirim" hidden><?= $_SESSION['e_pengirim'] ?></div>
                     </div>
                 </div>
                 
@@ -59,6 +58,7 @@
     </div>
 
     <?php }}?> <!-- End of if (isset($_SESSION['e_pengirim'])) and end of foreach -->
+    <input id="email_pengirim" value="<?= $_SESSION['e_pengirim'] ?>" hidden>
 </div>
 <div class="card-footer">
     <div class="message-form d-flex flex-direction-column align-items-center">
@@ -67,20 +67,5 @@
             <button type="button" onclick="sendMessage()" style="margin-left: 20px;" class="btn btn-primary"><i class="bi bi-send"></i></button>
         </div>
     </div>
-    <?php
-        if (isset($_POST['sendMsg']))
-        {
-            echo "
-                <script>
-                    alert('sdfvg')
-                </script>
-            ";
-            $e_pengirim = $_SESSION['email'];
-            $isi_pesan = $_POST['isi_msg'];
-            $e_penerima = $_SESSION['e_pengirim'];
-            
-        }
-    ?>
 </div>
 
-<script src="../includes/serviceCenterFunc.js"></script>
