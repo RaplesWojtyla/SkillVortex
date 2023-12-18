@@ -69,7 +69,7 @@
                                     <form action="./course.php" method ="POST">
                                         <div class="card-content">
                                             <a>
-                                                <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
+                                                <img src="../dist/assets/compiled/cards/abs<?=$data['id_my_course'] % 21?>.jpg" class="card-img-top img-fluid"
                                                 alt="singleminded">
                                             </a>
                                             <div class="card-body">
