@@ -117,7 +117,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php 
-                                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$_SESSION[kode_course]'"); 
+                                                                        $res = query("SELECT * FROM materi WHERE kode_course = '$_SESSION[kode_course]' ORDER BY id_materi"); 
                                                                         
                                                                         foreach($res as $data)
                                                                         {
@@ -189,7 +189,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php 
-                                                                        $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$_SESSION[kode_course]' "); 
+                                                                        $res_quiz = query("SELECT * FROM quiz WHERE kode_course = '$_SESSION[kode_course]' ORDER BY id_quiz "); 
                                                                         
                                                                         foreach($res_quiz as $data_quiz)
                                                                         {

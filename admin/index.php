@@ -174,7 +174,7 @@
 
                         <div class="row">
                             <?php
-                                $res = query("SELECT * FROM vw_courses_teacher");
+                                $res = query("SELECT * FROM vw_courses_teacher ORDER BY RAND()");
 
                                 foreach($res as $data)
                                 {
@@ -184,8 +184,8 @@
                                 <div class="card ">
                                     <div class="card-content">
                                         <a>
-                                            <img src="../dist/assets/compiled/jpg/motorcycle.jpg" class="card-img-top img-fluid"
-                                            alt="singleminded">
+                                        <img src="../dist/assets/compiled/cards/abs<?=$data['id_course'] % 21?>.jpg" class="card-img-top img-fluid"
+                                        alt="singleminded">
                                         </a>
                                         <div class="card-body">
                                             <h5 class="card-title">[<?=$data['kode_course']?>] - <?=$data['judul_course']?></h5>

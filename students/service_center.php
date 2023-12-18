@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/app.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/app-dark.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/iconly.css">
-    <link rel="stylesheet" href="../dist/assets/compiled/css/ui-widgets-chatbox.css">
+    <link rel="stylesheet" href="../dist/assets/compiled/css/ui-widgets-chatbox2.css">
 
 
     <link rel="stylesheet" href="../dist/assets/extensions/simple-datatables/style.css">
