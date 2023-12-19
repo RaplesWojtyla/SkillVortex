@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=($_SESSION['banned'] == 'Banned') ? "Your Account Has Been Banned" : "Error 403" ?> - Mazer Admin Dashboard</title>
+    <title><?=($_SESSION['banned'] == 'Banned') ? "Your Account Has Been Banned" : "Error 403" ?> Error - Skill Vortex</title>
 
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">

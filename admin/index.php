@@ -22,7 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Skill Vortex</title>
+    <title>Dashboard - Admin Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="assets/extensions/@fortawesome/fontawesome-free/css/all.min.css">
@@ -192,7 +192,7 @@
                                             <h6 class="mt-3"><?=$data['nama_lengkap']?></h6>
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-center">
+                                    <div class="card-footer d-flex justify-content-center ">
                                         <form action="./course.php" method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
                                             <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Manage Course</button>
