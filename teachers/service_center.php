@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Center</title>
+    <title>Service Center - Teacher Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/app.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/app-dark.css">
     <link rel="stylesheet" href="../dist/assets/compiled/css/iconly.css">
-    <link rel="stylesheet" href="../dist/assets/compiled/css/ui-widgets-chatbox.css">
+    <link rel="stylesheet" href="../dist/assets/compiled/css/ui-widgets-chatbox2.css">
 
 
     <link rel="stylesheet" href="../dist/assets/extensions/simple-datatables/style.css">

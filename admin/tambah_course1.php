@@ -25,7 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit Skill Vortex</title>
+    <title>Tambah Course - Admin Skill Vortex</title>
 
     <link rel="shortcut icon" href="../dist/assets/compiled/svg/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon"
