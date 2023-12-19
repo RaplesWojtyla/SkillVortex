@@ -51,8 +51,8 @@ function register($data)
 
     if ($password1 == $password2)
     {
-        // $password = password_hash($password1, PASSWORD_DEFAULT);
-        query("INSERT INTO users (id_users, username, nama_lengkap, email, password, level) VALUES ('$user_id', '$username', '$fullname', '$email', '$password1', 3)");
+        $hashed_password = password_hash($password1, PASSWORD_BCRYPT);
+        query("INSERT INTO users (id_users, username, nama_lengkap, email, password, level) VALUES ('$user_id', '$username', '$fullname', '$email', '$hashed_password', 3)");
 
         return true;
     }
@@ -65,6 +65,43 @@ function register($data)
         ";
 
         return false;   
+    }
+}
+
+function changePassword($data)
+{
+    $old_password = $data['password_lama'];
+    $new_password = $data['password_baru'];
+    $confirm_new_password = $data['konfirmasi_password_baru'];
+
+    if (password_verify($old_password, $_SESSION['password']))
+    {
+        if ($new_password == $confirm_new_password)
+        {
+            $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+            $sql = query("UPDATE users SET password = '$hashed_password' WHERE email = '$_SESSION[email]'");
+
+            if ($sql)
+                return 1;
+            else   
+                return 0;
+        }
+        else
+        {
+            echo"
+                <script>
+                    alert('Password tidak sama')
+                </script>
+            ";
+        }
+    }
+    else
+    {
+        echo"
+            <script>
+                alert('Password lama salah')
+            </script>
+        ";
     }
 }
 

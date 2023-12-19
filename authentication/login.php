@@ -12,38 +12,28 @@
         {
             $row = mysqli_fetch_assoc($sql);
 
-            if ($inputPassword == $row['password'])
+            if (password_verify($inputPassword, $row['password']))
             {
-                $fullname = $row['nama_lengkap'];
-                $username = $row['username'];
-                $email = $row['email'];
+                $_SESSION['fullname'] = $row['nama_lengkap'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['password'] = $row['password'];
+                $_SESSION['banned'] = $row['status'];
                 $userLevel = $row['level'];
-                $userStatus = $row['status'];
             
                 if ($userLevel == 1)
                 {
                     header("Location: ../admin/index.php");
-                    $_SESSION['fullname'] = $fullname; 
-                    $_SESSION['username'] = $username; 
-                    $_SESSION['email'] = $email; 
                     $_SESSION['status'] = 'Admin';
                 }
                 else if ($userLevel == 2)
                 {
                     header("Location: ../teachers/index.php");
-                    $_SESSION['fullname'] = $fullname; 
-                    $_SESSION['username'] = $username; 
-                    $_SESSION['email'] = $email; 
-                    $_SESSION['banned'] = $userStatus; 
                     $_SESSION['status'] = 'Teacher'; 
                 }
                 else if ($userLevel == 3)
                 {
-                    header("Location: ../students/index.php");
-                    $_SESSION['fullname'] = $fullname; 
-                    $_SESSION['username'] = $username; 
-                    $_SESSION['email'] = $email; 
-                    $_SESSION['banned'] = $userStatus; 
+                    header("Location: ../students/index.php"); 
                     $_SESSION['status'] = 'Student'; 
                 }
             }
@@ -51,7 +41,7 @@
             {
                 echo"
                     <script>
-                        alert('Username atau password tidak ditemukan!')
+                        alert('Username atau password tidak ditemukan!!')
                         window.location = './login.php'
                     </script>
                 ";

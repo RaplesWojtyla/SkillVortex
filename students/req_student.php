@@ -79,9 +79,9 @@
                                             <td><?=$data['e_pengirim']?></td>
                                             <td><?=$data['isi_request']?></td>
                                             <td><?=$data['level']?></td>
-                                            <td><?=$data['nama_file1']?></td>
-                                            <td><?=$data['nama_file2']?></td>
-                                            <td><?=$data['nama_file3']?></td>
+                                            <td><a href="./download_file.php?url=<?=$data['berkas1']?>"><?=$data['nama_file1']?></a></td>
+                                            <td><a href="./download_file.php?url=<?=$data['berkas2']?>"><?=$data['nama_file2']?></a></td>
+                                            <td><a href="./download_file.php?url=<?=$data['berkas3']?>"><?=$data['nama_file3']?></a></td>
                                             <td><?=$data['status']?></td>
                                         </tr>
                                         <?php } ?>
@@ -97,10 +97,6 @@
         </div>
     </div>
     <script src="../dist/assets/static/js/pages/horizontal-layout.js"></script>
-
-
-
-
 
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
