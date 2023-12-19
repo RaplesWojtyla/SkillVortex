@@ -91,9 +91,9 @@
                                                             <td><?=$data['e_pengirim']?></td>
                                                             <td><?=$data['isi_request']?></td>
                                                             <td><?=$data['level']?></td>
-                                                            <td><?=$data['nama_file1']?></td>
-                                                            <td><?=$data['nama_file2']?></td>
-                                                            <td><?=$data['nama_file3']?></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas1']?>"><?=$data['nama_file1']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas2']?>"><?=$data['nama_file2']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas3']?>"><?=$data['nama_file3']?></a></td>
                                                             <td><?=$data['status']?></td>
                                                             <td class='text-center'>
                                                                 <form method='POST' onsubmit="return confirm(`Apakah anda yakin melakukan Approve ?`)">
@@ -102,9 +102,7 @@
                                                                     <button name='btnapprove' type='submit' class='btn icon icon-left btn-success'><i data-feather='check-circle'></i> Setujui</button>
                                                                 </form>
                                                             </td>
-                                                                    <!--Delete Button-->
-
-                                                                    <!--Delete Button-->
+                                                            <!--Delete Button-->
                                                             <td class='text-center'>
                                                                 <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menolak requestnya ?`)">
                                                                     <input type='text' hidden name='id' value=<?=$data['id_request']?>>
@@ -175,9 +173,9 @@
                                                             <td><?=$data['e_pengirim']?></td>
                                                             <td><?=$data['isi_request']?></td>
                                                             <td><?=$data['level']?></td>
-                                                            <td><?=$data['nama_file1']?></td>
-                                                            <td><?=$data['nama_file2']?></td>
-                                                            <td><?=$data['nama_file3']?></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas1']?>"><?=$data['nama_file1']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas2']?>"><?=$data['nama_file2']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas3']?>"><?=$data['nama_file3']?></a></td>
                                                             <td><?=$data['status']?></td>
                                                         </tr>
                                                         <?php } ?>
@@ -219,9 +217,9 @@
                                                             <td><?=$data['e_pengirim']?></td>
                                                             <td><?=$data['isi_request']?></td>
                                                             <td><?=$data['level']?></td>
-                                                            <td><?=$data['nama_file1']?></td>
-                                                            <td><?=$data['nama_file2']?></td>
-                                                            <td><?=$data['nama_file3']?></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas1']?>"><?=$data['nama_file1']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas2']?>"><?=$data['nama_file2']?></a></td>
+                                                            <td><a href="./download_file.php?url=<?=$data['berkas3']?>"><?=$data['nama_file3']?></a></td>
                                                             <td><?=$data['status']?></td>
                                                                     <!--Delete Button-->
 
