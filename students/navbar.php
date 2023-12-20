@@ -22,26 +22,29 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
 					<li>
-						<button type="button" class="dropdown-item" data-bs-toggle="modal"
-							data-bs-target="#profileModal">
+						<button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">
 							My Account
 						</button>
 					</li>
 					<li>
-						<button type="button" class="dropdown-item" data-bs-toggle="modal"
-							data-bs-target="#changePasswordModal">
+						<button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
 							Change Password
 						</button>
 					</li>
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
-					<li><a class="dropdown-item" href="../authentication/logout.php">Logout</a></li>
+					<li>
+						<button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
+							Logout
+						</button>
+					</li>
 				</ul>
+				
 				<form method="POST">
 					<!-- Profile Modal -->
-					<div class="modal fade" id="profileModal" data-bs-backdrop="static" data-bs-keyboard="false"
-						tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="profileModal" data-bs-backdrop="static"
+						data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -56,8 +59,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="nama_lengkap" type="text" class="form-control"
-															value="<?=$_SESSION['fullname']?>" id="nama_lengkap">
+														<input name="nama_lengkap" type="text" class="form-control" value="<?=$_SESSION['fullname']?>" id="nama_lengkap">
 														<div class="form-control-icon">
 															<i class="bi bi-person"></i>
 														</div>
@@ -70,8 +72,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="username" type="text" class="form-control"
-															value="<?=$_SESSION['username']?>" id="username">
+														<input name="username" type="text" class="form-control" value="<?=$_SESSION['username']?>" id="username">
 														<div class="form-control-icon">
 															<i class="bi bi-person-bounding-box"></i>
 														</div>
@@ -84,8 +85,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="email" type="email" class="form-control"
-															value="<?=$_SESSION['email']?>" id="email" readonly>
+														<input name="email" type="email" class="form-control" value="<?=$_SESSION['email']?>" id="email" readonly>
 														<div class="form-control-icon">
 															<i class="bi bi-envelope"></i>
 														</div>
@@ -98,16 +98,15 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-bs-dismiss="modal">Close</button>
-									<button name="updateProfileBtn" type="submit"
-										class="btn btn-primary">Update</button>
+									<button name="updateProfileBtn" type="submit" class="btn btn-primary">Update</button>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Change Password Modal -->
-					<div class="modal fade" id="changePasswordModal" data-bs-backdrop="static" data-bs-keyboard="false"
-						tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal fade" id="changePasswordModal" data-bs-backdrop="static"
+						data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -122,8 +121,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="password_lama" type="password" class="form-control"
-															id="password">
+														<input name="password_lama" type="password" class="form-control" id="password">
 														<div class="form-control-icon">
 															<i class="bi bi-shield-lock"></i>
 														</div>
@@ -136,8 +134,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="password_baru" type="password" class="form-control"
-															id="password2">
+														<input name="password_baru" type="password" class="form-control" id="password2">
 														<div class="form-control-icon">
 															<i class="bi bi-shield-lock"></i>
 														</div>
@@ -150,8 +147,7 @@
 											<div class="col-md-8">
 												<div class="form-group has-icon-left">
 													<div class="position-relative">
-														<input name="konfirmasi_password_baru" type="password"
-															class="form-control" id="konfirmasi_password_baru">
+														<input name="konfirmasi_password_baru" type="password" class="form-control" id="konfirmasi_password_baru">
 														<div class="form-control-icon">
 															<i class="bi bi-shield-lock"></i>
 														</div>
@@ -164,8 +160,29 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-bs-dismiss="modal">Close</button>
-									<button name="updatePasswordBtn" type="submit"
-										class="btn btn-primary">Change</button>
+									<button name="updatePasswordBtn" type="submit" class="btn btn-primary">Change</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Logout Modal -->
+					<div class="modal fade" id="logoutModal" data-bs-backdrop="static"
+						data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+								</div>
+								<div class="modal-body">
+									<div class="form-body">
+										Anda yakin untuk logout?
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Close</button>
+									<button name="logoutBtn" type="submit" class="btn btn-primary">Logout</button>
 								</div>
 							</div>
 						</div>
@@ -203,6 +220,14 @@
 									</script>
 								";
 							}
+						}
+						else if (isset($_POST['logoutBtn']))
+						{
+							echo"
+								<script>
+									window.location = `../authentication/logout.php`
+								</script>
+							";
 						}
 						
 					?>
