@@ -1,7 +1,7 @@
 <div class="header-top">
 	<div class="container">
 		<div class="logo">
-			<a href="index.php">SKILL VORTEX</a>
+			<a href="./index.php"><img src="../gambar/skill.png" alt="Logo" style="width: 169px; height: 45px; "></a>
 		</div>
 		<div class="header-top-right">
 			<div class="dropdown">
