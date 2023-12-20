@@ -32,7 +32,7 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="logo">
-                        SKILL VORTEX
+                            <img src="../gambar/skill.png" alt="Logo" style="width: 169px; height: 45px; ">
                         </div>
                         <div class="header-top-right">
                         <div class="dropdown">
