@@ -1,7 +1,7 @@
 <div class="header-top">
 	<div class="container">
 		<div class="logo">
-			<a href="./index.php"><img src="../gambar/skill.png" alt="Logo" style="width: 169px; height: 45px; "></a>
+			<a href="index.php">SKILL VORTEX</a>
 		</div>
 		<div class="header-top-right">
 			<div class="dropdown">
@@ -34,8 +34,13 @@
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
-					<li><a class="dropdown-item" href="../authentication/logout.php">Logout</a></li>
+					<li>
+						<button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
+							Logout
+						</button>
+					</li>
 				</ul>
+				
 				<form method="POST">
 					<!-- Profile Modal -->
 					<div class="modal fade" id="profileModal" data-bs-backdrop="static"
@@ -161,6 +166,28 @@
 						</div>
 					</div>
 
+					<!-- Logout Modal -->
+					<div class="modal fade" id="logoutModal" data-bs-backdrop="static"
+						data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+								</div>
+								<div class="modal-body">
+									<div class="form-body">
+										Anda yakin untuk logout?
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Close</button>
+									<button name="logoutBtn" type="submit" class="btn btn-primary">Logout</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<?php
 						if (isset($_POST['updateProfileBtn']))
 						{
@@ -194,6 +221,14 @@
 								";
 							}
 						}
+						else if (isset($_POST['logoutBtn']))
+						{
+							echo"
+								<script>
+									window.location = `../authentication/logout.php`
+								</script>
+							";
+						}
 						
 					?>
 
@@ -215,19 +250,43 @@
 			<li class="menu-item">
 				<h5>
 					<a href="index.php" class="menu-link">
-						<span><i class="bi bi-grid-fill"></i>Dashboard</span>
+						<span><i class="bi bi-grid-fill"></i>Course</span>
 					</a>
 				</h5>
 			</li>
 
 
 
-			<li class="menu-item">
+			<li class="menu-item has-sub">
 				<h5>
-					<a href="enroll_courses.php" class="menu-link">
-						<span><i class="bi bi-person-fill"></i>Courses</span>
+					<a href="#" class="menu-link">
+						<span><i class="bi bi-person-fill"></i>Class Participants</span>
 					</a>
 				</h5>
+				<div class="submenu">
+					<!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+					<div class="submenu-group-wrapper">
+						<ul class="submenu-group">
+
+							<?php
+                $e_teacher = $_SESSION['email'];
+                $res = query("SELECT * FROM vw_courses_teacher WHERE e_teacher='$e_teacher' ");
+
+                foreach($res as $data)
+                {
+              ?>
+
+							<li class="submenu-item">
+								<a href="participant.php?kode_course=<?=$data['kode_course']?>" class="submenu-link">
+									<?=$data['judul_course']?>
+								</a>
+							</li>
+
+							<?php } ?>
+
+						</ul>
+					</div>
+				</div>
 			</li>
 
 			<li class="menu-item has-sub">
@@ -242,8 +301,8 @@
 						<ul class="submenu-group">
 
 							<?php
-                $e_student = $_SESSION['email'];
-                $res = query("SELECT * FROM vw_courses_student WHERE e_student='$e_student' ");
+                $e_teacher = $_SESSION['email'];
+                $res = query("SELECT * FROM vw_courses_teacher WHERE e_teacher='$e_teacher' ");
 
                 foreach($res as $data)
                 {
@@ -257,7 +316,6 @@
 							</li>
 
 							<?php } ?>
-
 						</ul>
 					</div>
 				</div>
@@ -265,7 +323,7 @@
 
 			<li class="menu-item">
 				<h5>
-					<a href="req_student.php" class="menu-link">
+					<a href="req_teacher.php" class="menu-link">
 						<span><i class="bi bi-envelope-exclamation-fill"></i>Request</span>
 					</a>
 				</h5>
@@ -331,8 +389,10 @@
 				<form action="" method="POST">
 					<div class="modal-body">
 						<div class="form-floating">
+
 							<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
 								name="feedback"></textarea>
+
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -350,20 +410,15 @@
 
 	<?php
     if (isset($_POST['kirim']))
-    {
-      $pesan = $_POST['feedback'];
-      $res = query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
-
-      if ($res)
       {
-        echo"
-          <script>
-            alert('Feedback terkirim.')
-            window.location = `$_SERVER[REQUEST_URI]`
-          </script>
-        ";
+          $pesan = $_POST['feedback'];
+          query("INSERT INTO feedback (e_pengirim , isi_pesan , e_penerima) VALUES ('$_SESSION[email]' , '$pesan' ,'skillvortex4@gmail.com')");
+          echo"
+              <script>
+                alert('Feedback telah dikirim.')
+              </script>
+          ";
       }
-    }
   ?>
 
 </nav>
