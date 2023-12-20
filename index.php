@@ -10,8 +10,9 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="./dist/assets/compiled/svg/logo.png " type="image/x-icon">
+  <link rel="shortcut icon" href="#" type="image/png">
+  <link rel="shortcut icon" href="#" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-... (checksum)" crossorigin="anonymous" />
 
 
@@ -42,7 +43,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html"><img src="./gambar/skill.png" alt="" style="width: auto; height:auto; margin:auto;"></a></h1>
+      <h1 class="logo me-auto"><a href="index.php"><img src="./gambar/skill.png" alt="" style="width: auto; height:auto; margin:auto;"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -53,7 +54,7 @@
           <li><a class="nav-link scrollto" href="#services">Courses</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="./authentication/login.php">Get Started</a></li>
+          <li><a class="getstarted" href="./authentication/login.php">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -70,8 +71,8 @@
           <h1>The Best e-Learning Platform For Programing</h1>
           <h2>We are team of talented designers making websites with Bootstrap</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="./authentication/login.php" class="btn-get-started scrollto">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=LlCwHnp3kL4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -124,7 +125,7 @@
               Bersama SkillVortex Anda dapat mempelajari lebih lanjut secara detail mengenai pemrograman yang anda 
               minati dan juga UI/UX secara profesional 
             </p>
-            <a href="login-register.html" class="btn-learn-more">Mulai Sekarang</a>
+            <a href="./authentication/login.php" class="btn-learn-more">Mulai Sekarang</a>
           </div>
         </div>
 
@@ -198,33 +199,33 @@
         <div class="row">
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="fa-solid fa-computer"></i></div>
+              <!-- <div class="icon"><i class="fa fa-computer"></i></div> -->
               <h4><a href="">Web Development</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <p>Merupakan kelas yang mengajarkan anda bagai mana cara membagun website dari 0.</p>
             </div>
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <!-- <div class="icon"><i class="bx bx-file"></i></div> -->
               <h4><a href="">Programming</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p>Merupakan kelas yang cocok untuk bagi anda yang ingin menjadi programing yang handal.</p>
             </div>
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <!-- <div class="icon"><i class="bx bx-tachometer"></i></div> -->
               <h4><a href="">Machine Learning</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Merupakan teknik pembelajaran mesin yang bisa mempelajari data yang ada dan melakukan tugas-tugas tertentu sesuai dengan apa yang ia pelajari.</p>
             </div>
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-layer"></i></div>
+              <!-- <div class="icon"><i class="bx bx-layer"></i></div> -->
               <h4><a href="">UI/UX</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <p>Adalah kepanjangan dari User Interface (UI) dan User Experience (UX) yang sangat penting dalam pengembangan produk-produk digital seperti aplikasi dan website. </p>
             </div>
           </div>
 
@@ -265,15 +266,15 @@
 
           <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Patra Rafles Wostyla Sinaga</h4>
                 <span>Back-End Developer</span>
-                <p>Back-end developer untuk membuat website</p>
+                <p>Bertanggung jawab untuk pengembangan dan pemeliharaan di belakang website.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href="https://www.instagram.com/raples.wojtyla/"><i class="ri-instagram-fill"></i></a>
                   <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
@@ -282,11 +283,11 @@
 
           <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/1.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Alfi Syahrin</h4>
-                <span>Developer</span>
-                <p>Spesialis developer website</p>
+                <span>Database Administrator (DBA)</span>
+                <p> Bertanggung jawab atas pengelolaan, pemeliharaan, dan keamanan database.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -299,11 +300,11 @@
 
           <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/3.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <h4>Rizky Valentino Siahaan</h4>
+                <span>Front-end</span>
+                <p>Spesialis front-end</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -316,11 +317,11 @@
 
           <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="400">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/6.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <h4>Rahmat Maulana Miftah</h4>
+                <span>Frontend Developer</span>
+                <p>Bertanggung jawab untuk mengembangkan bagian depan (UI) website.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -333,14 +334,14 @@
 
           <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <h4>Rizna Inda Tafshila</h4>
+                <span>Presentation Specialist</span>
+                <p>Fokus pada penyusunan dan penyajian PPT agar mudah dipahami.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href="https://web.facebook.com/profile.php?id=100092973724916"><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
@@ -350,11 +351,11 @@
 
           <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/8.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <h4>Fatimah Az Zahra</h4>
+                <span>Presentation Specialist</span>
+                <p>Fokus pada penyusunan dan penyajian PPT agar mudah dipahami.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -572,8 +573,10 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <h4>Lest Join Our Platform</h4>
+            <p>Ingin menjadi programer handal? Ayo bergabung bersama kami di SkillVortex
+            
+            </p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
