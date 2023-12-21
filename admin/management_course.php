@@ -77,9 +77,8 @@
                                                     <button name='btnedit' type='submit' class='btn icon icon-left btn-success'><i data-feather='edit'></i> Edit</button>
                                                 </form>
                                             </td>
-                                                    <!--Delete Button-->
 
-                                                    <!--Delete Button-->
+                                            <!--Delete Button-->
                                             <td class='text-center'>
                                                 <form method='POST' onsubmit="return confirm(`Apakah anda yakin ingin menghapus course <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)">
                                                     <input type='text' hidden  name='kode_course1' value=<?=$data['kode_course']?>>
