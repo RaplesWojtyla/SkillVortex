@@ -192,13 +192,35 @@
                                     <div class="card-footer d-flex justify-content-center ">
                                         <form action="./course.php" method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="slearnbtn" type="submit" class="btn btn-light-primary btn-block">Manage Course</button>
+                                            <button name="slearnbtn" type="submit" class="btn btn-primary">Manage Course</button>
                                         </form>
                                     </div>
                                     <div class="card-footer d-flex justify-content-center">
-                                        <form onsubmit="return confirm(`Apakah anda yakin akan menghapus\nCourse: <?=$data['judul_course']?>\nBy: <?=$data['nama_lengkap']?>`)" method ="POST">
+                                        <form method ="POST">
                                             <input name="kode_course1" value="<?=$data['kode_course']?>" type="text" hidden>
-                                            <button name="deletebtn" type="submit" class="btn btn-light-danger btn-block">Delete Course</button>
+                                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#<?=$data['kode_course']?>">Delete Course</button>
+
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="<?=$data['kode_course']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-body">
+                                                                <p>Apakah anda yakin akan menghapus Course:</p>
+                                                                <p><?=$data['judul_course']?> By: <?=$data['nama_lengkap']?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button name="deletebtn" type="submit" class="btn btn-danger">Delete Course</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -206,7 +228,7 @@
                             <?php } ?>
 
                             <?php
-                                if(isset($_POST['deletebtn']))
+                                if (isset($_POST['deletebtn']))
                                 {
                                     $kode_course = $_POST['kode_course1'];
                                     query("DELETE FROM courses WHERE kode_course = '$kode_course'");

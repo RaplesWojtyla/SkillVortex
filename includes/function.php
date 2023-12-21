@@ -169,7 +169,7 @@ function insertQuizData($data)
     $durasi = $data['durasi'];
     $jumlah_soal = $data['jumlah_soal'];
     
-    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp('DD-MM-YYYY'))");
+    $res = query("INSERT INTO quiz VALUES ('$id_quiz', '$kode_course', '$kode_quiz', '$nama_quiz', '$deskripsi_quiz', '$type', '$durasi', '$jumlah_soal', current_timestamp())");
     if ($res)
     {
         return true;

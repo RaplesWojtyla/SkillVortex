@@ -131,10 +131,31 @@
                                                                             </form>
                                                                             
                                                                             <!-- Materi - Delete Button -->
-                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus file materi <?=$data['nama_file']?>`)" method="POST">
+                                                                            <form method="POST">
                                                                                 <input name="id" type="text" value="<?=$data['id_materi']?>" hidden>
                                                                                 <input name="judul" type="text" value="<?=$data['judul']?>" hidden>
-                                                                                <button name="mdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                                <button  type="button" data-bs-toggle="modal" data-bs-target="#m<?=str_replace(' ', '', $data['judul'])?>" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+
+                                                                                <!-- Materi - Delete Modal -->
+                                                                                <div class="modal fade" id="m<?=str_replace(' ', '', $data['judul'])?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                                        <div class="modal-content">
+                                                                                            <div class="modal-header">
+                                                                                                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <div class="form-body">
+                                                                                                    <p style="text-align: left;">Apakah anda yakin ingin menghapus file materi <span style="font-weight: bold;"><?=$data['nama_file']?></span></p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary"
+                                                                                                    data-bs-dismiss="modal">Close</button>
+                                                                                                <button name="mdeletebtn" type="submit" class="btn btn-danger">Delete</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </form>
                                                                         </td>
                                                                     </tr>
@@ -204,10 +225,30 @@
                                                                             </form>
                                                                             
                                                                             <!-- Quiz - Delete Button -->
-                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus quiz <?=$data_quiz['nama_quiz']?>`)" method="POST">
+                                                                            <form method="POST">
                                                                                 <input name="kode_quiz" type="text" value="<?=$data_quiz['kode_quiz']?>" hidden>
                                                                                 <input name="nama_quiz" type="text" value="<?=$data_quiz['nama_quiz']?>" hidden>
-                                                                                <button name="qdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#q<?=str_replace(' ', '', $data_quiz['kode_quiz'])?>"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+
+                                                                                <!-- Quiz - Delete Modal -->
+                                                                                <div class="modal fade" id="q<?=str_replace(' ', '', $data_quiz['kode_quiz'])?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                                        <div class="modal-content">
+                                                                                            <div class="modal-header">
+                                                                                                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <div class="form-body">
+                                                                                                    <p style="text-align: left;">Apakah anda yakin ingin menghapus quiz <span style="font-weight: bold;"><?=$data_quiz['nama_quiz']?></span></p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                <button name="qdeletebtn" type="submit" class="btn btn-danger">Delete</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </form>
                                                                         </td>
                                                                     </tr>
@@ -276,7 +317,7 @@
                                                                         {
                                                                     ?>
                                                                     <tr>
-                                                                        <td class="text-bold-500"><a href="./assignment_submission.php?kode_tugas=<?=$data_tugas['kode_tugas']?>&nama_tugas=<?=$data_tugas['nama_tugas']?>"><?=$data_tugas['nama_tugas']?></a></td>
+                                                                        <td class="text-bold-500"><?=$data_tugas['nama_tugas']?></td>
                                                                         <td class="text-bold-500"><?=$data_tugas['deskripsi']?></td>
                                                                         <td class="text-bold-500"><a href="./download_file.php?url=<?=$data_tugas['berkas']?>"><?=$data_tugas['nama_file']?></a></td>
                                                                         <td class="text-bold-500"><?=date('d-m-Y H:i:s', strtotime($data_tugas['date_added']))?></td>
@@ -290,10 +331,30 @@
                                                                             </form>
                                                                             
                                                                             <!--Tugas - Delete Button -->
-                                                                            <form onsubmit="return confirm(`Apakah anda yakin ingin menghapus tugas <?=$data_tugas['nama_tugas']?>`)" method="POST">
+                                                                            <form method="POST">
                                                                                 <input name="kode_tugas" type="text" value="<?=$data_tugas['kode_tugas']?>" hidden>
                                                                                 <input name="id_tugas" type="text" value="<?=$data_tugas['id_tugas']?>" hidden>
-                                                                                <button name="tdeletebtn" type="submit" class="btn btn-danger mt-3"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#t<?=str_replace(' ', '', $data_tugas['kode_tugas'])?>"><i class="badge-circle font-medium-1" data-feather="trash"></i></button>
+                                                                                
+                                                                                <!-- Tugas - Delete Modal -->
+                                                                                <div class="modal fade" id="t<?=str_replace(' ', '', $data_tugas['kode_tugas'])?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                                        <div class="modal-content">
+                                                                                            <div class="modal-header">
+                                                                                                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi</h5>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <div class="form-body">
+                                                                                                    <p style="text-align: left;">Apakah anda yakin ingin menghapus tugas <span style="font-weight: bold;"><?=$data_tugas['nama_tugas']?></span></p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                <button name="tdeletebtn" type="submit" class="btn btn-danger">Delete</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </form>
                                                                         </td>
                                                                     </tr>
@@ -348,7 +409,6 @@
     <script src="../dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="../dist/assets/compiled/js/app.js"></script>
-
 
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
