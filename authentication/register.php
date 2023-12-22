@@ -89,7 +89,7 @@
                                 
                             <input name="path" id="path" type="text" class="form-control form-control-xl"
                                 value="register" hidden/>
-                            <input type="button" onclick="sendMail()" class="btn btn-primary mt-3" value="Send Code">
+                            <input type="button" onclick="sendMail('email', 'path')" class="btn btn-primary mt-3" value="Send Code">
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="code" id="code" type="text" class="form-control form-control-xl"

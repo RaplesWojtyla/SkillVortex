@@ -74,7 +74,9 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
-                            <input type="button" name="sendcode" onclick="sendMail()" class="btn btn-outline-info mt-3"
+                            
+                            <input name="path" id="path" type="text" class="form-control form-control-xl" value="forgot_password" hidden/>
+                            <input type="button" name="sendcode" onclick="sendMail('email', 'path')" class="btn btn-outline-info mt-3"
                                 value="Send Code" required>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -84,7 +86,6 @@
                                 <i class="bi bi-code"></i>
                             </div>
                         </div>
-                        <input name="path" id="path" type="text" class="form-control form-control-xl" value="forgot_password" hidden/>
                         <button name="checkbtn" type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Check</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
