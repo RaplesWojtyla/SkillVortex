@@ -201,7 +201,7 @@
                                                                     ?>
                                                                     <tr>
                                                                         <td class="text-bold-500">
-                                                                            <?=$data_quiz['nama_quiz']?>
+                                                                            <a href="./single_quiz_scoreboard.php?kode_quiz=<?=$data_quiz['kode_quiz']?>"><?=$data_quiz['nama_quiz']?></a>
                                                                         </td>
                                                                         <td class="text-bold-500">
                                                                             <?=$data_quiz['deskripsi']?>

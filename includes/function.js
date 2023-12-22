@@ -1,6 +1,6 @@
-function sendMail() {
-    const email = document.getElementById('email').value
-    const path = document.getElementById('path').value
+function sendMail(idEmail, idPath) {
+    const email = document.getElementById(idEmail).value
+    const path = document.getElementById(idPath).value
 
     let objectData = {
         email: email,
@@ -11,7 +11,7 @@ function sendMail() {
     for (let key in objectData)
         formData.append(key, objectData[key])
     
-    fetch('../authentication/sendMail.php', {
+    fetch('../fetchApi/sendMail.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
