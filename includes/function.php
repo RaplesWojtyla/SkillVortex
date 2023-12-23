@@ -384,7 +384,7 @@ function generateCode() // Generate nomor acak
     return random_int(100000, 999999);
 }
 
-function sendCode($fromEmail, $name, $toEmail, $subject, $message)
+function sendEmail($fromEmail, $name, $toEmail, $subject, $message)
 {
     /* Mengirim kode verifikasi melalui email */
     require '../vendor/autoload.php';

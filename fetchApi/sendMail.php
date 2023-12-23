@@ -3,13 +3,13 @@
     require('../includes/function.php');
     
     $code = generateCode();
-    $_SESSION['verifCode'] = $code;
     
     $path = $_POST['path'];
     $toEmail = $_POST['email'];
     
     if ($path == 'register')
     {
+        $_SESSION['verifCode'] = $code;
         $fromEmail = 'skillvortex4@gmail.com';
         $name = 'Skill Vortex';
         $subject = 'Register - Verification Code';
@@ -17,6 +17,7 @@
     }
     else if ($path == 'forgot_password')
     {
+        $_SESSION['verifCode'] = $code;
         $fromEmail = 'skillvortex4@gmail.com';
         $name = 'Skill Vortex';
         $subject = 'Forgot Password - Verification Code';
@@ -46,6 +47,6 @@
         $subject = 'Submit Your Homework!';
         $message = "Do your homework!\n\nLongest time to submit assignment: $formatted_date_collected\nRemaining Time: $remaining_time";
     }
-    sendCode($fromEmail, $name, $toEmail, $subject, $message);
+    sendEmail($fromEmail, $name, $toEmail, $subject, $message);
 
 ?>

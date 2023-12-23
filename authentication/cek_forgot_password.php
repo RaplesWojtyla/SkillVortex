@@ -76,7 +76,7 @@
                             </div>
                             
                             <input name="path" id="path" type="text" class="form-control form-control-xl" value="forgot_password" hidden/>
-                            <input type="button" name="sendcode" onclick="sendMail('email', 'path')" class="btn btn-outline-info mt-3"
+                            <input type="button" name="sendcode" id="sendCode" onclick="sendEmail('email', 'path', 'sendCode')" class="btn btn-outline-info mt-3"
                                 value="Send Code" required>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
