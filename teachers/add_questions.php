@@ -43,17 +43,19 @@
             <div class="page-heading">
                 <section class="section">
                     <form action="" method="POST">
+
                         <?php
                             $to_get_jumlah_soal = query("SELECT * FROM quiz WHERE kode_quiz = '$_SESSION[kode_quiz]'");
-                            $jumlah_soal = mysqli_fetch_assoc($to_get_jumlah_soal)['jumlah_soal']; // Total soal
+                            $jumlah_soal = mysqli_fetch_assoc($to_get_jumlah_soal)['jumlah_soal']; // Total soal yang diinginkan guru
                             
                             $to_get_banyak_soal = query("SELECT * FROM questions WHERE kode_quiz = '$_SESSION[kode_quiz]'");
-                            $banyak_soal = mysqli_num_rows($to_get_banyak_soal); // Banyaknya soal saat ini yang telah dibuat
+                            $jumlah_soal_saat_ini = mysqli_num_rows($to_get_banyak_soal); // Banyaknya soal saat ini yang telah dibuat guru
 
-                            if ($banyak_soal < $jumlah_soal)
+                            if ($jumlah_soal_saat_ini < $jumlah_soal)
                             {
                                 $max_number = mysqli_fetch_assoc(query("SELECT MAX(no_soal) as no_soal FROM questions WHERE kode_quiz = '$_SESSION[kode_quiz]'"))['no_soal'];
-                                $nomor_soal = $banyak_soal;
+                                $nomor_soal = $jumlah_soal_saat_ini;
+                                $count = $jumlah_soal - $jumlah_soal_saat_ini;
 
                                 while ($nomor_soal < $jumlah_soal)
                                 {
@@ -61,35 +63,47 @@
                                     $max_number++;
 
                         ?>
+
                         <div class="card mb-10">
                             <div class="card-header">
-                                <h4 class="mb-3">Ada sebanyak <?=$jumlah_soal - $banyak_soal?> yang belum anda buat</h4>
+                                <h4 class="mb-3">Ada sebanyak <?=$jumlah_soal - $jumlah_soal_saat_ini?> yang belum anda buat</h4>
                             </div>
+
                             <div class="card-body">
                                 <input type="number" name="no_soal[]" value="<?=$max_number?>" hidden>
                                 <h4>Tambahkan Soal Nomor <?=$nomor_soal?></h4>
                                 <div class"form-group">
-                                    <textarea name="question[]" type="text" class="ckeditor"></textarea>
+                                    <textarea name="question[]" type="text" class="ckeditor">
+                                        <?= isset($_POST['question'][$jumlah_soal - $jumlah_soal_saat_ini - $count]) ? htmlspecialchars($_POST['question'][$jumlah_soal - $jumlah_soal_saat_ini - $count]) : ''  ?>
+                                    </textarea>
                                 </div>
                             </div>
-                            <?php for ($i = 1; $i <= 4; $i++) {?>
+
+                            <?php for ($i = 1; $i <= 4; $i++) { ?>
+
                             <div class="card-body">
                                 <h6>Tambahkan Opsi Jawaban <?=$i?></h6>
                                 <div class"form-group">
-                                    <textarea name="opt<?=$i?>[]" type="text" class="ckeditor"></textarea>
+                                    <textarea name="opt[<?=$i?>][]" type="text" class="ckeditor">
+                                        <?= isset($_POST['opt'][$i][$jumlah_soal - $jumlah_soal_saat_ini - $count]) ? htmlspecialchars($_POST['opt'][$i][$jumlah_soal - $jumlah_soal_saat_ini - $count]) : '' ?>
+                                    </textarea>
                                 </div>
                             </div>
+
                             <?php } ?> <!-- Tutup for ($i = 1; $i <= 4; $i++) -->
+
                             <div class="card-body">
                                 <h5>Tambahkan Jawaban Yang Benar</h5>
                                 <small class="font-bold-600">Untuk menghindari typo, harap copas jawaban yang benar dari option di
                                     atas</small>
                                 <div class"form-group">
-                                    <textarea name="jawaban[]" type="text" class="ckeditor"></textarea>
+                                    <textarea name="jawaban[]" type="text" class="ckeditor">
+                                        <?= isset($_POST['jawaban'][$jumlah_soal - $jumlah_soal_saat_ini - $count]) ? htmlspecialchars($_POST['jawaban'][$jumlah_soal - $jumlah_soal_saat_ini - $count]) : '' ?>
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
-                        <?php } ?> <!-- Tutup while ($nomor_soal < $jumlah_soal) -->
+                        <?php $count--; } ?> <!-- Tutup while ($nomor_soal < $jumlah_soal) -->
                         
                         <?php 
                             $to_get_nama_quiz = query("SELECT * FROM quiz WHERE kode_quiz = '$_SESSION[kode_quiz]'");
@@ -112,64 +126,83 @@
                             if (isset($_POST['addquestions']))
                             {
                                 $is_success = 0;
-                                for ($i = 0; $i < $jumlah_soal - $banyak_soal; $i++)
-                                {
-                                    if (!empty($_POST['question'][$i]) and !empty($_POST['opt1'][$i]) and !empty($_POST['opt2'][$i]) and !empty($_POST['opt3'][$i]) and !empty($_POST['opt4'][$i]) and !empty($_POST['jawaban'][$i]))
-                                    {
-                                        $dataArr = array(
-                                            'kode_course' => $_SESSION['kode_course'],
-                                            'kode_quiz' => $_SESSION['kode_quiz'],
-                                            'no_soal' => $_POST['no_soal'][$i],
-                                            'question' => $_POST['question'][$i],
-                                            'opt1' => $_POST['opt1'][$i],
-                                            'opt2' => $_POST['opt2'][$i],
-                                            'opt3' => $_POST['opt3'][$i],
-                                            'opt4' => $_POST['opt4'][$i],
-                                            'jawaban' => $_POST['jawaban'][$i]
-                                        );
+                                $error = 0;
 
-                                        if (addQuizQuestions($dataArr))
+                                for ($i = 0; $i < $jumlah_soal - $jumlah_soal_saat_ini; $i++)
+                                {
+                                    $no_soal = $jumlah_soal_saat_ini + $i;
+
+                                    if (!empty($_POST['question'][$i]) and !empty($_POST['opt'][1][$i]) and !empty($_POST['opt'][2][$i]) and !empty($_POST['opt'][3][$i]) and !empty($_POST['opt'][4][$i]) and !empty($_POST['jawaban'][$i]))
+                                    {
+                                        if ($_POST['jawaban'][$i] == $_POST['opt'][1][$i] or $_POST['jawaban'][$i] == $_POST['opt'][2][$i] or $_POST['jawaban'][$i] == $_POST['opt'][3][$i] or $_POST['jawaban'][$i] == $_POST['opt'][4][$i])
                                         {
-                                            $is_success = 1;
+                                            $dataArr = array(
+                                                'kode_course' => $_SESSION['kode_course'],
+                                                'kode_quiz' => $_SESSION['kode_quiz'],
+                                                'no_soal' => $_POST['no_soal'][$i],
+                                                'question' => $_POST['question'][$i],
+                                                'opt1' => $_POST['opt'][1][$i],
+                                                'opt2' => $_POST['opt'][2][$i],
+                                                'opt3' => $_POST['opt'][3][$i],
+                                                'opt4' => $_POST['opt'][4][$i],
+                                                'jawaban' => $_POST['jawaban'][$i]
+                                            );
+
+                                            if (addQuizQuestions($dataArr))
+                                            {
+                                                $is_success = 1;
+                                                echo"
+                                                    <script>
+                                                        alert(`Soal nomor ` + eval($no_soal + 1) +  ` berhasil ditambahkan`)
+                                                    </script>
+                                                ";
+                                            }
+                                            else
+                                            {
+                                                $is_success = 0;
+                                                $error = 1;
+                                                break;
+                                            }
                                         }
                                         else
                                         {
-                                            $is_success = 0;
-                                            break;
+                                            echo"
+                                                <script>
+                                                    alert(`Opsi jawaban yang benar tidak sesuai dengan opsi jawaban manapun untuk soal nomor ` + eval($no_soal + 1))
+                                                </script>
+                                        ";
                                         }
                                     }
                                     else
                                     {
                                         echo"
                                             <script>
-                                                alert(`Anda belum membuat soal atau anda belum mengisi semua opsi jawaban atau jawaban yang benar untuk soal nomor ` + eval($i+1))
-                                                window.location = './add_questions.php'
+                                                alert(`Anda belum membuat soal atau anda belum mengisi semua opsi jawaban atau jawaban yang benar untuk soal nomor ` + eval($no_soal + 1))
                                             </script>
                                         ";
                                     }
                                 }
 
-                                if ($is_success == 1)
+                                if ($is_success == 1 and !$error)
                                 {
                                     echo"
                                         <script>
-                                            alert('Semua soal berhasil ditambahkan')
-                                            window.location = './course.php'
+                                            window.location = './add_questions.php'
                                         </script>
                                     ";
                                 }
-                                else
+                                else if ($is_success == 1 and $error)
                                 {
                                     echo"
                                         <script>
                                             alert('Terjadi kesalahan saat menambahkan soal. Harap Coba lagi')
-                                            window.location = './course.php'
+                                            window.location = './add_questions.php'
                                         </script>
                                     ";
                                 }
                             }
                         ?>
-                        <?php }?>  <!--Tutup dari if($banyak_soal < $jumlah_soal) -->
+                        <?php }?>  <!--Tutup dari if($jumlah_soal_saat_ini < $jumlah_soal) -->
                     </form>
                 </section>
 

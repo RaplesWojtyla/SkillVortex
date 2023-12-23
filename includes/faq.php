@@ -111,7 +111,7 @@
                                                                     <div class="accordion-body">
                                                                         <ol>
                                                                             <li>Masuk ke menu Login</li>
-                                                                            <li>Scroll ke bawah dan klik <a href="../authentication/forgot_password.php">Forgot Password</a></li>
+                                                                            <li>Scroll ke bawah dan klik <a href="../authentication/cek_forgot_password.php">Forgot Password</a></li>
                                                                             <li>Masukkan Email akun anda</li>
                                                                             <li>klik send code dan masukkan kode yang masuk ke email anda</li>
                                                                             <li>klik check</li>
