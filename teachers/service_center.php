@@ -71,7 +71,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                
+                                                <?php include("../includes/faq.php"); ?>
                                             </tbody>
                                         </table>
                                     </div>
