@@ -23,6 +23,13 @@ function query($query)
     return mysqli_query(conn(), $query);
 }
 
+function validatePassword($password)
+{
+    $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*?])[A-Za-z\d!@#$%&*?]{8,}$/';
+
+    return preg_match($pattern, $password);
+}
+
 function register($data)
 {
     $getMaxID    = query("SELECT MAX(id_users) as id FROM users");
@@ -33,39 +40,15 @@ function register($data)
     $fullname  = mysqli_real_escape_string(conn(), $data['fullname']);
     $username  = mysqli_real_escape_string(conn(), $data['username']);
     $email     = mysqli_real_escape_string(conn(), $data['email']);
-    $password1 = mysqli_real_escape_string(conn(), $data['password1']);
-    $password2 = mysqli_real_escape_string(conn(), $data['password2']);
+    $password = mysqli_real_escape_string(conn(), $data['password1']);
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
+    $sql = query("INSERT INTO users (id_users, username, nama_lengkap, email, password, level) VALUES ('$user_id', '$username', '$fullname', '$email', '$hashed_password', 3)");
 
-    $res = query("SELECT email FROM users WHERE email = '$email'"); 
-    if (mysqli_num_rows($res) > 0)
-    {
-        echo"
-            <script>
-                alert('Email telah terdaftar!')
-            </script>
-        ";
-
-        return false;
-    }
-
-    if ($password1 == $password2)
-    {
-        $hashed_password = password_hash($password1, PASSWORD_BCRYPT);
-        query("INSERT INTO users (id_users, username, nama_lengkap, email, password, level) VALUES ('$user_id', '$username', '$fullname', '$email', '$hashed_password', 3)");
-
+    if ($sql)
         return true;
-    }
-    else
-    {
-        echo"
-            <script>
-                alert('Password tidak sama')
-            </script>
-        ";
 
-        return false;   
-    }
+    return false;   
 }
 
 function changePassword($data)
