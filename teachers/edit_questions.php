@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <h6>Option <?=$i?></h6>
                                 <div class"form-group">
-                                    <textarea name="opt<?=$i?>" type="text" class="ckeditor">
+                                    <textarea name="opt[<?=$i?>]" type="text" class="ckeditor">
                                         <?=$data["opt$i"]?>
                                     </textarea>
                                 </div>
@@ -100,32 +100,54 @@
                     <?php
                         if (isset($_POST['cquestion']))
                         {
-                            $dataArr = array(
-                                'kode_quiz' => $_SESSION['kode_quiz'],
-                                'no_soal' => $_POST['no_soal'],
-                                'question' => $_POST['question'],
-                                'opt1' => $_POST['opt1'],
-                                'opt2' => $_POST['opt2'],
-                                'opt3' => $_POST['opt3'],
-                                'opt4' => $_POST['opt4'],
-                                'jawaban' => $_POST['jawaban']
-                            );
-
-                            if (updateQuizQuestions($dataArr))
+                            if (!empty($_POST['question']) and !empty($_POST['opt'][1]) and !empty($_POST['opt'][2]) and !empty($_POST['opt'][3]) and !empty($_POST['opt'][4]) and !empty($_POST['jawaban']))
                             {
-                                echo"
-                                    <script>
-                                        alert('Soal berhasil diubah')
-                                        window.location = './course.php'
-                                    </script>
+                                if ($_POST['jawaban'] == $_POST['opt'][1] or $_POST['jawaban'] == $_POST['opt'][2] or $_POST['jawaban'] == $_POST['opt'][3] or $_POST['jawaban'] == $_POST['opt'][4])
+                                {
+                                    $dataArr = array(
+                                        'kode_quiz' => $_SESSION['kode_quiz'],
+                                        'no_soal' => $_POST['no_soal'],
+                                        'question' => $_POST['question'],
+                                        'opt1' => $_POST['opt'][1],
+                                        'opt2' => $_POST['opt'][2],
+                                        'opt3' => $_POST['opt'][3],
+                                        'opt4' => $_POST['opt'][4],
+                                        'jawaban' => $_POST['jawaban']
+                                    );
+
+                                    if (updateQuizQuestions($dataArr))
+                                    {
+                                        echo"
+                                            <script>
+                                                alert('Soal berhasil diubah')
+                                                window.location = './add_questions.php'
+                                            </script>
+                                        ";
+                                    }
+                                    else
+                                    {
+                                        echo"
+                                            <script>
+                                                alert('Terjadi kesalahan. Silahkan coba lagi')
+                                                window.location = './edit_questions.php'
+                                            </script>
+                                        ";
+                                    }
+                                }
+                                else
+                                {
+                                    echo"
+                                        <script>
+                                            alert(`Opsi jawaban yang benar tidak sesuai dengan opsi jawaban manapun`)
+                                        </script>
                                 ";
+                                }
                             }
                             else
                             {
                                 echo"
                                     <script>
-                                        alert('Terjadi kesalahan saat mengubah soal. Harap Coba lagi')
-                                        window.location = './course.php'
+                                        alert(`Anda belum membuat soal atau anda belum mengisi semua opsi jawaban atau jawaban yang benar`)
                                     </script>
                                 ";
                             }
