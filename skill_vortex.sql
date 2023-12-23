@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 11:43 AM
+-- Generation Time: Dec 23, 2023 at 10:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -77,23 +77,12 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id_feedback`, `e_pengirim`, `isi_pesan`, `e_penerima`) VALUES
-(1, 'patrarwsinaga04@gmail.com', 'ANZAYY GW KEREN BANGET COYY', NULL),
-(2, 'rapleswojtyla@gmail.com', 'KAGAY', NULL),
-(3, 'rapleswojtyla@gmail.com', 'Gilaa keren bet gw \r\n', NULL),
-(4, 'rapleswojtyla@gmail.com', 'Gilaa keren bet gw \r\n', NULL),
-(5, 'rapleswojtyla@gmail.com', 'Gilaa keren bet gw \r\n', NULL),
-(6, 'rapleswojtyla@gmail.com', 'Kerennnn', NULL),
-(7, 'rapleswojtyla@gmail.com', 'Kerennnn', NULL),
-(8, 'rapleswojtyla@gmail.com', 'Kerennnn', NULL),
-(9, 'rapleswojtyla@gmail.com', 'Kerennnn', NULL),
-(10, 'rapleswojtyla@gmail.com', 'Patra Kerennnn\r\n', NULL),
-(11, 'rapleswojtyla@gmail.com', 'slufbod/olg', NULL),
-(12, 'rapleswojtyla@gmail.com', 'EF', 'skillvortex4@gmail.com'),
-(13, 'rapleswojtyla@gmail.com', 'GG', 'skillvortex4@gmail.com'),
+(12, 'rapleswojtyla@gmail.com', 'Gilaa keren banget websitenya minn', 'skillvortex4@gmail.com'),
+(13, 'rapleswojtyla@gmail.com', 'GGWP', 'skillvortex4@gmail.com'),
 (14, 'rapleswojtyla@gmail.com', 'KERENNNN', 'skillvortex4@gmail.com'),
-(15, 'patrarwsinaga04@gmail.com', 'WOJTYLA KEREN BANGETTTT', 'skillvortex4@gmail.com'),
-(16, 'rapleswojtyla@gmail.com', '', 'skillvortex4@gmail.com'),
-(17, 'rapleswojtyla@gmail.com', '', 'skillvortex4@gmail.com');
+(15, 'patrarwsinaga04@gmail.com', 'Websitenya keren bangett, mirip E-Learning USU!!', 'skillvortex4@gmail.com'),
+(16, 'rapleswojtyla@gmail.com', 'Subarashii!!', 'skillvortex4@gmail.com'),
+(17, 'rapleswojtyla@gmail.com', 'Mantap min, terus perkembangkan kemampuanmu!!', 'skillvortex4@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -155,8 +144,7 @@ INSERT INTO `my_courses` (`id_my_course`, `kode_course`, `e_student`) VALUES
 (34, 'AI001', 'rahmatmaulanamiftah34@gmail.com'),
 (35, 'BPL001', 'rahmatmaulanamiftah34@gmail.com'),
 (36, 'IPC001', 'rahmatmaulanamiftah34@gmail.com'),
-(43, 'AI001', 'ertrand865@gmail.com'),
-(44, 'BPL001', 'patrrwsinaga@gmail.com');
+(43, 'AI001', 'ertrand865@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -188,8 +176,11 @@ INSERT INTO `questions` (`id_question`, `kode_course`, `kode_quiz`, `no_soal`, `
 (79, 'AI001', 'QAI02', 1, 'Nomor 1??', 'False', '!False', '!True', '!1', '!False'),
 (80, 'AI001', 'QAI02', 2, 'Soal nomor (1+1)?', 'True', '!True', 'False', '!1', 'True'),
 (81, 'BPL001', 'Q02BPL001', 1, 'Apa itu &#39;what&#39;', 'Apa', 'Gak tau, males', 'Huh?', 'Iya', 'Apa'),
-(82, 'BPL001', 'Q02BPL001', 2, 'Apa itu nani?', 'Gak tahu', 'Arti nani adalah apa', 'ada adalah nani', 'o-na??', 'Arti nani adalah apa'),
-(83, 'BPL001', 'Q02BPL001', 3, 'Soal nomor (2+1)', '!True', '!False', 'False', '!1', '!False');
+(86, 'BPL001', 'Q02BPL001', 2, 'aku', 'aku', 'dia', 'saya', 'qwerty', 'aku'),
+(87, 'BPL001', 'Q02BPL001', 3, '3', '1', '2', '3', '4', '4'),
+(100, 'BPL001', 'Q04BPL001', 1, 'Nomor 1', '11', '22', '13', '14', '11'),
+(104, 'BPL001', 'Q04BPL001', 2, 'Nomor 2', '11', '22', '23', '32', '22'),
+(105, 'BPL001', 'Q04BPL001', 3, 'Nomor 3', '11', '22', '34', '43', '43');
 
 -- --------------------------------------------------------
 
@@ -215,6 +206,7 @@ CREATE TABLE `quiz` (
 
 INSERT INTO `quiz` (`id_quiz`, `kode_course`, `kode_quiz`, `nama_quiz`, `deskripsi`, `type`, `durasi`, `jumlah_soal`, `date_added`) VALUES
 (13, 'BPL001', 'Q02BPL001', 'Quiz 2', 'Ini akan menjadi nilai tambah saat penilaian akhir', 'Quiz', 5, 3, '2023-12-22 07:02:49'),
+(14, 'BPL001', 'Q04BPL001', 'Quiz 4', 'Q', 'Quiz', 5, 3, '2023-12-23 19:37:27'),
 (11, 'AI001', 'QAI02', 'Apa itu AI', '', 'Quiz', 1, 2, '2023-11-29 02:53:10'),
 (12, 'BPL001', 'QBPL01', 'Perulangan', 'Kuis Perulangan C', 'Quiz', 6, 3, '2023-12-20 16:49:00');
 
@@ -240,7 +232,11 @@ CREATE TABLE `quiz_result` (
 
 INSERT INTO `quiz_result` (`id_quiz_result`, `e_student`, `kode_course`, `kode_quiz`, `total_question`, `correct_answer`, `wrong_answer`) VALUES
 (128, 'rapleswojtyla@gmail.com', 'BPL001', 'QBPL01', 3, 2, 1),
-(129, 'rapleswojtyla@gmail.com', 'BPL001', 'Q02BPL001', 3, 3, 0);
+(129, 'rapleswojtyla@gmail.com', 'BPL001', 'Q02BPL001', 3, 3, 0),
+(131, 'rahmatmaulanamiftah34@gmail.com', 'BPL001', 'QBPL01', 3, 1, 2),
+(132, 'rahmatmaulanamiftah34@gmail.com', 'BPL001', 'Q02BPL001', 3, 2, 1),
+(134, 'rahmatmaulanamiftah34@gmail.com', 'BPL001', 'Q04BPL001', 3, 2, 1),
+(135, 'rapleswojtyla@gmail.com', 'BPL001', 'Q04BPL001', 3, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -298,7 +294,8 @@ CREATE TABLE `service_center` (
 INSERT INTO `service_center` (`id_service`, `e_pengirim`, `isi_pesan`, `e_penerima`) VALUES
 (254, 'ertrand865@gmail.com', 'Hi min, saya user baru', 'skillvortex4@gmail.com'),
 (255, 'skillvortex4@gmail.com', 'Oh hi', 'ertrand865@gmail.com'),
-(256, 'rapleswojtyla@gmail.com', 'Halo min, saya user baru', 'skillvortex4@gmail.com');
+(256, 'rapleswojtyla@gmail.com', 'Halo min, saya user baru', 'skillvortex4@gmail.com'),
+(257, 'patrarwsinaga04@gmail.com', 'Heyyo', 'skillvortex4@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -325,9 +322,11 @@ CREATE TABLE `submit_tugas` (
 --
 
 INSERT INTO `submit_tugas` (`id_submit`, `kode_tugas`, `kode_course`, `email`, `nama_file`, `size`, `berkas`, `date_submitted`, `status`, `keterangan`, `nilai`) VALUES
-(49, 'TBPL01', 'BPL001', 'rapleswojtyla@gmail.com', 'Bukti Kehadiran MKWK Umum Hari Senin - S', 274895, '../tugas_submit/Bukti Kehadiran MKWK Umum Hari Senin - Selasa.pdf', '2023-12-22 12:58:31', 'late', 'Assignment was submitted 0 days 0 hours 58 mins 31 secs late', 0),
-(51, 'TBPL03', 'BPL001', 'rapleswojtyla@gmail.com', 'Tugas Refleksi - Patra Rafles Wostyla Si', 106839, '../tugas_submit/Tugas Refleksi - Patra Rafles Wostyla Sinaga - 231402052.pdf', '2023-12-22 13:01:44', 'late', 'Assignment was submitted 0 days 3 hours 1 mins 44 secs late', 0),
-(52, 'TBPL02', 'BPL001', 'rapleswojtyla@gmail.com', 'Definisi-Sistem-Basis-Data.pptx', 10236649, '../tugas_submit/Definisi-Sistem-Basis-Data.pptx', '2023-12-22 13:04:55', 'early', 'Assignment was submitted 0 days 0 hours 55 mins 5 secs early', 0);
+(49, 'TBPL01', 'BPL001', 'rapleswojtyla@gmail.com', 'Bukti Kehadiran MKWK Umum Hari Senin - S', 274895, '../tugas_submit/Bukti Kehadiran MKWK Umum Hari Senin - Selasa.pdf', '2023-12-22 12:58:31', 'late', 'Assignment was submitted 0 days 0 hours 58 mins 31 secs late', 95),
+(52, 'TBPL02', 'BPL001', 'rapleswojtyla@gmail.com', 'Definisi-Sistem-Basis-Data.pptx', 10236649, '../tugas_submit/Definisi-Sistem-Basis-Data.pptx', '2023-12-22 13:04:55', 'early', 'Assignment was submitted 0 days 0 hours 55 mins 5 secs early', 0),
+(53, 'TBPL04', 'BPL001', 'rapleswojtyla@gmail.com', '231402052 - Patra Rafles Wostyla Sinaga.', 62149, '../tugas_submit/231402052 - Patra Rafles Wostyla Sinaga.pdf', '2023-12-24 03:49:24', 'early', 'Assignment was submitted 0 days 6 hours 40 mins 36 secs early', 100),
+(54, 'TBPL01', 'BPL001', 'rahmatmaulanamiftah34@gmail.com', 'Challenge-A1-1-Patra Rafles Wostyla Sina', 808890, '../tugas_submit/Challenge-A1-1-Patra Rafles Wostyla Sinaga-231402052-(01).pdf', '2023-12-24 03:52:11', 'late', 'Assignment was submitted 1 days 15 hours 52 mins 11 secs late', 90),
+(55, 'TBPL02', 'BPL001', 'rahmatmaulanamiftah34@gmail.com', 'Tugas Matematika - Patra Rafles Wostyla ', 6536409, '../tugas_submit/Tugas Matematika - Patra Rafles Wostyla Sinaga - 231402052.pdf', '2023-12-24 03:53:09', 'late', 'Assignment was submitted 1 days 13 hours 53 mins 9 secs late', 0);
 
 -- --------------------------------------------------------
 
@@ -357,7 +356,7 @@ INSERT INTO `tugas` (`id_tugas`, `kode_tugas`, `kode_course`, `nama_tugas`, `des
 (8, 'TBPL01', 'BPL001', 'Tugas 1', 'Kerjakan soal yang ada pada file tersebut', 'Tugas Pemrog', 49620, '../tugas/Tugas Pemrograman 2 (1).pdf', '2023-12-21 00:58:35', '2023-12-22 12:00:00'),
 (9, 'TBPL02', 'BPL001', 'Tugas 2', 'Kerjakan soalnya', 'Tugas Pemrog', 28080, '../tugas/Tugas Pemrograman 4 (2).pdf', '2023-12-21 00:59:28', '2023-12-22 14:00:00'),
 (10, 'TBPL03', 'BPL001', 'Tugas Pemrograman', 'Kerjakanlah soal yang ada pada file pdf berikut', 'Soal Pemrogr', 56032, '../tugas/Soal Pemrograman 6 (2).pdf', '2023-12-21 01:00:30', '2023-12-22 10:00:00'),
-(11, 'TBPL04', 'BPL001', 'Tugas 4', 'Buatlah sebuah program apa aja yang dengan metode rekursif ', '', 0, '', '2023-12-22 13:32:59', '2023-12-22 16:30:00'),
+(11, 'TBPL04', 'BPL001', 'Tugas 4', 'Buatlah sebuah program apa aja yang dengan metode rekursif ', '', 0, '', '2023-12-22 13:32:59', '2023-12-24 10:30:00'),
 (7, 'TIPL01', 'IPC001', 'OOP', 'Apa itu OOP', 'HO 01-Mengen', 798843, '../tugas/HO 01-Mengenal Dunia Pemrograman (1).pdf', '2023-12-07 19:15:40', '2023-12-07 19:18:58');
 
 -- --------------------------------------------------------
@@ -384,9 +383,9 @@ INSERT INTO `users` (`id_users`, `username`, `nama_lengkap`, `email`, `password`
 (7, 'Alfi Ok', 'Alfi Syahrin', 'alfioke7@gmail.com', '$2y$10$dmCjB1eY.llNKZHUOroK/OK7n5XRmhZe2MsIOh.4Xn0LjYyHkF57m', 2, NULL),
 (10, 'rand', 'Random12', 'ertrand865@gmail.com', '$2y$10$4vkNdz6CnhvttK1T16MPP.FRFLFT.X3.g2Gr.VtKMqKK1jKYFpqny', 3, NULL),
 (9, 'Jarr jarra', 'Fatimah', 'fatimahazzahra0655@gmail.com', '$2y$10$XqJ9393InS1het/Q83e8ouCR2gDpL7CLMEEd9xi7yf7SbukIIZnz2', 2, NULL),
-(6, 'Mayad1ck', 'Mayadi', 'mayadisilalahi@gmail.com', '$2y$10$gLc.QTnIUq28Ekbf/nxayOEIcxPjwFXyZ4kHn.1J7vOH5bn6672Au', 3, NULL),
+(6, 'Mayad1', 'Mayadi', 'mayadisilalahi@gmail.com', '$2y$10$gLc.QTnIUq28Ekbf/nxayOEIcxPjwFXyZ4kHn.1J7vOH5bn6672Au', 3, NULL),
 (2, 'Wojtyla Karma', 'Patra Rafles Wostyla Sinaga', 'patrarwsinaga04@gmail.com', '$2y$10$ekmREwvAWiwpJNsXN50X1O4MnemMQ1.Ozalny5DMl1y1dj/l6ZZfG', 2, NULL),
-(12, 'Raples', 'Patra', 'patrrwsinaga@gmail.com', '$2y$10$kj9C/S9i3oVwXioKd9S/x.qymbXlTuam8Yp7tR4Z8H/BgSjkA3nWO', 3, NULL),
+(12, 'Raples_Wojtyla', 'Wostyla', 'patrrwsinaga@gmail.com', '$2y$10$PQwkBZxNiKwhId1AXejGNufyi9TE.IkqX5V2QGfWrT.QyxDEdnEVu', 3, NULL),
 (4, 'Rahmat Visual', 'Rahmat Maulana Miftah', 'rahmatmaulanamiftah34@gmail.com', '$2y$10$nuv0pOKmIhdGLUQbHU/vyu60UlI06DbuQFcWCacryS2hjqa1Y2yBC', 3, NULL),
 (8, 'Rahmat VisualS', 'Rahmat S', 'rahmatv@gmail.com', '$2y$10$HMxclWh8N7iJzQzFkh7IAObVQqMQ5onwqLuQQxA61li8IVV0yXlWS', 2, NULL),
 (3, 'Wojtyla', 'Raples Wojtyla', 'rapleswojtyla@gmail.com', '$2y$10$vLBLJJ24.n/aGAMK0uGBquh4fgiXvksmBOdQiJkaT5LG8e6rzP3JW', 3, NULL),
@@ -715,13 +714,13 @@ ALTER TABLE `my_courses`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  MODIFY `id_quiz_result` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id_quiz_result` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `request`
@@ -733,13 +732,13 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `service_center`
 --
 ALTER TABLE `service_center`
-  MODIFY `id_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `id_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT for table `submit_tugas`
 --
 ALTER TABLE `submit_tugas`
-  MODIFY `id_submit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_submit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- Constraints for dumped tables
