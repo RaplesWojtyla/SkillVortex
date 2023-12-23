@@ -1,4 +1,32 @@
-function sendMail(idEmail, idPath) {
+function sendEmail(idEmail, idPath, idButton)
+{
+    const button = document.getElementById(idButton)
+
+    if (!button.disabled)
+    {
+        handleEmailSubmission(idEmail, idPath)
+
+        disableButton(idButton)
+
+        setTimeout(() => {
+            enableButton(idButton)
+        }, 30000)   
+    }
+}
+
+function disableButton(idButton)
+{
+    const button = document.getElementById(idButton)
+    button.disabled = true
+}
+
+function enableButton(idButton)
+{
+    const button = document.getElementById(idButton)
+    button.disabled = false
+}
+
+function handleEmailSubmission(idEmail, idPath) {
     const email = document.getElementById(idEmail).value
     const path = document.getElementById(idPath).value
 

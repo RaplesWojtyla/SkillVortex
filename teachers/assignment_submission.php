@@ -111,9 +111,9 @@
                                             <td>Not Submitted</td>
                                             <td>Not Graded</td>
                                             <td>
-                                                <input id="p<?=str_replace(' ', '', $data1['nama_student'])?>" type="text" value="remainder" hidden>
                                                 <input id="e<?=str_replace(' ', '', $data1['nama_student'])?>" type="text" value="<?=$data1['e_student']?>" hidden>
-                                                <button type="button" name="sendRemainder" onclick="sendMail('e<?=str_replace(' ', '', $data1['nama_student'])?>', 'p<?=str_replace(' ', '', $data1['nama_student'])?>')" class="btn btn-danger">
+                                                <input id="p<?=str_replace(' ', '', $data1['nama_student'])?>" type="text" value="remainder" hidden>
+                                                <button type="button" name="sendRemainder" id="sr<?=str_replace(' ', '', $data1['nama_student'])?>" onclick="sendEmail('e<?=str_replace(' ', '', $data1['nama_student'])?>', 'p<?=str_replace(' ', '', $data1['nama_student'])?>', 'sr<?=str_replace(' ', '', $data1['nama_student'])?>')" class="btn btn-danger">
                                                     <i class="bi bi-exclamation-square"></i>
                                                 </button>
                                             </td>
