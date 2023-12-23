@@ -62,7 +62,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="index.html"><img src="../dist/assets/compiled/svg/logo.svg" alt="Logo"></a>
+                        <a href="../index.php"><img src="../gambar/skill.png" alt="Logo" style="width: 181px; height: 57px; "></a>
                     </div>
                     <h1 class="auth-title">Forgot Password</h1>
                     <p class="auth-subtitle mb-5">Kami Akan Mengirim Kode Verifikasi ke Email Anda</p>
