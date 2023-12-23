@@ -41,16 +41,13 @@
         else
         {
             $grade_status = $data['nilai'];
+            $submission_status = 'Graded';
         }
 
         if ($data['status'] == 'early')
-        {
             $color = 'color: green;';
-        }
         else
-        {
             $color = 'color: red;';
-        }
 
         $is_submitted = 1;
         $_SESSION['method'] = 'Update';
