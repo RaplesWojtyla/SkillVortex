@@ -59,24 +59,35 @@ function changePassword($data)
 
     if (password_verify($old_password, $_SESSION['password']))
     {
-        if ($new_password == $confirm_new_password)
+        if(validatePassword($new_password))
         {
-            $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-            $sql = query("UPDATE users SET password = '$hashed_password' WHERE email = '$_SESSION[email]'");
+            if ($new_password == $confirm_new_password)
+            {
+                $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+                $sql = query("UPDATE users SET password = '$hashed_password' WHERE email = '$_SESSION[email]'");
 
-            if ($sql)
-                return 1;
-            else   
-                return 0;
+                if ($sql)
+                    return 1;
+                else   
+                    return 0;
+            }
+            else
+            {
+                echo"
+                    <script>
+                        alert('Password tidak sama')
+                    </script>
+                ";
+            }
         }
         else
         {
             echo"
-                <script>
-                    alert('Password tidak sama')
-                </script>
-            ";
-        }
+                    <script>
+                        alert('Password harus terdiri dari minimal 8 karakter, minimal satu huruf besar, satu huruf kecil, dan satu simbol')
+                    </script>
+                ";
+        } 
     }
     else
     {
