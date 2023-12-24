@@ -10,15 +10,40 @@
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        $sql = query("UPDATE users SET username = '$username', nama_lengkap = '$fullname', email = '$email', password = '$password' WHERE id_users = '$userID'");
-        if ($sql)
+        if(validatePassword($password))
+        {
+            $sql = query("UPDATE users SET username = '$username', nama_lengkap = '$fullname', email = '$email', password = '$hashed_password' WHERE id_users = '$userID'");
+            if ($sql)
+            {
+                if ($user_level == 2)
+                {
+                    echo"
+                        <script>
+                            alert('Data berhasil diubah')
+                            window.location = './data_teachers.php'
+                        </script>
+                    ";
+                }
+                else if ($user_level == 3)
+                {
+                    echo"
+                        <script>
+                            alert('Data berhasil diubah')
+                            window.location = './data_students.php'
+                        </script>
+                    ";
+                }
+            }
+        }
+        else
         {
             if ($user_level == 2)
             {
                 echo"
                     <script>
-                        alert('Data berhasil diubah')
+                        alert('Password harus terdiri dari minimal 8 karakter, minimal satu huruf besar, satu huruf kecil, dan satu simbol')
                         window.location = './data_teachers.php'
                     </script>
                 ";
@@ -27,12 +52,13 @@
             {
                 echo"
                     <script>
-                        alert('Data berhasil diubah')
+                        alert('Password harus terdiri dari minimal 8 karakter, minimal satu huruf besar, satu huruf kecil, dan satu simbol')
                         window.location = './data_students.php'
                     </script>
                 ";
             }
-        }
+            
+        } 
     }
     else if (isset($_POST['cancelbtn']))
     {
