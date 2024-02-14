@@ -9,7 +9,8 @@
 
         if ($pass1 == $pass2)
         {
-            $res = query("UPDATE users SET password = '$pass1' WHERE email = '$user_email'");
+            $passEc = password_hash($pass1, PASSWORD_BCRYPT);
+            $res = query("UPDATE users SET password = '$passEc' WHERE email = '$user_email'");
 
             if($res)
             {
