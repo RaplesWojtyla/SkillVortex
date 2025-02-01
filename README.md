@@ -29,10 +29,10 @@ Ini adalah project yang dibuat untuk memenuhi tugas akhir mata kuliah Pemrograma
 
 Contributors names and contact info
 
-Patra Rafles Wostyla Sinaga
+Patra Rafles Wostyla Sinaga (Full-Stack Developer) <br>
 patrarwsinaga04@gmail.com
 
-Alfi Syahrin
+Alfi Syahrin (Database Administrator + Front-End Developer) <br>
 alfioke7@gmail.com
 
 
